@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
@@ -35,7 +35,7 @@ const MovieCard = (props) => {
     <Card className={classes.cardRoot}>
       <CardActionArea className={classes.actionArea}>
         <CardContent className={classes.cardContent}>
-          <CardMedia className={classes.image} image={Poster}></CardMedia>
+          <CardMedia className={classes.image} image={image}></CardMedia>
           <div className={classes.cardText}>
             <Typography gutterBottom variant="h5" component="h2">
               {Title}
