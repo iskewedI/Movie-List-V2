@@ -20,7 +20,7 @@ const slice = createSlice({
     movieAddedToList: (movies, action) => {
       movies.listToSee.push(action.payload.movie);
     },
-    searchTextSetted: (movies, action) => {
+    searchTitleSetted: (movies, action) => {
       const { title } = action.payload;
       movies.searchTitle = title;
     },
@@ -41,7 +41,7 @@ const slice = createSlice({
 const {
   movieRemovedFromList,
   movieAddedToList,
-  searchTextSetted,
+  searchTitleSetted,
   moviesRequested,
   moviesReceived,
   moviesRequestFailed,
@@ -50,6 +50,7 @@ const {
 export default slice.reducer;
 
 //Action creators
+const url = "";
 export const searchMovies = () => (dispatch, getState) => {
   const { searchTitle, lastSearched } = getState().entities.movies;
 
@@ -58,6 +59,7 @@ export const searchMovies = () => (dispatch, getState) => {
   const params = { s: searchTitle };
   return dispatch(
     apiCallBegan({
+      url,
       params,
       customData: { searchTitle },
       onStart: moviesRequested.type,
@@ -67,10 +69,10 @@ export const searchMovies = () => (dispatch, getState) => {
   );
 };
 
-export const setSearchText = (title) => (dispatch, getState) => {
+export const setSearchTitle = (title) => (dispatch, getState) => {
   const { searchTitle } = getState().entities.movies;
   if (title === searchTitle) return;
-  return dispatch(searchTextSetted({ title }));
+  return dispatch(searchTitleSetted({ title }));
 };
 
 export const addMovieToList = (movie) => (dispatch, getState) => {
@@ -100,7 +102,10 @@ export const getMoviesCount = createSelector(
   (state) => state.entities.movies,
   (movies) => movies.searchResults.length
 );
-
+export const getSearchTitle = createSelector(
+  (state) => state.entities.movies,
+  (movies) => movies.searchTitle
+);
 export const getMovieInList = (id) =>
   createSelector(
     (state) => state.entities.movies,

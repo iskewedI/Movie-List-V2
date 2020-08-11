@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { Container } from "@material-ui/core";
 
 import configureStore from "./store/configureStore";
-import { searchMovies, setSearchText } from "./store/movies";
+import { searchMovies, setSearchTitle } from "./store/movies";
 
 import SearchCard from "./components/SearchCard/";
 import DialogResults from "./components/DialogResults/";
@@ -15,7 +15,7 @@ function App() {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleSearch = (movieTitle) => {
-    store.dispatch(setSearchText(movieTitle));
+    store.dispatch(setSearchTitle(movieTitle));
     store.dispatch(searchMovies());
     setDialogOpen(true);
   };

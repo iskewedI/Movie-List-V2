@@ -1,3 +1,4 @@
 {
-  "baseUrl": "https://www.omdbapi.com/?apikey=5c6d9a6c"
+  "baseURL": "https://www.omdbapi.com/",
+  "apiKey": "?apikey=5c6d9a6c"
 }
