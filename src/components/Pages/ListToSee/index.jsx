@@ -23,17 +23,27 @@ const ListToSee = () => {
   const deleteFromList = (id) => {
     dispatch(removeMovieInList(id));
   };
+  const types = ["movie", "serie"];
   return (
     <React.Fragment>
-      {listToSee.length === 0 && <div>There's no one movie in the list</div>}
+      {listToSee.list.length === 0 && (
+        <div>There's no one movie in the list</div>
+      )}
       <ul>
-        {listToSee.map((m) => (
-          <li key={m.imdbID}>
-            {m.Title}
-            <span className={classes.buttonDelete}>
-              {createDeleteBtn(m.imdbID)}
-            </span>
-          </li>
+        {types.map((t) => (
+          <ul key={`${t}ID`}>
+            {`${t}s`}
+            {listToSee.list
+              .filter((elem) => elem.Type === t)
+              .map((e) => (
+                <li key={e.imdbID}>
+                  {e.Title}{" "}
+                  <span className={classes.buttonDelete}>
+                    {createDeleteBtn(e.imdbID)}
+                  </span>
+                </li>
+              ))}
+          </ul>
         ))}
       </ul>
     </React.Fragment>

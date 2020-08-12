@@ -2,10 +2,10 @@ import React from "react";
 import { Provider } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 import configureStore from "./store/configureStore";
-import Navbar from "./components/Navbar/";
-import Home from "./components/Pages/Home/index";
-import NotFound from "./components/Pages/NotFound/index";
-import ListToSee from "./components/Pages/ListToSee/index";
+import Navbar from "./components/Project/Navbar/";
+import Home from "./components/Pages/Home/";
+import NotFound from "./components/Pages/NotFound/";
+import ListToSee from "./components/Pages/ListToSee/";
 const store = configureStore();
 function App() {
   return (

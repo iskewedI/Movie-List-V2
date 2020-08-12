@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Container } from "@material-ui/core";
 import { searchMovies, setSearchTitle } from "../../../store/movies";
-import SearchCard from "../../SearchCard/";
-import DialogResults from "../../DialogResults/";
+import SearchCard from "../../Project/SearchCard/";
+import DialogResults from "../../Common/DialogResults/";
 import styles from "./styles";
 const Home = () => {
   const classes = styles();

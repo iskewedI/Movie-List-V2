@@ -7,8 +7,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-import CardCollection from "../CardCollection";
-import { getMoviesCount } from "./../../store/movies";
+import CardCollection from "../CardCollection/";
+import { getMoviesCount } from "../../../store/movies";
 import styles from "./styles";
 
 const DialogResults = ({ title, onClose }) => {

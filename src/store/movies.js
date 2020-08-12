@@ -6,19 +6,28 @@ const slice = createSlice({
   name: "movies",
   initialState: {
     searchResults: [],
-    listToSee: [],
+    listToSee: {
+      byId: {},
+      list: [],
+    },
     loading: false,
     searchTitle: "",
     lastSearched: "",
   },
   reducers: {
     movieRemovedFromList: (movies, action) => {
-      movies.listToSee = movies.listToSee.filter(
-        (m) => m.imdbID !== action.payload.id
+      let { byId } = movies.listToSee;
+      const { id } = action.payload;
+      movies.listToSee.list = movies.listToSee.list.filter(
+        (m) => m.imdbID !== id
       );
+      delete byId[id];
     },
     movieAddedToList: (movies, action) => {
-      movies.listToSee.push(action.payload.movie);
+      const { list, byId } = movies.listToSee;
+      const { movie } = action.payload;
+      list.push(movie);
+      byId[movie.imdbID] = movie;
     },
     searchTitleSetted: (movies, action) => {
       const { title } = action.payload;
@@ -113,5 +122,5 @@ export const getAllMoviesInList = createSelector(
 export const getMovieInList = (id) =>
   createSelector(
     (state) => state.entities.movies,
-    (movies) => movies.listToSee.findIndex((m) => m.imdbID === id) >= 0
+    (movies) => movies.listToSee.list.findIndex((m) => m.imdbID === id) >= 0
   );

@@ -14,8 +14,9 @@ import {
   addMovieToList,
   removeMovieInList,
   getMovieInList,
-} from "../../store/movies";
+} from "../../../store/movies";
 import styles from "./styles";
+
 const MovieCard = (props) => {
   const classes = styles();
   const { Title, Year, Type, imdbID, Poster } = props;

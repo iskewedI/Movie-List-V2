@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getAllMoviesInList } from "../../store/movies";
+import { getAllMoviesInList } from "../../../store/movies";
 import styles from "./styles";
 
 const Navbar = () => {
@@ -31,7 +31,7 @@ const Navbar = () => {
               Home <span className="sr-only">(current)</span>
             </Link>
             <Link to="/listToSee" className="nav-link" href="/#">
-              To see: {toSee.length}
+              To see: {toSee.list.length}
             </Link>
           </div>
         </div>
