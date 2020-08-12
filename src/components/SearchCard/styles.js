@@ -7,27 +7,33 @@ const centeredStyledObj = {
 };
 export default makeStyles({
   container: {
-    height: "100vh",
+    height: "40vh",
+    width: "70vw",
     flexDirection: "column",
     ...centeredStyledObj,
   },
   cardContainer: {
     backgroundColor: "rgba(190, 247, 238, 0.29)",
     flexDirection: "column",
-    width: 400,
-    height: 200,
+    width: "100%",
+    height: "100%",
     padding: "2rem",
     ...centeredStyledObj,
   },
   title: {
-    fontSize: "4rem",
-    ...centeredStyledObj,
+    fontSize: "5.5vw",
   },
   textField: {
     width: "90%",
   },
+  inputPlaceHolder: {
+    fontSize: "1.8vw",
+  },
   searchButton: {
-    marginTop: ".5rem",
+    width: "15vw",
+    height: "5vh",
+    fontSize: "1.2vw",
+    marginTop: ".8rem",
   },
   movieIcon: {
     fontSize: "4rem",

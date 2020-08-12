@@ -1,6 +1,6 @@
 import React from "react";
-import { CircularProgress, Grid } from "@material-ui/core";
 import { useSelector } from "react-redux";
+import { CircularProgress, Grid } from "@material-ui/core";
 import { getSearchedMovies, getMoviesLoading } from "../../store/movies";
 import MovieCard from "../MovieCard/";
 import styles from "./styles";

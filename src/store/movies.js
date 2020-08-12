@@ -106,6 +106,10 @@ export const getSearchTitle = createSelector(
   (state) => state.entities.movies,
   (movies) => movies.searchTitle
 );
+export const getAllMoviesInList = createSelector(
+  (state) => state.entities.movies,
+  (movies) => movies.listToSee
+);
 export const getMovieInList = (id) =>
   createSelector(
     (state) => state.entities.movies,

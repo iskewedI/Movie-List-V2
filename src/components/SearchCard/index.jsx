@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import {
   Container,
   Typography,
@@ -25,6 +24,7 @@ const SearchCard = ({ onSearch }) => {
           value={searchText}
           placeholder="Ingrese su búsqueda..."
           onChange={handleTextChange}
+          InputProps={{ classes: { input: classes.inputPlaceHolder } }}
         />
         <Button
           className={classes.searchButton}
