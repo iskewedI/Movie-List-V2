@@ -6,9 +6,7 @@ import Navbar from "./components/Navbar/";
 import Home from "./components/Pages/Home/index";
 import NotFound from "./components/Pages/NotFound/index";
 import ListToSee from "./components/Pages/ListToSee/index";
-import styles from "./appStyles";
 const store = configureStore();
-
 function App() {
   return (
     <Provider store={store}>
