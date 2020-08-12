@@ -23,7 +23,7 @@ const ListToSee = () => {
   const deleteFromList = (id) => {
     dispatch(removeMovieInList(id));
   };
-  const types = ["movie", "serie"];
+  const types = ["movie", "series"];
   return (
     <React.Fragment>
       {listToSee.list.length === 0 && (
@@ -32,7 +32,7 @@ const ListToSee = () => {
       <ul>
         {types.map((t) => (
           <ul key={`${t}ID`}>
-            {`${t}s`}
+            {t}
             {listToSee.list
               .filter((elem) => elem.Type === t)
               .map((e) => (
