@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllMoviesInList, removeMovieInList } from "./../../../store/movies";
 import { Button } from "@material-ui/core";
 import styles from "./styles";
+import HorizontalAccordion from "../../Common/HorizontalAccordion/refactor";
 
 const ListToSee = () => {
   const classes = styles();
@@ -26,26 +27,16 @@ const ListToSee = () => {
   const types = ["movie", "series"];
   return (
     <React.Fragment>
-      {listToSee.list.length === 0 && (
-        <div>There's no one movie in the list</div>
-      )}
-      <ul>
-        {types.map((t) => (
-          <ul key={`${t}ID`}>
-            {t}
-            {listToSee.list
-              .filter((elem) => elem.Type === t)
-              .map((e) => (
-                <li key={e.imdbID}>
-                  {e.Title}{" "}
-                  <span className={classes.buttonDelete}>
-                    {createDeleteBtn(e.imdbID)}
-                  </span>
-                </li>
-              ))}
-          </ul>
+      <div className={classes.accordionsContainer}>
+        {types.map((t, i) => (
+          <div key={`Accordion ${i}`} className={classes.accordionRow}>
+            <h1>{t}</h1>
+            <HorizontalAccordion
+              elements={listToSee.list.filter((e) => e.Type === t)}
+            />
+          </div>
         ))}
-      </ul>
+      </div>
     </React.Fragment>
   );
 };
