@@ -51,25 +51,9 @@ const ExpandCard = ({
     isLast,
     shiftLeft,
   });
-
-  const dataToShow = [];
   return (
     <li className={classes} style={styles.item}>
-      {/* <div className="expandCard--content"> */}
       <h3 className="expandCard--content">{data.Title}</h3>
-      {/* <div className="data-list"> */}
-      {/* <ul className="menu vertical">
-            {dataToShow.map((d, i) => (
-              <li key={i}>
-                <a href="/#">
-                  <h4 className="datalist-title">{d}</h4>
-                  <h5 className="datalist-description">{data[d]}</h5>
-                </a>
-              </li>
-            ))}
-          </ul> */}
-      {/* </div> */}
-      {/* </div> */}
       <div
         className="expandCard--image-container"
         onClick={() => setActive(index)}
@@ -81,7 +65,7 @@ const ExpandCard = ({
         <h6>{data.Title}</h6>
       </div>
       <div className="expandCard--closeButton">
-        <a href="#">Back</a>
+        <a href="/#">Back</a>
       </div>
     </li>
   );
