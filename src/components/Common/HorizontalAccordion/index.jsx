@@ -7,8 +7,6 @@ const HorizontalAccordion = ({ elements }) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [open, setOpen] = useState(false);
 
-  const halfIndex = Helper.getHalfIndexArray(elements);
-
   const handleClick = (index) => {
     setActiveIndex(index);
     setOpen(true);
@@ -20,52 +18,24 @@ const HorizontalAccordion = ({ elements }) => {
       setOpen(false);
     }
   };
-  const getIsLast = (i) => {
-    return i === elements.length - 1;
-  };
-  const getIsFirst = (i) => {
-    return i === 0;
-  };
 
-  const getDirectionToMove = (i, isActive) => {
-    let direction = "";
-    if (isActive) {
-      direction = i <= halfIndex ? "" : "-";
-    } else {
-      direction = i < activeIndex ? "-" : "";
-    }
-    return direction;
-  };
-  const getActiveCountToMove = (arr, i) => {
-    let countX = 0;
-    let counts = [2, 2, 2, 1.5, 1.5, 1.5, 1, 1, 1];
-    if (i !== halfIndex) {
-      countX = counts[Helper.getDistanceToMiddle(arr, i)];
-    }
-    return countX;
-  };
-  const getDeactiveCountToMove = (arr, i) => {
-    let counts = [1.7, 1.7, 1.7, 1, 1, 1, 0.7, 0.7, 0.7];
-    let countX = counts[Helper.getDistanceToMiddle(arr, i)];
-    return countX;
-  };
   const getTransformToMove = (i, isActive) => {
-    let countX = 0;
-    let direction = getDirectionToMove(i, isActive);
-
+    let countX;
+    let direction;
     if (isActive) {
-      countX = 10 * getActiveCountToMove(elements, i);
+      direction = Helper.getActiveDirectionToMove(elements, i);
+      countX = 10 * Helper.getActiveCountToMove(elements, i);
     } else {
-      countX = 20 * getDeactiveCountToMove(elements, i);
+      direction = Helper.getDeactiveDirectionToMove(i, activeIndex);
+      countX = 20 * Helper.getDeactiveCountToMove(elements, i);
     }
-
     return `translate3d(${direction}${countX}%, 0, 0)`;
   };
   const getTransformDefault = (i) => {
     let transform = "";
     let distanceToMiddle = Helper.getDistanceToMiddle(elements, i);
     if (distanceToMiddle !== 0) {
-      let direction = getDirectionToMove(i, true);
+      let direction = Helper.getDefaultDirectionToMove(elements, i);
       let distanceToMiddle = Helper.getDistanceToMiddle(elements, i);
       let count = 30 * distanceToMiddle;
       transform = `translate3d(${direction}${count}%, 0, 0)`;
@@ -73,14 +43,12 @@ const HorizontalAccordion = ({ elements }) => {
     return transform;
   };
   const getZIndex = (i) => {
-    let zIndex = 0;
-
-    zIndex = Helper.getInvertedDistanceToMiddle(elements, i);
-    return zIndex;
+    return Helper.getInvertedDistanceToMiddle(elements, i);
   };
   const classes = classNames({
     focused: open,
   });
+
   return (
     <div
       className={"customAccordion--menu-container " + classes}
@@ -97,9 +65,8 @@ const HorizontalAccordion = ({ elements }) => {
             active={i === activeIndex}
             focused={open}
             shiftLeft={i < activeIndex}
-            isLast={getIsLast(i)}
-            isFirst={getIsFirst(i)}
-            getDirectionToMove={getDirectionToMove}
+            isLast={i === elements.length - 1}
+            isFirst={i === 0}
             getTransformToMove={getTransformToMove}
             getTransformDefault={getTransformDefault}
             getZIndex={getZIndex}

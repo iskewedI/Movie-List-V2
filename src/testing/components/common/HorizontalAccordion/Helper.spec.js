@@ -143,4 +143,73 @@ describe("helperSlice", () => {
       expect(distanceSecond).toBe(0);
     });
   });
+  describe("getActiveDirectionToMove method", () => {
+    it("should return positive/empty string if index is less than half", () => {
+      const direction = Helper.getActiveDirectionToMove(oddArray, 1);
+
+      expect(direction).toBe("");
+    });
+    it("should return a positive/empty string symbol in string if index is equal to half", () => {
+      const direction = Helper.getActiveDirectionToMove(oddArray, 2);
+
+      expect(direction).toBe("");
+    });
+    it("should return a negative symbol in string if index is greater than half", () => {
+      const direction = Helper.getActiveDirectionToMove(oddArray, 4);
+
+      expect(direction).toBe("-");
+    });
+  });
+  describe("getDeactiveDirectionToMove method", () => {
+    it("should return a positive/empty string if index is greater than active index", () => {
+      const direction = Helper.getDeactiveDirectionToMove(4, 2);
+
+      expect(direction).toBe("");
+    });
+    it("should return a negative symbol in string if index is lesser than active index", () => {
+      const direction = Helper.getDeactiveDirectionToMove(2, 4);
+
+      expect(direction).toBe("-");
+    });
+  });
+  describe("getDefaultDirectionToMove method", () => {
+    it("should return a positive/empty string if index is less than half index", () => {
+      const direction = Helper.getDefaultDirectionToMove(oddArray, 1);
+
+      expect(direction).toBe("");
+    });
+    it("should return a positive/empty string if index is equal than half index", () => {
+      const direction = Helper.getDefaultDirectionToMove(oddArray, 2);
+
+      expect(direction).toBe("");
+    });
+    it("should return a negative symbol in string if index is greater than active index", () => {
+      const direction = Helper.getDefaultDirectionToMove(oddArray, 4);
+
+      expect(direction).toBe("-");
+    });
+  });
+  describe("getActiveCountToMove method", () => {
+    it("should return 2 if the distance is less than 3", () => {
+      const extendedArr = [...oddArray, 5, 6]; // 0 1 2 3 4 5 6
+
+      const direction = Helper.getActiveCountToMove(extendedArr, 2);
+
+      expect(direction).toBe(2);
+    });
+    it("should return 1.5 if the distance is >= 3 and < 6", () => {
+      const extendedArr = [...oddArray, 5, 6]; // 0 1 2 3 4 5 6
+
+      const direction = Helper.getActiveCountToMove(extendedArr, 0);
+
+      expect(direction).toBe(1.5);
+    });
+    it("should return 1 if the distance is >= 6", () => {
+      const extendedArr = [...oddArray, 5, 6, 7, 8, 9, 10, 11, 12]; // 0 1 2 3 4 5 6 7 8 9 10 11 12
+
+      const direction = Helper.getActiveCountToMove(extendedArr, 0);
+
+      expect(direction).toBe(1);
+    });
+  });
 });
