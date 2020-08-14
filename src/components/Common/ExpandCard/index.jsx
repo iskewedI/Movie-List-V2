@@ -9,6 +9,9 @@ const ExpandCard = ({
   focused,
   shiftLeft,
   isLast,
+  getTransformToMove,
+  getTransformDefault,
+  getZIndex,
 }) => {
   // const dispatch = useDispatch();
 
@@ -20,6 +23,7 @@ const ExpandCard = ({
     let w = !isActive ? "calc(20vw - 20px)" : "300";
     return w;
   };
+
   const styles = {
     container: {
       transform: (function () {
@@ -30,13 +34,12 @@ const ExpandCard = ({
     },
     item: {
       transform: (function () {
-        let direction = shiftLeft ? "-" : "";
-        let transform =
-          focused && !active
-            ? "translate3d(" + direction + "50%, 0, 0)"
-            : "translate3d(0, 0, 0)";
+        let transform = focused
+          ? getTransformToMove(active, index)
+          : getTransformDefault(index);
         return transform;
       })(),
+      zIndex: getZIndex(index),
     },
     background: {
       background: "url(" + data.Poster + ") no-repeat center center",

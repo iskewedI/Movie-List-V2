@@ -48,14 +48,13 @@ ul.customAccordion {
   position: absolute;
   top: -80px;
   white-space: nowrap;
-  transform: translateX(100%);
+  /* transform: translateX(100%); */
 }
 
-.expandCard--content h2 {
+.expandCard--content h3 {
   text-align: left;
   font-size: 44px;
   transform: translateX(-50px);
-  text-transform: uppercase;
   font-weight: bold;
 }
 
@@ -71,7 +70,6 @@ ul.customAccordion {
 
 .expandCard--name {
   position: absolute;
-  white-space: nowrap;
   width: calc(100% - 5px);
   transition: all 0.5s ease;
   padding-top: 5px;
@@ -108,7 +106,7 @@ ul.customAccordion {
 .isLast .expandCard--content {
   right: initial;
   left: 0;
-  transform: translateX(-100%);
+  transform: translateX(-25%);
 }
 
 .isLast .expandCard--content h2 {
@@ -152,7 +150,6 @@ li.expandCard {
 }
 
 /*active states*/
-
 li.expandCard.isActive {
   z-index: 99;
 }
