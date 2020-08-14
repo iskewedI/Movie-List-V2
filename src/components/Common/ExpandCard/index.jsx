@@ -35,7 +35,7 @@ const ExpandCard = ({
     item: {
       transform: (function () {
         let transform = focused
-          ? getTransformToMove(active, index)
+          ? getTransformToMove(index, active)
           : getTransformDefault(index);
         return transform;
       })(),

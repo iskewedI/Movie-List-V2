@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import * as classNames from "classnames";
 import ExpandCard from "../ExpandCard/index";
+import * as Helper from "./Helper";
 import "./styles.css";
 const HorizontalAccordion = ({ elements }) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [open, setOpen] = useState(false);
 
-  const halfOfList = Math.round(elements.length / 2) - 1;
-  const isLengthEven = () => {
-    return elements.length % 2 === 0;
-  };
+  const halfIndex = Helper.getHalfIndexArray(elements);
 
   const handleClick = (index) => {
     setActiveIndex(index);
@@ -28,88 +26,56 @@ const HorizontalAccordion = ({ elements }) => {
   const getIsFirst = (i) => {
     return i === 0;
   };
-  const getDirectionToMove = (isActive, i) => {
+
+  const getDirectionToMove = (i, isActive) => {
     let direction = "";
     if (isActive) {
-      direction = i <= halfOfList ? "" : "-";
+      direction = i <= halfIndex ? "" : "-";
     } else {
       direction = i < activeIndex ? "-" : "";
     }
     return direction;
   };
-  const getTransformToMove = (isActive, i) => {
+  const getActiveCountToMove = (arr, i) => {
     let countX = 0;
-    let direction = getDirectionToMove(isActive, i);
+    let counts = [2, 2, 2, 1.5, 1.5, 1.5, 1, 1, 1];
+    if (i !== halfIndex) {
+      countX = counts[Helper.getDistanceToMiddle(arr, i)];
+    }
+    return countX;
+  };
+  const getDeactiveCountToMove = (arr, i) => {
+    let counts = [1.7, 1.7, 1.7, 1, 1, 1, 0.7, 0.7, 0.7];
+    let countX = counts[Helper.getDistanceToMiddle(arr, i)];
+    return countX;
+  };
+  const getTransformToMove = (i, isActive) => {
+    let countX = 0;
+    let direction = getDirectionToMove(i, isActive);
 
     if (isActive) {
-      if (i === halfOfList) {
-        countX = 0;
-      } else {
-        if (
-          (direction === "" && halfOfList - i > 1) ||
-          (direction === "-" && elements.length - halfOfList < i)
-        ) {
-          countX = 50;
-        } else {
-          countX = 10;
-        }
-      }
+      countX = 10 * getActiveCountToMove(elements, i);
     } else {
-      if (
-        (direction === "" && elements.length - halfOfList < i) ||
-        (direction === "-" && halfOfList - i > 1)
-      ) {
-        countX = 10;
-      } else {
-        countX = 30;
-      }
+      countX = 20 * getDeactiveCountToMove(elements, i);
     }
 
     return `translate3d(${direction}${countX}%, 0, 0)`;
   };
   const getTransformDefault = (i) => {
     let transform = "";
-    let isInMiddle = false;
-
-    if (
-      (!isLengthEven() && i === halfOfList) ||
-      (isLengthEven() && (i === halfOfList || i === halfOfList + 1))
-    ) {
-      isInMiddle = true;
+    let distanceToMiddle = Helper.getDistanceToMiddle(elements, i);
+    if (distanceToMiddle !== 0) {
+      let direction = getDirectionToMove(i, true);
+      let distanceToMiddle = Helper.getDistanceToMiddle(elements, i);
+      let count = 30 * distanceToMiddle;
+      transform = `translate3d(${direction}${count}%, 0, 0)`;
     }
-    if (!isInMiddle) {
-      if (i < halfOfList) {
-        let count = 10 * (halfOfList - i + 1);
-        transform = `translate3d(${count}%,0,0)`;
-      } else {
-        let count = 20;
-        if (isLengthEven()) {
-          count = 10 * (i - halfOfList);
-        } else {
-          count = 10 * (i - halfOfList) + 10;
-        }
-        transform = `translate3d(-${count}%, 0, 0)`;
-      }
-    }
-
     return transform;
   };
   const getZIndex = (i) => {
     let zIndex = 0;
-    let isInMiddle = false;
-    if (
-      (!isLengthEven() && i === halfOfList) ||
-      (isLengthEven() && (i === halfOfList || i === halfOfList + 1))
-    ) {
-      isInMiddle = true;
-    }
-    if (!isInMiddle) {
-      if (i < halfOfList) {
-        zIndex = i - halfOfList;
-      } else {
-        zIndex = -(i - halfOfList);
-      }
-    }
+
+    zIndex = Helper.getInvertedDistanceToMiddle(elements, i);
     return zIndex;
   };
   const classes = classNames({
