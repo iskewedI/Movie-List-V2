@@ -21,7 +21,6 @@ export const getDistanceToMiddle = (arr, i) => {
       distance = i - rigthHalf;
     }
   }
-
   return distance;
 };
 

@@ -2,27 +2,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { getAllMoviesInList } from "./../../../store/movies";
 import styles from "./styles";
-import HorizontalAccordion from "../../Common/HorizontalAccordion/refactor";
+import HorizontalAccordion from "../../Common/HorizontalAccordion/";
 
 const ListToSee = () => {
   const classes = styles();
   const listToSee = useSelector(getAllMoviesInList);
-  // const dispatch = useDispatch();
-
-  // const createDeleteBtn = (id) => {
-  //   return (
-  //     <Button
-  //       variant="outlined"
-  //       color="primary"
-  //       onClick={() => deleteFromList(id)}
-  //     >
-  //       Delete
-  //     </Button>
-  //   );
-  // };
-  // const deleteFromList = (id) => {
-  //   dispatch(removeMovieInList(id));
-  // };
   const types = ["movie", "series"];
   return (
     <React.Fragment>

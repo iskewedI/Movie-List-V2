@@ -1,6 +1,8 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import * as classNames from "classnames";
-
+import BackspaceIcon from "@material-ui/icons/Backspace";
+import { removeMovieInList } from "./../../../store/movies";
 const ExpandCard = ({
   data,
   setActive,
@@ -13,11 +15,11 @@ const ExpandCard = ({
   getTransformDefault,
   getZIndex,
 }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const deleteFromList = () => {
-  //   dispatch(removeMovieInList(imdbID));
-  // };
+  const deleteFromList = () => {
+    dispatch(removeMovieInList(data.imdbID));
+  };
 
   const getWidth = (isActive) => {
     let w = !isActive ? "calc(20vw - 20px)" : "300";
@@ -56,6 +58,9 @@ const ExpandCard = ({
   });
   return (
     <li className={classes} style={styles.item}>
+      <button className="expandCard--deleteBtn" onClick={deleteFromList}>
+        <BackspaceIcon />
+      </button>
       <h3 className="expandCard--content">{data.Title}</h3>
       <div
         className="expandCard--image-container"

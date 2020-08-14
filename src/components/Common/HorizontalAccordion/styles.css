@@ -186,6 +186,25 @@ li.expandCard.isActive {
 /* .focused .isActive .expandCard--image {
   opacity: 0.75;
 } */
+.expandCard--deleteBtn {
+  opacity: 0;
+  position: absolute;
+  color: rgb(138, 138, 138);
+  transition: opacity 200ms ease;
+  right: 0;
+}
+.expandCard--deleteBtn .MuiSvgIcon-root {
+  font-size: 40px;
+}
+.focused .isActive .expandCard--deleteBtn {
+  opacity: 0.5;
+  z-index: 99;
+}
+.focused .isActive .expandCard--deleteBtn:hover {
+  color: rgb(255, 0, 0);
+  opacity: 1;
+  transition: opacity 200ms ease;
+}
 
 .expandCard--closeButton {
   opacity: 0;
