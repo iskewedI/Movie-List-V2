@@ -38,7 +38,12 @@ const MovieCard = (props) => {
         <CardContent className={classes.cardContent}>
           <CardMedia className={classes.image} image={image}></CardMedia>
           <div className={classes.cardText}>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="h2"
+              color="primary"
+            >
               {Title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="h3">
@@ -52,7 +57,7 @@ const MovieCard = (props) => {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          Ver más
+          More info
         </Button>
         <Button size="small" color="primary" onClick={switchInList}>
           {!inList ? <PlaylistAddIcon /> : <BackspaceIcon />}

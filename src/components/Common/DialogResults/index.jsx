@@ -63,6 +63,13 @@ const DialogResults = ({ title, onClose }) => {
           >
             {<ArrowForwardIcon color={canMoveNext ? "primary" : "disabled"} />}
           </Button>
+          <Button
+            className={classes.backButton}
+            onClick={onClose}
+            color="primary"
+          >
+            Back
+          </Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

@@ -29,7 +29,6 @@ export default makeStyles({
     },
   },
   cardText: {
-    color: "black",
     position: "absolute",
     textAlign: "center",
   },

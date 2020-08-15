@@ -62,7 +62,7 @@ export const getActiveCountToMove = (arr, i) => {
   let countX = 0;
   let counts = [2, 2, 2, 1.5, 1.5, 1.5, 1, 1, 1];
   const distanceToMiddle = getDistanceToMiddle(arr, i);
-  if (distanceToMiddle != 0) {
+  if (distanceToMiddle !== 0) {
     countX = counts[distanceToMiddle];
   }
   return countX;

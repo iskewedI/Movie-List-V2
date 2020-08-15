@@ -25,4 +25,7 @@ export default makeStyles({
   arrowRight: {
     float: "right",
   },
+  backButton: {
+    left: "38%",
+  },
 });

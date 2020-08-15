@@ -18,11 +18,11 @@ const SearchCard = ({ onSearch }) => {
   return (
     <Container className={classes.container}>
       <Card className={classes.cardContainer}>
-        <Typography className={classes.title}>Búsqueda</Typography>
+        <Typography className={classes.title}>Search lab</Typography>
         <TextField
           className={classes.textField}
           value={searchText}
-          placeholder="Ingrese su búsqueda..."
+          placeholder="Serie or movie title here..."
           onChange={handleTextChange}
           InputProps={{ classes: { input: classes.inputPlaceHolder } }}
         />
@@ -32,7 +32,7 @@ const SearchCard = ({ onSearch }) => {
           color="primary"
           onClick={() => onSearch(searchText)}
         >
-          Buscar
+          Search
         </Button>
       </Card>
     </Container>

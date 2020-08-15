@@ -11,6 +11,7 @@ const slice = createSlice({
       list: [],
     },
     loading: false,
+    hasError: false,
     searchTitle: "",
     lastSearched: "",
   },
@@ -40,9 +41,12 @@ const slice = createSlice({
       movies.searchResults = action.payload.Search;
       movies.lastSearched = action.customData.searchTitle;
       movies.loading = false;
+      movies.hasError = false;
     },
     moviesRequestFailed: (movies, action) => {
+      movies.searchResults = [];
       movies.loading = false;
+      movies.hasError = true;
     },
   },
 });
@@ -105,6 +109,10 @@ export const getSearchedMovies = createSelector(
 export const getMoviesLoading = createSelector(
   (state) => state.entities.movies,
   (movies) => movies.loading
+);
+export const getMoviesHasError = createSelector(
+  (state) => state.entities.movies,
+  (movies) => movies.hasError
 );
 
 export const getMoviesCount = createSelector(

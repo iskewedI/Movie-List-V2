@@ -8,4 +8,13 @@ export default makeStyles({
     width: "100%",
     gridColumnGap: "1.5vw",
   },
+  errorIcon: {
+    position: "absolute",
+    top: "25%",
+    fontSize: "xxx-large",
+    color: "#e02525",
+  },
+  errorMessage: {
+    color: "black !important",
+  },
 });
