@@ -212,4 +212,27 @@ describe("helperSlice", () => {
       expect(direction).toBe(1);
     });
   });
+  describe("getDeactiveCountToMove method", () => {
+    it("should return 1.7 if the distance is less than 3", () => {
+      const extendedArr = [...oddArray, 5, 6]; // 0 1 2 3 4 5 6
+
+      const direction = Helper.getDeactiveCountToMove(extendedArr, 2);
+
+      expect(direction).toBe(1.7);
+    });
+    it("should return 1 if the distance is >= 3 and < 6", () => {
+      const extendedArr = [...oddArray, 5, 6]; // 0 1 2 3 4 5 6
+
+      const direction = Helper.getDeactiveCountToMove(extendedArr, 0);
+
+      expect(direction).toBe(1);
+    });
+    it("should return 0.7 if the distance is >= 6", () => {
+      const extendedArr = [...oddArray, 5, 6, 7, 8, 9, 10, 11, 12]; // 0 1 2 3 4 5 6 7 8 9 10 11 12
+
+      const direction = Helper.getDeactiveCountToMove(extendedArr, 0);
+
+      expect(direction).toBe(0.7);
+    });
+  });
 });
