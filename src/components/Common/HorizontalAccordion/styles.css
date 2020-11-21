@@ -69,7 +69,6 @@ ul.customAccordion {
 }
 
 .expandCard--name {
-  position: absolute;
   width: calc(100% - 5px);
   transition: all 0.5s ease;
   padding-top: 5px;
@@ -98,7 +97,7 @@ ul.customAccordion {
 }
 .datalist-description {
   font-size: 12px;
-  font-family: "Nothing You Could Do", sans-serif;
+  font-family: 'Nothing You Could Do', sans-serif;
 }
 
 /*last item content*/
@@ -211,7 +210,6 @@ li.expandCard.isActive {
   text-align: center;
   position: absolute;
   width: 100%;
-  bottom: -5rem;
   transition: opacity 200ms ease;
 }
 
@@ -229,9 +227,7 @@ li.expandCard.isActive {
 /* .expandCard--image { */
 /*transition: width 500ms ease;*/
 /* } */
-.customAccordion--menu-container:not(.focused)
-  li.expandCard:hover
-  .expandCard--name {
+.customAccordion--menu-container:not(.focused) li.expandCard:hover .expandCard--name {
   border-color: #eee;
   color: #eee;
 }
