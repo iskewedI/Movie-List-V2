@@ -1,17 +1,11 @@
-import React, { useState } from "react";
-import {
-  Container,
-  Typography,
-  Card,
-  TextField,
-  Button,
-} from "@material-ui/core";
-import styles from "./styles";
+import React, { useState } from 'react';
+import { Container, Typography, Card, TextField, Button } from '@material-ui/core';
+import styles from './styles';
 const SearchCard = ({ onSearch }) => {
   const classes = styles();
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState('');
 
-  const handleTextChange = (event) => {
+  const handleTextChange = event => {
     setSearchText(event.target.value);
   };
 
@@ -22,15 +16,16 @@ const SearchCard = ({ onSearch }) => {
         <TextField
           className={classes.textField}
           value={searchText}
-          placeholder="Serie or movie title here..."
+          placeholder='Serie or movie title here...'
           onChange={handleTextChange}
           InputProps={{ classes: { input: classes.inputPlaceHolder } }}
         />
         <Button
           className={classes.searchButton}
-          variant="outlined"
-          color="primary"
+          variant='outlined'
+          color='primary'
           onClick={() => onSearch(searchText)}
+          onSubmit={() => onSearch(searchText)}
         >
           Search
         </Button>
