@@ -13,7 +13,13 @@ const SearchCard = ({ onSearch }) => {
     <Container className={classes.container}>
       <Card className={classes.cardContainer}>
         <Typography className={classes.title}>Search lab</Typography>
-        <form onSubmit={() => onSearch(searchText)} className={classes.textField}>
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            onSearch(searchText);
+          }}
+          className={classes.textField}
+        >
           <TextField
             className={classes.textField}
             value={searchText}
