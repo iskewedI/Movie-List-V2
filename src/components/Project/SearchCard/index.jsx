@@ -19,13 +19,13 @@ const SearchCard = ({ onSearch }) => {
           placeholder='Serie or movie title here...'
           onChange={handleTextChange}
           InputProps={{ classes: { input: classes.inputPlaceHolder } }}
+          onSubmit={() => onSearch(searchText)}
         />
         <Button
           className={classes.searchButton}
           variant='outlined'
           color='primary'
           onClick={() => onSearch(searchText)}
-          onSubmit={() => onSearch(searchText)}
         >
           Search
         </Button>
