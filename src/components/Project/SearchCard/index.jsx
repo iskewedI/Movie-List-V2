@@ -13,14 +13,15 @@ const SearchCard = ({ onSearch }) => {
     <Container className={classes.container}>
       <Card className={classes.cardContainer}>
         <Typography className={classes.title}>Search lab</Typography>
-        <TextField
-          className={classes.textField}
-          value={searchText}
-          placeholder='Serie or movie title here...'
-          onChange={handleTextChange}
-          InputProps={{ classes: { input: classes.inputPlaceHolder } }}
-          onSubmit={() => onSearch(searchText)}
-        />
+        <form onSubmit={() => onSearch(searchText)} className={classes.textField}>
+          <TextField
+            className={classes.textField}
+            value={searchText}
+            placeholder='Serie or movie title here...'
+            onChange={handleTextChange}
+            InputProps={{ classes: { input: classes.inputPlaceHolder } }}
+          />
+        </form>
         <Button
           className={classes.searchButton}
           variant='outlined'
