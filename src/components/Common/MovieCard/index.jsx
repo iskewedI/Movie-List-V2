@@ -1,23 +1,19 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import PropTypes from "prop-types";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import PlaylistAddIcon from "@material-ui/icons/PlaylistAdd";
-import BackspaceIcon from "@material-ui/icons/Backspace";
-import {
-  addMovieToList,
-  removeMovieInList,
-  getMovieInList,
-} from "../../../store/movies";
-import styles from "./styles";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
+import BackspaceIcon from '@material-ui/icons/Backspace';
+import { addMovieToList, removeMovieInList, getMovieInList } from '../../../store/movies';
+import styles from './styles';
 
-const MovieCard = (props) => {
+const MovieCard = props => {
   const classes = styles();
   const { Title, Year, Type, imdbID, Poster } = props;
 
@@ -31,35 +27,30 @@ const MovieCard = (props) => {
     }
   };
   const inList = useSelector(getMovieInList(imdbID));
-  const image = Poster !== "N/A" ? Poster : undefined;
+  const image = Poster !== 'N/A' ? Poster : undefined;
   return (
     <Card className={classes.cardRoot}>
       <CardActionArea className={classes.actionArea}>
         <CardContent className={classes.cardContent}>
           <CardMedia className={classes.image} image={image}></CardMedia>
-          <div className={classes.cardText}>
-            <Typography
-              gutterBottom
-              variant="h5"
-              component="h2"
-              color="primary"
-            >
+          <div className={classes.cardText} id='cardText'>
+            <Typography gutterBottom variant='h5' component='h2' color='primary'>
               {Title}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="h3">
+            <Typography variant='body2' color='textSecondary' component='h3'>
               {Year}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="h3">
+            <Typography variant='body2' color='textSecondary' component='h3'>
               {Type}
             </Typography>
           </div>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button size='small' color='primary'>
           More info
         </Button>
-        <Button size="small" color="primary" onClick={switchInList}>
+        <Button size='small' color='primary' onClick={switchInList}>
           {!inList ? <PlaylistAddIcon /> : <BackspaceIcon />}
         </Button>
       </CardActions>
