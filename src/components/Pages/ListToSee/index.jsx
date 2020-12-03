@@ -8,6 +8,7 @@ const ListToSee = () => {
   const classes = styles();
   const listToSee = useSelector(getAllMoviesInList);
   const types = ['Movies', 'Series'];
+  
   return (
     <React.Fragment>
       <div className={classes.accordionsContainer}>

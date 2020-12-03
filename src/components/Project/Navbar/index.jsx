@@ -8,6 +8,26 @@ const Navbar = () => {
   const classes = styles();
   const toSee = useSelector(getAllMoviesInList);
 
+  const getListCount = function () {
+    const newCount = toSee.list.length;
+    const countElement = document.getElementById('toSeeCounter');
+
+    if (countElement) {
+      const current = parseInt(countElement.innerHTML);
+      if (newCount > current) {
+        const fontSize = parseFloat(
+          getComputedStyle(countElement, null).getPropertyValue('font-size')
+        );
+
+        countElement.animate([
+          { fontSize: `${fontSize + 2.5}px`, color: 'green' },
+          { fontSize: `${fontSize}px`, color: 'black' },
+        ], 250);
+      }
+    }
+    return newCount;
+  };
+
   return (
     <div className={classes.nav}>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -31,7 +51,10 @@ const Navbar = () => {
               Home <span className="sr-only">(current)</span>
             </Link>
             <Link to="/listToSee" className="nav-link" href="/#">
-              To see: {toSee.list.length}
+              To see:{' '}
+              <span id="toSeeCounter" className={classes.toSeeCounter}>
+                {getListCount()}
+              </span>
             </Link>
           </div>
           <div className="nav navbar-nav ml-auto">
@@ -42,7 +65,11 @@ const Navbar = () => {
             >
               Log-In
             </Link>
-            <Link to={'/register'} className="nav-link navbar-right btn btn-outline-light text-primary" href="/#">
+            <Link
+              to={'/register'}
+              className="nav-link navbar-right btn btn-outline-light text-primary"
+              href="/#"
+            >
               Sign Up!
             </Link>
           </div>
