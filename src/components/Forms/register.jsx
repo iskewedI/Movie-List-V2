@@ -18,12 +18,12 @@ class RegisterForm extends Form {
   render() {
     return (
       <React.Fragment>
-        <h1>Login</h1>
+        <h1>Sign Up</h1>
         <form onSubmit={this.handleSubmit}>
           {this.renderInput('username', 'User Name')}
           {this.renderInput('email', 'Email', 'email')}
           {this.renderInput('password', 'Password', 'password')}
-          {this.renderButton('Login')}
+          {this.renderButton('Sign Up')}
         </form>
       </React.Fragment>
     );

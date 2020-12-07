@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import * as classNames from "classnames";
-import ExpandCard from "../ExpandCard/index";
-import * as Helper from "./Helper";
-import "./styles.css";
-const HorizontalAccordion = ({ elements }) => {
+import React, { useState } from 'react';
+import * as classNames from 'classnames';
+import ExpandCard from '../ExpandCard/index';
+import * as Helper from './Helper';
+import './styles.css';
+const HorizontalAccordion = ({ elements, type }) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [open, setOpen] = useState(false);
 
-  const handleClick = (index) => {
+  const handleClick = index => {
     setActiveIndex(index);
     setOpen(true);
   };
-  const lossFocus = (e) => {
+  const lossFocus = e => {
     e.preventDefault();
-    if (e.target.className !== "expandCard--image") {
+    if (e.target.className !== 'expandCard--image') {
       setActiveIndex(null);
       setOpen(false);
     }
@@ -31,8 +31,8 @@ const HorizontalAccordion = ({ elements }) => {
     }
     return `translate3d(${direction}${countX}%, 0, 0)`;
   };
-  const getTransformDefault = (i) => {
-    let transform = "";
+  const getTransformDefault = i => {
+    let transform = '';
     let distanceToMiddle = Helper.getDistanceToMiddle(elements, i);
     if (distanceToMiddle !== 0) {
       let direction = Helper.getDefaultDirectionToMove(elements, i);
@@ -42,7 +42,7 @@ const HorizontalAccordion = ({ elements }) => {
     }
     return transform;
   };
-  const getZIndex = (i) => {
+  const getZIndex = i => {
     return Helper.getInvertedDistanceToMiddle(elements, i);
   };
   const classes = classNames({
@@ -50,12 +50,11 @@ const HorizontalAccordion = ({ elements }) => {
   });
 
   return (
-    <div
-      className={"customAccordion--menu-container " + classes}
-      onClick={lossFocus}
-    >
-      {elements.length <= 0 && <div>There's no movie in the list</div>}
-      <ul className="customAccordion menu">
+    <div className={'customAccordion--menu-container ' + classes} onClick={lossFocus}>
+      {elements.length <= 0 && (
+        <div className='nullMessage'>There's no {type.toLowerCase()} in the list</div>
+      )}
+      <ul className='customAccordion menu'>
         {elements.map((m, i) => (
           <ExpandCard
             key={i}

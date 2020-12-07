@@ -14,11 +14,12 @@ const ListToSee = () => {
       <div className={classes.accordionsContainer}>
         {types.map((t, i) => (
           <div key={`Accordion ${i}`} className={classes.accordionRow}>
-            <h1 style={{ margin: 10, userSelect: 'none' }}>{t}</h1>
+            <h1 className={classes.titles}>{t}</h1>
             <HorizontalAccordion
               elements={listToSee.list.filter(e =>
                 t.toUpperCase().includes(e.Type.toUpperCase())
               )}
+              type={t}
             />
           </div>
         ))}

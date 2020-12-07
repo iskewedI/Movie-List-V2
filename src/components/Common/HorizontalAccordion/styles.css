@@ -269,3 +269,8 @@ li.expandCard.isActive {
 .left-arrow img {
   transform: translate(-50%, -50%) scaleX(-1);
 }
+
+.nullMessage {
+  color: white;
+  margin-left: 5px;
+}

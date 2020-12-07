@@ -12,7 +12,7 @@ const SearchCard = ({ onSearch }) => {
   return (
     <Container className={classes.container}>
       <Card className={classes.cardContainer}>
-        <Typography className={classes.title}>Search lab</Typography>
+        <Typography className={classes.title}>Movies&Series</Typography>
         <form
           onSubmit={e => {
             e.preventDefault();
