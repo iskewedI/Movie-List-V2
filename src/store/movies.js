@@ -77,7 +77,7 @@ export const searchMovies = () => (dispatch, getState) => {
       apiKey,
       url,
       params,
-      customData: { searchTitle },
+      customData: { searchTitle, byPassAuth: true },
       onStart: moviesRequested.type,
       onSuccess: moviesReceived.type,
       onError: moviesRequestFailed.type,
