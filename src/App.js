@@ -23,9 +23,8 @@ function App() {
         <Route path='/register' component={RegisterPage} />
         <Route path='/login' component={LogInPage} />
         <Route path='/listToSee' component={ListToSee} />
-        <Route path='/home' component={Home} />
+        <Route path='/' component={Home} />
         <Route path='/not-found' component={NotFound} />
-        <Redirect exact from='/' to='/home' />
         <Redirect to='/not-found' />
       </Switch>
     </Provider>

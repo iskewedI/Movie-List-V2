@@ -19,7 +19,7 @@ const LogIn = () => {
   const userErrors = useSelector(getUserError);
   const userData = useSelector(getUserData);
 
-  if (userData.token) return <Redirect to='/home' />;
+  if (userData.token) return <Redirect to='/' />;
 
   return (
     <Container>

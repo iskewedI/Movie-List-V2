@@ -36,7 +36,7 @@ const Navbar = () => {
   return (
     <div className={classes.nav}>
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-        <Link to={'/home'} className='navbar-brand' href='/#'>
+        <Link to={'/'} className='navbar-brand' href='/#'>
           Movies
         </Link>
         <button
@@ -52,7 +52,7 @@ const Navbar = () => {
         </button>
         <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
           <div className='navbar-nav'>
-            <Link to={'/home'} className='nav-link active' href='/#'>
+            <Link to={'/'} className='nav-link active' href='/#'>
               Home <span className='sr-only'>(current)</span>
             </Link>
             <Link to='/listToSee' className='nav-link' href='/#'>

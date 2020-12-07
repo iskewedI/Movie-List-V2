@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <div>
       Logging out...
-      {<Redirect to='/home' />}
+      {<Redirect to='/' />}
     </div>
   );
 };
