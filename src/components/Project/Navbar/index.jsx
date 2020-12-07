@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllMoviesInList } from '../../../store/movies';
 import { getUserData } from '../../../store/user';
+import Tooltip from '@material-ui/core/Tooltip';
 import styles from './styles';
 
 const Navbar = () => {
@@ -72,13 +73,15 @@ const Navbar = () => {
                 >
                   Log-In
                 </Link>
-                <Link
-                  to='/register'
-                  className='nav-link navbar-right btn btn-outline-light text-primary'
-                  href='/#'
-                >
-                  Sign Up!
-                </Link>
+                <Tooltip title='Register for free!'>
+                  <Link
+                    to='/register'
+                    className='nav-link navbar-right btn btn-outline-light text-primary'
+                    href='/#'
+                  >
+                    Sign Up!
+                  </Link>
+                </Tooltip>
               </div>
             )}
             {userData.token && (

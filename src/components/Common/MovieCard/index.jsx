@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -51,7 +52,15 @@ const MovieCard = props => {
           More info
         </Button>
         <Button size='small' color='primary' onClick={switchInList}>
-          {!inList ? <PlaylistAddIcon /> : <BackspaceIcon />}
+          {!inList ? (
+            <Tooltip title='Add' placement='top'>
+              <PlaylistAddIcon />
+            </Tooltip>
+          ) : (
+            <Tooltip title='Remove' placement='top'>
+              <BackspaceIcon />
+            </Tooltip>
+          )}
         </Button>
       </CardActions>
     </Card>
