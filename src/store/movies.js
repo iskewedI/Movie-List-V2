@@ -1,9 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { apiCallBegan } from "./actions/api";
-import { createSelector } from "reselect";
+import { createSlice } from '@reduxjs/toolkit';
+import { apiCallBegan } from './actions/api';
+import { createSelector } from 'reselect';
+import { omdbApi } from '../configs.json';
 
 const slice = createSlice({
-  name: "movies",
+  name: 'movies',
   initialState: {
     searchResults: [],
     listToSee: {
@@ -12,16 +13,14 @@ const slice = createSlice({
     },
     loading: false,
     hasError: false,
-    searchTitle: "",
-    lastSearched: "",
+    searchTitle: '',
+    lastSearched: '',
   },
   reducers: {
     movieRemovedFromList: (movies, action) => {
       let { byId } = movies.listToSee;
       const { id } = action.payload;
-      movies.listToSee.list = movies.listToSee.list.filter(
-        (m) => m.imdbID !== id
-      );
+      movies.listToSee.list = movies.listToSee.list.filter(m => m.imdbID !== id);
       delete byId[id];
     },
     movieAddedToList: (movies, action) => {
@@ -63,7 +62,9 @@ const {
 export default slice.reducer;
 
 //Action creators
-const url = "";
+const { baseURL, apiKey } = omdbApi;
+const url = '';
+
 export const searchMovies = () => (dispatch, getState) => {
   const { searchTitle, lastSearched } = getState().entities.movies;
 
@@ -72,6 +73,8 @@ export const searchMovies = () => (dispatch, getState) => {
   const params = { s: searchTitle };
   return dispatch(
     apiCallBegan({
+      baseURL,
+      apiKey,
       url,
       params,
       customData: { searchTitle },
@@ -82,16 +85,16 @@ export const searchMovies = () => (dispatch, getState) => {
   );
 };
 
-export const setSearchTitle = (title) => (dispatch, getState) => {
+export const setSearchTitle = title => (dispatch, getState) => {
   const { searchTitle } = getState().entities.movies;
   if (title === searchTitle) return;
   return dispatch(searchTitleSetted({ title }));
 };
 
-export const addMovieToList = (movie) => (dispatch, getState) => {
+export const addMovieToList = movie => (dispatch, getState) => {
   return dispatch(movieAddedToList({ movie }));
 };
-export const removeMovieInList = (id) => (dispatch, getState) => {
+export const removeMovieInList = id => (dispatch, getState) => {
   return dispatch(movieRemovedFromList({ id }));
 };
 //Selectors
@@ -102,33 +105,33 @@ export const removeMovieInList = (id) => (dispatch, getState) => {
 //   );
 
 export const getSearchedMovies = createSelector(
-  (state) => state.entities.movies,
-  (movies) => movies.searchResults
+  state => state.entities.movies,
+  movies => movies.searchResults
 );
 
 export const getMoviesLoading = createSelector(
-  (state) => state.entities.movies,
-  (movies) => movies.loading
+  state => state.entities.movies,
+  movies => movies.loading
 );
 export const getMoviesHasError = createSelector(
-  (state) => state.entities.movies,
-  (movies) => movies.hasError
+  state => state.entities.movies,
+  movies => movies.hasError
 );
 
 export const getMoviesCount = createSelector(
-  (state) => state.entities.movies,
-  (movies) => movies.searchResults.length
+  state => state.entities.movies,
+  movies => movies.searchResults.length
 );
 export const getSearchTitle = createSelector(
-  (state) => state.entities.movies,
-  (movies) => movies.searchTitle
+  state => state.entities.movies,
+  movies => movies.searchTitle
 );
 export const getAllMoviesInList = createSelector(
-  (state) => state.entities.movies,
-  (movies) => movies.listToSee
+  state => state.entities.movies,
+  movies => movies.listToSee
 );
-export const getMovieInList = (id) =>
+export const getMovieInList = id =>
   createSelector(
-    (state) => state.entities.movies,
-    (movies) => movies.listToSee.list.findIndex((m) => m.imdbID === id) >= 0
+    state => state.entities.movies,
+    movies => movies.listToSee.list.findIndex(m => m.imdbID === id) >= 0
   );
