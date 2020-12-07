@@ -7,7 +7,6 @@ import HorizontalAccordion from '../../Common/HorizontalAccordion/';
 const ListToSee = () => {
   const classes = styles();
   const listToSee = useSelector(getAllMoviesInList);
-  // const listToSee = { list: [] };
   const types = ['Movies', 'Series'];
 
   return (

@@ -55,6 +55,17 @@ class Form extends Component {
   }
   renderInput(name, label, type = 'text') {
     const { data, errors } = this.state;
+
+    let onKeyPress;
+
+    if (type === 'email') {
+      onKeyPress = e => {
+        const code = e.which;
+        if (code === 32) {
+          e.preventDefault();
+        }
+      };
+    }
     return (
       <Input
         type={type}
@@ -63,6 +74,7 @@ class Form extends Component {
         label={label}
         error={errors[name]}
         onChange={this.handleChange}
+        onKeyPress={onKeyPress}
       />
     );
   }
