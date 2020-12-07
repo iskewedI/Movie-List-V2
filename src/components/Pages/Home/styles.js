@@ -4,5 +4,6 @@ export default makeStyles({
   container: {
     display: "flex",
     alignItems: "center",
+    userSelect: "none"
   },
 });

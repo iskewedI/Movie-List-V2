@@ -13,6 +13,7 @@ function App() {
     <Provider store={store}>
       <Navbar />
       <Switch>
+        <Route path='/register' component={null} />
         <Route path='/login' component={LoginPage} />
         <Route path='/listToSee' component={ListToSee} />
         <Route path='/home' component={Home} />

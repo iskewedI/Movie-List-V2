@@ -9,12 +9,13 @@ const ListToSee = () => {
   // const listToSee = useSelector(getAllMoviesInList);
   const listToSee = { list: [] };
   const types = ['Movies', 'Series'];
+  
   return (
     <React.Fragment>
       <div className={classes.accordionsContainer}>
         {types.map((t, i) => (
           <div key={`Accordion ${i}`} className={classes.accordionRow}>
-            <h1 style={{ margin: 10 }}>{t}</h1>
+            <h1 style={{ margin: 10, userSelect: "none" }}>{t}</h1>
             <HorizontalAccordion
               elements={listToSee.list.filter(e =>
                 t.toUpperCase().includes(e.Type.toUpperCase())
