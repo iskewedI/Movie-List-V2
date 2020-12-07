@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getAllMoviesInList } from './../../../store/movies';
+// import { getAllMoviesInList } from './../../../store/toSee';
 import styles from './styles';
 import HorizontalAccordion from '../../Common/HorizontalAccordion/';
 
 const ListToSee = () => {
   const classes = styles();
-  const listToSee = useSelector(getAllMoviesInList);
+  // const listToSee = useSelector(getAllMoviesInList);
+  const listToSee = { list: [] };
   const types = ['Movies', 'Series'];
   return (
     <React.Fragment>
