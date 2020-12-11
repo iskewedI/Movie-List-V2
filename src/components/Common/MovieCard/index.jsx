@@ -11,7 +11,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import BackspaceIcon from '@material-ui/icons/Backspace';
-import { addMovieToList, removeMovieInList, getMovieInList } from '../../../store/movies';
+import { addToList, removeFromList, getMovieInList } from '../../../store/toSee';
 import styles from './styles';
 
 const MovieCard = props => {
@@ -22,9 +22,9 @@ const MovieCard = props => {
 
   const switchInList = () => {
     if (!inList) {
-      dispatch(addMovieToList(props));
+      dispatch(addToList(props));
     } else {
-      dispatch(removeMovieInList(imdbID));
+      dispatch(removeFromList(imdbID));
     }
   };
   const inList = useSelector(getMovieInList(imdbID));

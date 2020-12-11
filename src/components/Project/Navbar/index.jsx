@@ -2,17 +2,20 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllMoviesInList } from '../../../store/movies';
+import { getMyList } from '../../../store/toSee';
 import { getUserData } from '../../../store/user';
 import Tooltip from '@material-ui/core/Tooltip';
 import styles from './styles';
 
 const Navbar = () => {
   const classes = styles();
-  const toSee = useSelector(getAllMoviesInList);
+  // const toSee = useSelector(getAllMoviesInList);
+  const listToSee = useSelector(getMyList);
+
   const userData = useSelector(getUserData);
 
   const getListCount = function () {
-    const newCount = toSee.list.length;
+    const newCount = listToSee.length;
     const countElement = document.getElementById('toSeeCounter');
 
     if (countElement) {

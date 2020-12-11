@@ -132,7 +132,7 @@ export default slice.reducer;
 const { baseURL } = backend;
 
 export const registerUser = ({ username, email, password }) => (dispatch, getState) => {
-  const url = 'users';
+  const url = '/users';
 
   const data = { username, email, password };
   return dispatch(
@@ -154,7 +154,7 @@ export const authUser = password => (dispatch, getState) => {
 
   if (token) return;
 
-  const url = 'auth';
+  const url = '/auth';
 
   const data = { email, password };
   return dispatch(
@@ -178,7 +178,7 @@ export const getUser = () => (dispatch, getState) => {
 
   if (!token) return;
 
-  const url = 'users/me';
+  const url = '/users/me';
 
   return dispatch(
     apiCallBegan({

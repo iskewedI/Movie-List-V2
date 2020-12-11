@@ -1,9 +1,10 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core';
 
 export default makeStyles({
   container: {
-    display: "flex",
-    alignItems: "center",
-    userSelect: "none"
+    display: 'flex',
+    alignItems: 'center',
+    userSelect: 'none',
   },
+  changesViewer: {},
 });
