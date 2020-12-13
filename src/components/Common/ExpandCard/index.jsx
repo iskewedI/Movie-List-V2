@@ -20,7 +20,7 @@ const ExpandCard = ({
   const dispatch = useDispatch();
 
   const deleteFromList = () => {
-    dispatch(removeFromList(data.imdbID));
+    dispatch(removeFromList(data));
   };
 
   const getWidth = isActive => {

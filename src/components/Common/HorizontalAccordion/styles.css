@@ -45,6 +45,7 @@ ul.customAccordion {
 /*content*/
 
 .expandCard--content {
+  color: white;
   position: absolute;
   top: -80px;
   white-space: nowrap;

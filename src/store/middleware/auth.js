@@ -1,14 +1,22 @@
 import * as actions from '../actions/api';
 
-const auth = ({ dispatch }) => next => async action => {
+const auth = ({ dispatch }) => (next) => async (action) => {
   if (action.type !== actions.apiCallBegan.type) return next(action);
 
-  const { headers = {}, customData } = action.payload;
+  const { headers = {}, customData, onError } = action.payload;
 
   if (customData && customData.byPassAuth) return next(action);
 
   const token = localStorage.getItem('authToken');
-  if (!token) return dispatch(actions.apiCallFailed('User not registered.'));
+  if (!token) {
+    if (onError)
+      dispatch({
+        type: onError,
+        payload: { message: 'User not registered.' },
+        customData,
+      });
+    return dispatch(actions.apiCallFailed('User not registered.'));
+  }
 
   headers['x-auth-token'] = token;
 

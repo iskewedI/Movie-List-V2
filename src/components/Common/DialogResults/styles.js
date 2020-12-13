@@ -15,7 +15,7 @@ export default makeStyles({
     display: "block",
   },
   content: {
-    display: "inline-flex",
+    // display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
   },

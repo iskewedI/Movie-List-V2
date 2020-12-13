@@ -2,10 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 import { apiCallBegan } from './actions/api';
 import { createSelector } from 'reselect';
 import { backend, omdbApi } from '../configs.json';
+import { AddToHomeScreen } from '@material-ui/icons';
 
 const slice = createSlice({
   name: 'toSee',
   initialState: {
+    name: null,
     added: [],
     removed: [],
     collection: {
@@ -16,27 +18,57 @@ const slice = createSlice({
     loaded: false,
     loading: false,
     hasError: false,
+    errorString: '',
   },
   reducers: {
     movieRemoved: (toSee, action) => {
       let { byId, list } = toSee.collection;
-      const { id } = action.payload;
+      const { movie } = action.payload;
 
-      toSee.removed.push(byId[id]);
+      if (byId[movie.imdbID]) {
+        toSee.removed.push(movie);
+      }
 
-      list = list.filter(m => m.imdbID !== id);
-      list = list.filter(m => m.imdbID !== id);
-
-      delete byId[id];
+      toSee.added = toSee.added.filter((m) => m.imdbID !== movie.imdbID);
     },
     movieAdded: (toSee, action) => {
       const { list, byId } = toSee.collection;
       const { movie } = action.payload;
 
-      toSee.added.push(movie);
+      if (!byId[movie.imdbID]) {
+        toSee.added.push(movie);
+      }
 
-      list.push(movie);
-      byId[movie.imdbID] = movie;
+      toSee.removed = toSee.removed.filter((m) => m.imdbID !== movie.imdbID);
+    },
+    saveChangesRequested: (toSee, action) => {
+      toSee.loading = true;
+    },
+    saveChangesReceived: (toSee, action) => {
+      const { collection } = toSee;
+      const { content, name } = action.payload;
+
+      collection.ids = content;
+      collection.list = collection.list.filter((e) => content.includes(e.imdbID));
+      collection.byId = { ...content.map((e) => collection.byId[e]) };
+
+      toSee.name = name || toSee.name;
+
+      toSee.added = [];
+      toSee.removed = [];
+
+      toSee.loading = false;
+      toSee.loaded = true;
+      toSee.hasError = false;
+      toSee.errorString = '';
+    },
+
+    saveChangesRequestFailed: (toSee, action) => {
+      toSee.errorString = action.payload.message;
+
+      toSee.loading = false;
+      toSee.loaded = true;
+      toSee.hasError = true;
     },
     dataRequested: (toSee, action) => {
       const { list, byId } = toSee.collection;
@@ -45,22 +77,48 @@ const slice = createSlice({
       list.push(movie);
       byId[movie.imdbID] = movie;
     },
+    listCreateRequested: (toSee, action) => {
+      toSee.loading = true;
+    },
+    listCreateReceived: (toSee, action) => {
+      const dbData = action.payload;
+
+      toSee.name = dbData.name;
+
+      toSee.collection.ids = [...dbData.content];
+
+      toSee.loaded = true;
+      toSee.loading = false;
+      toSee.hasError = false;
+    },
+    listCreateRequestFailed: (toSee, action) => {
+      toSee.loaded = true;
+      toSee.loading = false;
+      toSee.hasError = true;
+
+      const { message } = action.payload;
+      toSee.errorString = message;
+    },
     listsRequested: (toSee, action) => {
       toSee.loading = true;
     },
     listsReceived: (toSee, action) => {
-      const { ids } = toSee.collection;
+      const list = action.payload[0];
 
-      ids.push(...action.payload[0].content);
+      toSee.name = list.name;
+
+      toSee.collection.ids.push(...list.content);
 
       toSee.loaded = true;
       toSee.loading = false;
       toSee.hasError = false;
     },
     listsRequestFailed: (toSee, action) => {
-      toSee.loaded = false;
+      toSee.loaded = true;
       toSee.loading = false;
       toSee.hasError = true;
+
+      toSee.errorString = action.payload;
     },
   },
 });
@@ -69,6 +127,12 @@ const {
   movieRemoved,
   movieAdded,
   dataRequested,
+  saveChangesRequested,
+  saveChangesReceived,
+  saveChangesRequestFailed,
+  listCreateRequested,
+  listCreateReceived,
+  listCreateRequestFailed,
   listsRequested,
   listsReceived,
   listsRequestFailed,
@@ -78,15 +142,15 @@ export default slice.reducer;
 
 //Action creators
 
-export const createList = name => (dispatch, getState) => {
+export const createList = (name) => (dispatch, getState) => {
   const { baseURL } = backend;
 
-  const { list } = getState().entities.toSee;
+  const { ids } = getState().entities.toSee.collection;
 
   const url = '/lists';
 
   const data = {
-    list,
+    content: ids || [],
     name,
   };
   return dispatch(
@@ -95,9 +159,35 @@ export const createList = name => (dispatch, getState) => {
       baseURL,
       url,
       data,
-      onStart: listsRequested.type,
-      onSuccess: listsReceived.type,
-      onError: listsRequestFailed.type,
+      onStart: listCreateRequested.type,
+      onSuccess: listCreateReceived.type,
+      onError: listCreateRequestFailed.type,
+    })
+  );
+};
+
+export const saveList = () => (dispatch, getState) => {
+  const { baseURL } = backend;
+
+  const { added, removed, name } = getState().entities.toSee;
+
+  const url = '/lists';
+
+  const data = {
+    name,
+    added: [...added.map((a) => a.imdbID)],
+    removed: [...removed.map((r) => r.imdbID)],
+  };
+
+  return dispatch(
+    apiCallBegan({
+      method: 'PUT',
+      baseURL,
+      url,
+      data,
+      onStart: saveChangesRequested.type,
+      onSuccess: saveChangesReceived.type,
+      onError: saveChangesRequestFailed.type,
     })
   );
 };
@@ -129,7 +219,7 @@ export const searchMoviesInList = () => (dispatch, getState) => {
 
   const customData = { byPassAuth: true };
 
-  ids.forEach(id => {
+  ids.forEach((id) => {
     if (byId[id]) return; //Existing data
 
     const params = { i: id };
@@ -148,35 +238,50 @@ export const searchMoviesInList = () => (dispatch, getState) => {
   });
 };
 
-export const addToList = movie => (dispatch, getState) => {
+export const addToList = (movie) => (dispatch, getState) => {
   return dispatch(movieAdded({ movie }));
 };
-export const removeFromList = id => (dispatch, getState) => {
-  return dispatch(movieRemoved({ id }));
+export const removeFromList = (movie) => (dispatch, getState) => {
+  return dispatch(movieRemoved({ movie }));
 };
 
-export const getMovieInList = id =>
+export const getMovieInList = (id) =>
   createSelector(
-    state => state.entities.toSee,
-    toSee => toSee.collection.list.findIndex(m => m.imdbID === id) >= 0
+    (state) => state.entities.toSee,
+    (toSee) => {
+      let index = toSee.collection.list.findIndex((m) => m.imdbID === id);
+      if (index >= 0) return true;
+      let toAddListIndex = toSee.added.findIndex((m) => m.imdbID === id);
+      if (toAddListIndex >= 0) return true;
+    }
   );
 
 export const getListsLoading = createSelector(
-  state => state.entities.toSee,
-  toSee => toSee.loading
+  (state) => state.entities.toSee,
+  (toSee) => toSee.loading
+);
+
+export const getListName = createSelector(
+  (state) => state.entities.toSee,
+  (toSee) => toSee.name
+);
+
+export const getListLength = createSelector(
+  (state) => state.entities.toSee,
+  (toSee) => toSee.collection.ids.length
 );
 
 export const getMyList = createSelector(
-  state => state.entities.toSee,
-  toSee => toSee.collection.list
+  (state) => state.entities.toSee,
+  (toSee) => toSee.collection.list
 );
 
 export const getChanges = createSelector(
-  state => state.entities.toSee,
-  toSee => ({ added: toSee.added, removed: toSee.removed })
+  (state) => state.entities.toSee,
+  (toSee) => ({ added: toSee.added, removed: toSee.removed })
 );
 
 export const getRequestHasError = createSelector(
-  state => state.entities.toSee,
-  toSee => toSee.collection.hasError
+  (state) => state.entities.toSee,
+  (toSee) => ({ hasError: toSee.hasError, message: toSee.errorString })
 );
