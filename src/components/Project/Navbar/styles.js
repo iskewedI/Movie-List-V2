@@ -1,17 +1,20 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core';
 
 export default makeStyles({
   nav: {
-    height: "50%",
+    height: '50%',
   },
   toSeeCounter: {
-    position: "absolute",
-    marginLeft: "5px",
-    fontSize: "16px",
+    position: 'absolute',
+    marginLeft: '5px',
+    fontSize: '16px',
   },
   newListForm: {
     position: 'absolute',
-    top: "50px",
-    left: "15px"
-  }
+    top: '50px',
+    left: '15px',
+  },
+  circularProgress: {
+    margin: '0 10px',
+  },
 });

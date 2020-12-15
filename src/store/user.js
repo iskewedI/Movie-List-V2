@@ -205,3 +205,8 @@ export const getUserError = createSelector(
   state => state.entities.user,
   user => user.error
 );
+
+export const getUserLoading = createSelector(
+  state => state.entities.user,
+  user => user.loading
+);

@@ -11,26 +11,17 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import BackspaceIcon from '@material-ui/icons/Backspace';
-import {
-  addToList,
-  removeFromList,
-  getMovieInList,
-  getListName,
-} from '../../../store/toSee';
+import { switchInList, getMovieInList, getListName } from '../../../store/toSee';
 import styles from './styles';
 
-const MovieCard = (props) => {
+const MovieCard = props => {
   const classes = styles();
   const { Title, Year, Type, imdbID, Poster } = props;
 
   const dispatch = useDispatch();
 
-  const switchInList = () => {
-    if (!inList) {
-      dispatch(addToList(props));
-    } else {
-      dispatch(removeFromList(props));
-    }
+  const addOrRemove = () => {
+    dispatch(switchInList(props));
   };
   const inList = useSelector(getMovieInList(imdbID));
   const listName = useSelector(getListName);
@@ -41,36 +32,31 @@ const MovieCard = (props) => {
       <CardActionArea className={classes.actionArea}>
         <CardContent className={classes.cardContent}>
           <CardMedia className={classes.image} image={image}></CardMedia>
-          <div className={classes.cardText} id="cardText">
-            <Typography
-              gutterBottom
-              variant="h5"
-              component="h2"
-              color="primary"
-            >
+          <div className={classes.cardText} id='cardText'>
+            <Typography gutterBottom variant='h5' component='h2' color='primary'>
               {Title}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="h3">
+            <Typography variant='body2' color='textSecondary' component='h3'>
               {Year}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="h3">
+            <Typography variant='body2' color='textSecondary' component='h3'>
               {Type}
             </Typography>
           </div>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button size='small' color='primary'>
           More info
         </Button>
         {listName && (
-          <Button size="small" color="primary" onClick={switchInList}>
+          <Button size='small' color='primary' onClick={addOrRemove}>
             {!inList ? (
-              <Tooltip title="Add" placement="top">
+              <Tooltip title='Add' placement='top'>
                 <PlaylistAddIcon />
               </Tooltip>
             ) : (
-              <Tooltip title="Remove" placement="top">
+              <Tooltip title='Remove' placement='top'>
                 <BackspaceIcon />
               </Tooltip>
             )}

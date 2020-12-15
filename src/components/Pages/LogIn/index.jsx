@@ -2,7 +2,14 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { Container } from '@material-ui/core';
-import { setUserData, authUser, getUserError, getUserData } from '../../../store/user';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import {
+  setUserData,
+  authUser,
+  getUserError,
+  getUserData,
+  getUserLoading,
+} from '../../../store/user';
 import LoginForm from '../../Forms/login';
 
 const LogIn = () => {
@@ -18,6 +25,7 @@ const LogIn = () => {
 
   const userErrors = useSelector(getUserError);
   const userData = useSelector(getUserData);
+  const userLoading = useSelector(getUserLoading);
 
   if (userData.token) return <Redirect to='/' />;
 
@@ -28,6 +36,7 @@ const LogIn = () => {
       )}
 
       <LoginForm onSubmit={handleSubmit} />
+      {userLoading && <CircularProgress className='circularProgress' />}
     </Container>
   );
 };

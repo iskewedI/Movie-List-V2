@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import * as classNames from 'classnames';
 import BackspaceIcon from '@material-ui/icons/Backspace';
-import { removeFromList } from './../../../store/toSee';
+import { switchInList } from './../../../store/toSee';
 import Tooltip from '@material-ui/core/Tooltip';
 
 const ExpandCard = ({
@@ -20,7 +20,7 @@ const ExpandCard = ({
   const dispatch = useDispatch();
 
   const deleteFromList = () => {
-    dispatch(removeFromList(data));
+    dispatch(switchInList(data));
   };
 
   const getWidth = isActive => {
