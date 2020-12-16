@@ -11,4 +11,7 @@ export default makeStyles({
     margin: 10,
     userSelect: 'none',
   },
+  listName: {
+    textAlign: 'center',
+  },
 });

@@ -1,16 +1,21 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getMyList } from './../../../store/toSee';
+import { getMyList, getListName } from './../../../store/toSee';
 import styles from './styles';
 import HorizontalAccordion from '../../Common/HorizontalAccordion/';
 
 const ListToSee = () => {
   const classes = styles();
+
+  const listName = useSelector(getListName);
+
   const listToSee = useSelector(getMyList);
+
   const types = ['Movies', 'Series'];
 
   return (
     <React.Fragment>
+      <h2 className={classes.listName}>{listName}</h2>
       <div className={classes.accordionsContainer}>
         {types.map((t, i) => (
           <div key={`Accordion ${i}`} className={classes.accordionRow}>

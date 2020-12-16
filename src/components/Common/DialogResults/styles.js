@@ -1,31 +1,31 @@
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from '@material-ui/styles';
 
 export default makeStyles({
   paper: {
     maxWidth: 900,
-    width: "300vw",
+    width: '300vw',
     maxHeight: 650,
-    height: "80vh",
+    height: '80vh',
   },
   title: {
-    textAlign: "center",
+    textAlign: 'center',
   },
   navButtons: {
-    float: "right",
-    display: "block",
+    float: 'right',
+    display: 'block',
   },
   content: {
-    // display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   arrowLeft: {
-    float: "left",
+    float: 'left',
   },
   arrowRight: {
-    float: "right",
+    float: 'right',
   },
   backButton: {
-    left: "38%",
+    left: '38%',
   },
 });

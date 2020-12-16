@@ -7,6 +7,7 @@ import {
   createList,
   getRequestHasError,
   getListsLoading,
+  getListHasChanges,
 } from '../../../store/toSee';
 import { getUserData } from '../../../store/user';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -14,6 +15,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import NewReleasesIcon from '@material-ui/icons/NewReleases';
 
 import styles from './styles';
 
@@ -30,6 +32,8 @@ const Navbar = () => {
   const listName = useSelector(getListName);
 
   const listCount = useSelector(getListLength);
+
+  const hasChanges = useSelector(getListHasChanges);
 
   const error = useSelector(getRequestHasError);
 
@@ -89,27 +93,44 @@ const Navbar = () => {
             </Link>
             {(listName && (
               <Link to='/listToSee' className='nav-link' href='/#'>
-                To see:{' '}
+                To see:
                 <span id='toSeeCounter' className={classes.toSeeCounter}>
                   {getListCount()}
                 </span>
               </Link>
             )) ||
-              (!creatingList && (
-                <Button style={{ color: 'green' }} onClick={() => setCreatingList(true)}>
-                  Create your list
-                </Button>
-              )) || (
-                <form className={classes.newListForm} onSubmit={e => handleSubmitList(e)}>
-                  <TextField label='List name' onChange={e => handleListNameChange(e)} />
-                  {error.hasError && (
-                    <Tooltip placement='top' title={error.message}>
-                      <ErrorOutlineIcon />
-                    </Tooltip>
-                  )}
-                </form>
-              )}
+              (userData.token &&
+                ((!creatingList && (
+                  <Button
+                    style={{ color: 'green' }}
+                    onClick={() => setCreatingList(true)}
+                  >
+                    Create your list
+                  </Button>
+                )) || (
+                  <form
+                    className={classes.newListForm}
+                    onSubmit={e => handleSubmitList(e)}
+                  >
+                    <TextField
+                      label='List name'
+                      onChange={e => handleListNameChange(e)}
+                    />
+                    {error.hasError && (
+                      <Tooltip placement='top' title={error.message}>
+                        <ErrorOutlineIcon />
+                      </Tooltip>
+                    )}
+                  </form>
+                )))}
           </div>
+
+          {listName && hasChanges && (
+            <Tooltip placement='top' title='Unsaved changes'>
+              <NewReleasesIcon style={{ marginLeft: '10px', color: '#56de56' }} />
+            </Tooltip>
+          )}
+
           <div className='nav navbar-nav ml-auto'>
             {!userData.token && (
               <div className='navbar-nav'>

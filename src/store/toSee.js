@@ -14,8 +14,14 @@ const slice = createSlice({
       list: [],
       byId: {},
     },
-    loaded: false,
     loading: false,
+
+    searchingMovies: false,
+    moviesSearched: false,
+
+    searchingDb: false,
+    dbSearched: false,
+
     hasError: false,
     errorString: '',
   },
@@ -29,12 +35,14 @@ const slice = createSlice({
         toSee.removed = toSee.removed.filter(e => e.imdbID !== movie.imdbID);
 
         collection.list.push(movie);
+        collection.ids.push(movie.imdbID);
         collection.byId[movie.imdbID] = movie;
       } else {
         toSee.removed.push(movie);
         toSee.added = toSee.added.filter(e => e.imdbID !== movie.imdbID);
 
-        collection.list = collection.list.filter(e => e.imdb !== movie.imdbID);
+        collection.list = collection.list.filter(e => e.imdbID !== movie.imdbID);
+        collection.ids = collection.ids.filter(e => e !== movie.imdbID);
         delete collection.byId[movie.imdbID];
       }
     },
@@ -53,7 +61,7 @@ const slice = createSlice({
       toSee.removed = [];
 
       toSee.loading = false;
-      toSee.loaded = true;
+
       toSee.hasError = false;
       toSee.errorString = '';
     },
@@ -62,8 +70,12 @@ const slice = createSlice({
       toSee.errorString = action.payload.message;
 
       toSee.loading = false;
-      toSee.loaded = true;
+
       toSee.hasError = true;
+    },
+    dataRequested: (toSee, action) => {
+      toSee.loading = true;
+      toSee.searchingMovies = true;
     },
     dataRequestedReceived: (toSee, action) => {
       const { list, byId } = toSee.collection;
@@ -73,6 +85,18 @@ const slice = createSlice({
       byId[movie.imdbID] = movie;
 
       toSee.loading = false;
+
+      toSee.moviesSearched = true;
+      toSee.searchingMovies = false;
+    },
+    dataRequestedFailed: (toSee, action) => {
+      toSee.loading = false;
+      toSee.searchingMovies = false;
+
+      toSee.hasError = true;
+
+      const { message } = action.payload;
+      toSee.errorString = message;
     },
     listCreateRequested: (toSee, action) => {
       toSee.loading = true;
@@ -84,12 +108,10 @@ const slice = createSlice({
 
       toSee.collection.ids = [...dbData.content];
 
-      toSee.loaded = true;
       toSee.loading = false;
       toSee.hasError = false;
     },
     listCreateRequestFailed: (toSee, action) => {
-      toSee.loaded = true;
       toSee.loading = false;
       toSee.hasError = true;
 
@@ -98,6 +120,7 @@ const slice = createSlice({
     },
     listsRequested: (toSee, action) => {
       toSee.loading = true;
+      toSee.searchingDb = true;
     },
     listsReceived: (toSee, action) => {
       const lists = action.payload;
@@ -107,13 +130,19 @@ const slice = createSlice({
         toSee.collection.ids.push(...lists[0].content);
       }
 
-      toSee.loaded = true;
       toSee.loading = false;
+
+      toSee.searchingDb = false;
+      toSee.dbSearched = true;
+
       toSee.hasError = false;
     },
     listsRequestFailed: (toSee, action) => {
-      toSee.loaded = true;
       toSee.loading = false;
+
+      toSee.searchingDb = false;
+      toSee.dbSearched = true;
+
       toSee.hasError = true;
 
       toSee.errorString = action.payload;
@@ -123,7 +152,9 @@ const slice = createSlice({
 
 const {
   inListSwitched,
+  dataRequested,
   dataRequestedReceived,
+  dataRequestedFailed,
   saveChangesRequested,
   saveChangesReceived,
   saveChangesRequestFailed,
@@ -164,9 +195,11 @@ export const createList = name => (dispatch, getState) => {
 };
 
 export const saveList = () => (dispatch, getState) => {
-  const { baseURL } = backend;
-
   const { added, removed, name } = getState().entities.toSee;
+
+  if (added.length === 0 && removed.length === 0) return;
+
+  const { baseURL } = backend;
 
   const url = '/lists';
 
@@ -190,9 +223,9 @@ export const saveList = () => (dispatch, getState) => {
 };
 
 export const searchMyList = () => (dispatch, getState) => {
-  const { loaded, loading } = getState().entities.toSee;
+  const { searchingDb, dbSearched } = getState().entities.toSee;
 
-  if (loaded || loading) return;
+  if (searchingDb || dbSearched) return;
 
   const { baseURL } = backend;
 
@@ -210,14 +243,16 @@ export const searchMyList = () => (dispatch, getState) => {
 };
 
 export const searchMoviesInList = () => (dispatch, getState) => {
-  const { ids, byId } = getState().entities.toSee.collection;
+  const { collection, searchingMovies, moviesSearched } = getState().entities.toSee;
+
+  if (moviesSearched || searchingMovies) return;
 
   const { baseURL, apiKey } = omdbApi;
 
   const customData = { byPassAuth: true };
 
-  ids.forEach(id => {
-    if (byId[id]) return; //Existing data
+  collection.ids.forEach(id => {
+    if (collection.byId[id]) return; //Existing data
 
     const params = { i: id };
 
@@ -227,9 +262,9 @@ export const searchMoviesInList = () => (dispatch, getState) => {
         apiKey,
         params,
         customData,
-        onStart: listsRequested.type,
+        onStart: dataRequested.type,
         onSuccess: dataRequestedReceived.type,
-        onError: listsRequestFailed.type,
+        onError: dataRequestedFailed.type,
       })
     );
   });
@@ -268,6 +303,11 @@ export const getListLength = createSelector(
 export const getMyList = createSelector(
   state => state.entities.toSee,
   toSee => toSee.collection.list
+);
+
+export const getListHasChanges = createSelector(
+  state => state.entities.toSee,
+  toSee => toSee.added.length > 0 || toSee.removed.length > 0
 );
 
 export const getChanges = createSelector(
