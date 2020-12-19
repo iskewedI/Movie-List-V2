@@ -11,7 +11,15 @@ export default makeStyles({
     margin: 10,
     userSelect: 'none',
   },
+  listInfo: {
+    display: 'inline-flex',
+    placeContent: 'center',
+  },
   listName: {
     textAlign: 'center',
+  },
+  saveButton: {
+    marginLeft: '5px',
+    height: "50%"
   },
 });

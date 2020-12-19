@@ -2,17 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from '@material-ui/core';
 import { searchMovies, setSearchTitle } from '../../../store/movies';
-import {
-  searchMyList,
-  searchMoviesInList,
-  getChanges,
-  saveList,
-} from '../../../store/toSee';
+import { searchMyList, searchMoviesInList } from '../../../store/toSee';
 import { getUser, getUserData } from '../../../store/user';
 import SearchCard from '../../Project/SearchCard/';
 import DialogResults from '../../Common/DialogResults/';
 import styles from './styles';
-import ChangesViewer from '../../Common/ChangesViewer';
 const Home = () => {
   const classes = styles();
 
@@ -21,7 +15,6 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const userData = useSelector(getUserData);
-  const changes = useSelector(getChanges);
 
   useEffect(() => {
     if (userData.token) {
@@ -34,14 +27,10 @@ const Home = () => {
     }
   }, [userData, dispatch]);
 
-  const handleSearch = movieTitle => {
+  const handleSearch = (movieTitle) => {
     dispatch(setSearchTitle(movieTitle));
     dispatch(searchMovies());
     setDialogOpen(true);
-  };
-
-  const handleListChange = () => {
-    dispatch(saveList());
   };
 
   return (
@@ -53,9 +42,6 @@ const Home = () => {
             title={'Select the movie'}
             onClose={() => setDialogOpen(false)}
           />
-        )}
-        {userData.token && (
-          <ChangesViewer changes={changes} onSaveChanges={handleListChange} />
         )}
       </Container>
     </React.Fragment>
