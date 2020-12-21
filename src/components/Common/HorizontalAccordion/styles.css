@@ -83,6 +83,8 @@ ul.customAccordion {
   font-size: 16px;
   color: inherit;
   text-transform: capitalize;
+  white-space: nowrap;
+  margin-left: 5px;
 }
 
 .focused .expandCard--name {

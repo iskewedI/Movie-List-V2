@@ -58,6 +58,14 @@ const ExpandCard = ({
     isLast,
     shiftLeft,
   });
+
+  const clipTitle = title => {
+    if (title.length > 30) {
+      return `${title.slice(0, 27)}...`;
+    }
+    return title;
+  };
+
   return (
     <li className={classes} style={styles.item}>
       <button className='expandCard--deleteBtn' onClick={deleteFromList}>
@@ -74,7 +82,7 @@ const ExpandCard = ({
         <div className='expandCard--image' style={styles.background}></div>
       </div>
       <div className='expandCard--name'>
-        <h6>{data.Title}</h6>
+        <h6>{clipTitle(data.Title)}</h6>
       </div>
       <div className='expandCard--closeButton'>
         <a href='/#'>Back</a>
