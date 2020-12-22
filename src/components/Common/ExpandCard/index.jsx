@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as classNames from 'classnames';
 import BackspaceIcon from '@material-ui/icons/Backspace';
+import RestoreIcon from '@material-ui/icons/Restore';
 import { switchInList, getMovieChange } from './../../../store/toSee';
 import Tooltip from '@material-ui/core/Tooltip';
 
@@ -19,7 +20,7 @@ const ExpandCard = ({
 }) => {
   const dispatch = useDispatch();
 
-  const deleteFromList = () => {
+  const changeInList = () => {
     dispatch(switchInList(data));
   };
 
@@ -62,7 +63,7 @@ const ExpandCard = ({
     },
     background: {
       background: getBackgroundGradient(),
-      backgroundSize: 'cover',
+      // backgroundSize: 'cover',
       height: '400px',
       width: getWidth(active),
     },
@@ -84,10 +85,17 @@ const ExpandCard = ({
 
   return (
     <li className={classes} style={styles.item}>
-      <button className='expandCard--deleteBtn' onClick={deleteFromList}>
-        <Tooltip title='Remove' placement='top'>
-          <BackspaceIcon />
-        </Tooltip>
+      <button className='expandCard--deleteBtn' onClick={changeInList}>
+        {(!movieChange || movieChange === 'added') && (
+          <Tooltip title='Remove' placement='top'>
+            <BackspaceIcon />
+          </Tooltip>
+        )}
+        {movieChange && movieChange === 'removed' && (
+          <Tooltip title='Restore' placement='top'>
+            <RestoreIcon />
+          </Tooltip>
+        )}
       </button>
       <h3 className='expandCard--content'>{data.Title}</h3>
       <div

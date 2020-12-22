@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getMyList,
   getListName,
   saveList,
   getListHasChanges,
+  getMoviesSearched,
+  getSearchingMovies,
+  searchMoviesInList,
+  getSearchingMyList,
 } from './../../../store/toSee';
+import { getUserLoaded, getUserLoading, getUser } from '../../../store/user';
+
 import Button from '@material-ui/core/Button';
 
 import HorizontalAccordion from '../../Common/HorizontalAccordion/';
@@ -17,9 +23,35 @@ const ListToSee = () => {
 
   const dispatch = useDispatch();
 
+  const userLoaded = useSelector(getUserLoaded);
+  const userLoading = useSelector(getUserLoading);
+
+  const moviesSearched = useSelector(getMoviesSearched);
+  const searchingMovies = useSelector(getSearchingMovies);
+
+  const searchingMyList = useSelector(getSearchingMyList);
+
   const listName = useSelector(getListName);
 
   const listToSee = useSelector(getMyList);
+
+  useEffect(() => {
+    //REFACTOR
+    if (!userLoaded && !userLoading) {
+      dispatch(getUser());
+    }
+
+    if (!searchingMyList && !moviesSearched && !searchingMovies) {
+      dispatch(searchMoviesInList());
+    }
+  }, [
+    dispatch,
+    userLoaded,
+    userLoading,
+    searchingMyList,
+    moviesSearched,
+    searchingMovies,
+  ]);
 
   const hasChanges = useSelector(getListHasChanges);
 

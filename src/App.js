@@ -18,14 +18,14 @@ function App() {
     <Provider store={store}>
       <Navbar />
       <Switch>
-        <Route path="/me" component={MePage} />
-        <Route path="/logout" component={LogOutPage} />
-        <Route path="/register" component={RegisterPage} />
-        <Route path="/login" component={LogInPage} />
-        <Route path="/listToSee" component={ListToSee} />
-        <Route path="/" component={Home} />
-        <Route path="/not-found" component={NotFound} />
-        <Redirect to="/not-found" />
+        <Route path='/me' component={MePage} />
+        <Route path='/logout' component={LogOutPage} />
+        <Route path='/register' component={RegisterPage} />
+        <Route path='/login' component={LogInPage} />
+        <Route path='/listToSee' component={ListToSee} />
+        <Route path='/' component={Home} />
+        <Route path='/not-found' component={NotFound} />
+        <Redirect to='/not-found' />
       </Switch>
     </Provider>
   );

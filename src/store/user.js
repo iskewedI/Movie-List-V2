@@ -18,13 +18,14 @@ const slice = createSlice({
       userName: null,
       email: null,
     },
-
+    loaded: false,
     loading: false,
     hasError: false,
     error: errorDefaultSchema,
   },
   reducers: {
     newUserRequested: (user, action) => {
+      user.loaded = false;
       user.loading = true;
 
       user.error = errorDefaultSchema;
@@ -40,6 +41,7 @@ const slice = createSlice({
       userData.userName = username;
       userData.email = email;
 
+      user.loaded = true;
       user.loading = false;
       user.hasError = false;
     },
@@ -49,9 +51,11 @@ const slice = createSlice({
 
       const { message, status, statusText, responseText } = action.payload;
 
+      user.loaded = true;
       user.error = { message, status, statusText, responseText };
     },
     userRequested: (user, action) => {
+      user.loaded = false;
       user.loading = true;
 
       user.error = errorDefaultSchema;
@@ -60,6 +64,7 @@ const slice = createSlice({
       const { userData } = user;
       const { username, email } = action.payload;
 
+      user.loaded = true;
       userData.userName = username;
       userData.email = email;
     },
@@ -72,6 +77,7 @@ const slice = createSlice({
       user.error = { message, status, statusText, responseText };
     },
     authRequested: (user, action) => {
+      user.loaded = false;
       user.loading = true;
 
       user.error = errorDefaultSchema; //Reset error object.
@@ -84,10 +90,12 @@ const slice = createSlice({
 
       userData.token = token;
 
+      user.loaded = true;
       user.loading = false;
       user.hasError = false;
     },
     authRequestFailed: (user, action) => {
+      user.loaded = true;
       user.loading = false;
       user.hasError = true;
 
@@ -150,7 +158,9 @@ export const registerUser = ({ username, email, password }) => (dispatch, getSta
 };
 
 export const authUser = password => (dispatch, getState) => {
-  const { token, email } = getState().entities.user.userData;
+  const { userData } = getState().entities.user;
+
+  const { token, email } = userData;
 
   if (token) return;
 
@@ -209,4 +219,9 @@ export const getUserError = createSelector(
 export const getUserLoading = createSelector(
   state => state.entities.user,
   user => user.loading
+);
+
+export const getUserLoaded = createSelector(
+  state => state.entities.user,
+  user => user.loaded
 );

@@ -30,24 +30,20 @@ const slice = createSlice({
       const { collection } = toSee;
       const movie = { ...action.payload.movie };
 
-      if (!collection.byId[movie.imdbID]) {
+      if (!collection.byId[movie.imdbID] && !toSee.added[movie.imdbID]) {
         movie.change = 'added';
 
         toSee.added[movie.imdbID] = movie;
         delete toSee.removed[movie.imdbID];
-
-        // collection.list.push(movie);
-        // collection.ids.push(movie.imdbID);
-        // collection.byId[movie.imdbID] = movie;
+      } else if (!collection.byId[movie.imdbID] && toSee.added[movie.imdbID]) {
+        delete toSee.added[movie.imdbID];
+      } else if (collection.byId[movie.imdbID] && toSee.removed[movie.imdbID]) {
+        delete toSee.removed[movie.imdbID];
       } else {
         movie.change = 'removed';
 
         toSee.removed[movie.imdbID] = movie;
         delete toSee.added[movie.imdbID];
-
-        // collection.list = collection.list.filter(e => e.imdbID !== movie.imdbID);
-        // collection.ids = collection.ids.filter(e => e !== movie.imdbID);
-        // delete collection.byId[movie.imdbID];
       }
     },
     saveChangesRequested: (toSee, action) => {
@@ -327,4 +323,24 @@ export const getListHasChanges = createSelector(
 export const getRequestHasError = createSelector(
   state => state.entities.toSee,
   toSee => ({ hasError: toSee.hasError, message: toSee.errorString })
+);
+
+export const getSearchingMovies = createSelector(
+  state => state.entities.toSee,
+  toSee => toSee.searchingMovies
+);
+
+export const getMoviesSearched = createSelector(
+  state => state.entities.toSee,
+  toSee => toSee.moviesSearched
+);
+
+export const getMyListSearched = createSelector(
+  state => state.entities.toSee,
+  toSee => toSee.dbSearched
+);
+
+export const getSearchingMyList = createSelector(
+  state => state.entities.toSee,
+  toSee => toSee.searchingDb
 );
