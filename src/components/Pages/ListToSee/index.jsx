@@ -35,8 +35,8 @@ const ListToSee = () => {
         <h2 className={classes.listName}>{listName}</h2>
         {hasChanges && (
           <Button
-            variant="contained"
-            color="primary"
+            variant='contained'
+            color='primary'
             onClick={onSaveChanges}
             className={classes.saveButton}
           >
@@ -50,7 +50,7 @@ const ListToSee = () => {
           <div key={`Accordion ${i}`} className={classes.accordionRow}>
             <h1 className={classes.titles}>{t}</h1>
             <HorizontalAccordion
-              elements={listToSee.filter((e) =>
+              elements={listToSee.filter(e =>
                 t.toUpperCase().includes(e.Type.toUpperCase())
               )}
               type={t}

@@ -7,8 +7,8 @@ const slice = createSlice({
   name: 'toSee',
   initialState: {
     name: null,
-    added: [],
-    removed: [],
+    added: {},
+    removed: {},
     collection: {
       ids: [],
       list: [],
@@ -28,22 +28,26 @@ const slice = createSlice({
   reducers: {
     inListSwitched: (toSee, action) => {
       const { collection } = toSee;
-      const { movie } = action.payload;
+      const movie = { ...action.payload.movie };
 
       if (!collection.byId[movie.imdbID]) {
-        toSee.added.push(movie);
-        toSee.removed = toSee.removed.filter(e => e.imdbID !== movie.imdbID);
+        movie.change = 'added';
 
-        collection.list.push(movie);
-        collection.ids.push(movie.imdbID);
-        collection.byId[movie.imdbID] = movie;
+        toSee.added[movie.imdbID] = movie;
+        delete toSee.removed[movie.imdbID];
+
+        // collection.list.push(movie);
+        // collection.ids.push(movie.imdbID);
+        // collection.byId[movie.imdbID] = movie;
       } else {
-        toSee.removed.push(movie);
-        toSee.added = toSee.added.filter(e => e.imdbID !== movie.imdbID);
+        movie.change = 'removed';
 
-        collection.list = collection.list.filter(e => e.imdbID !== movie.imdbID);
-        collection.ids = collection.ids.filter(e => e !== movie.imdbID);
-        delete collection.byId[movie.imdbID];
+        toSee.removed[movie.imdbID] = movie;
+        delete toSee.added[movie.imdbID];
+
+        // collection.list = collection.list.filter(e => e.imdbID !== movie.imdbID);
+        // collection.ids = collection.ids.filter(e => e !== movie.imdbID);
+        // delete collection.byId[movie.imdbID];
       }
     },
     saveChangesRequested: (toSee, action) => {
@@ -57,8 +61,13 @@ const slice = createSlice({
 
       toSee.name = name || toSee.name;
 
-      toSee.added = [];
-      toSee.removed = [];
+      Object.values(toSee.removed).forEach(r => delete collection.byId[r.imdbID]);
+
+      collection.list.push(...Object.values(toSee.added));
+      collection.list = collection.list.filter(m => content.includes(m.imdbID));
+
+      toSee.added = {};
+      toSee.removed = {};
 
       toSee.loading = false;
 
@@ -205,8 +214,8 @@ export const saveList = () => (dispatch, getState) => {
 
   const data = {
     name,
-    added: [...added.map(a => a.imdbID)],
-    removed: [...removed.map(r => r.imdbID)],
+    added: Object.keys(added),
+    removed: Object.keys(removed),
   };
 
   return dispatch(
@@ -280,9 +289,14 @@ export const getMovieInList = id =>
     toSee => {
       let index = toSee.collection.list.findIndex(m => m.imdbID === id);
       if (index >= 0) return true;
-      let toAddListIndex = toSee.added.findIndex(m => m.imdbID === id);
-      if (toAddListIndex >= 0) return true;
+      return toSee.added[id] ? true : false;
     }
+  );
+
+export const getMovieChange = id =>
+  createSelector(
+    state => state.entities.toSee,
+    toSee => (toSee.added[id] ? 'added' : toSee.removed[id] ? 'removed' : false)
   );
 
 export const getListsLoading = createSelector(
@@ -297,22 +311,17 @@ export const getListName = createSelector(
 
 export const getListLength = createSelector(
   state => state.entities.toSee,
-  toSee => toSee.collection.list.length
+  toSee => toSee.collection.list.length + Object.keys(toSee.added).length
 );
 
 export const getMyList = createSelector(
   state => state.entities.toSee,
-  toSee => toSee.collection.list
+  toSee => [...toSee.collection.list, ...Object.values(toSee.added)]
 );
 
 export const getListHasChanges = createSelector(
   state => state.entities.toSee,
-  toSee => toSee.added.length > 0 || toSee.removed.length > 0
-);
-
-export const getChanges = createSelector(
-  state => state.entities.toSee,
-  toSee => ({ added: toSee.added, removed: toSee.removed })
+  toSee => Object.keys(toSee.added).length > 0 || Object.keys(toSee.removed).length > 0
 );
 
 export const getRequestHasError = createSelector(
