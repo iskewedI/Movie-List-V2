@@ -14,12 +14,13 @@ export default makeStyles({
   listInfo: {
     display: 'inline-flex',
     placeContent: 'center',
+    width: '100%',
   },
   listName: {
     textAlign: 'center',
   },
   saveButton: {
     marginLeft: '5px',
-    height: "50%"
+    height: '50%',
   },
 });

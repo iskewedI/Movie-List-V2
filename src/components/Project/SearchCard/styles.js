@@ -1,41 +1,41 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core';
 
 const centeredStyledObj = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 };
 export default makeStyles({
   container: {
-    height: "40vh",
-    width: "70vw",
-    flexDirection: "column",
+    height: '40vh',
+    width: '70vw',
+    flexDirection: 'column',
     ...centeredStyledObj,
   },
   cardContainer: {
-    backgroundColor: "rgba(190, 247, 238, 0.29)",
-    flexDirection: "column",
-    width: "100%",
-    height: "100%",
-    padding: "2rem",
+    backgroundColor: '#dcdcdc4a',
+    flexDirection: 'column',
+    width: '100%',
+    height: '100%',
+    padding: '2rem',
     ...centeredStyledObj,
   },
   title: {
-    fontSize: "5.5vw",
+    fontSize: '5.5vw',
   },
   textField: {
-    width: "90%",
+    width: '90%',
   },
   inputPlaceHolder: {
-    fontSize: "1.8vw",
+    fontSize: '1.8vw',
   },
   searchButton: {
-    width: "15vw",
-    height: "5vh",
-    fontSize: "1.2vw",
-    marginTop: ".8rem",
+    width: '15vw',
+    height: '5vh',
+    fontSize: '1.2vw',
+    marginTop: '.8rem',
   },
   movieIcon: {
-    fontSize: "4rem",
+    fontSize: '4rem',
   },
 });

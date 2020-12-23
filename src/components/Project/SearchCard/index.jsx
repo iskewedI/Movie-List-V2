@@ -30,8 +30,8 @@ const SearchCard = ({ onSearch }) => {
         </form>
         <Button
           className={classes.searchButton}
+          style={{ backgroundColor: searchText !== '' ? '#96c0e040' : null }}
           variant='outlined'
-          color='primary'
           onClick={() => onSearch(searchText)}
         >
           Search

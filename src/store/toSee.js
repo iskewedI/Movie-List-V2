@@ -307,7 +307,7 @@ export const getListName = createSelector(
 
 export const getListLength = createSelector(
   state => state.entities.toSee,
-  toSee => toSee.collection.list.length + Object.keys(toSee.added).length
+  toSee => toSee.collection.ids.length + Object.keys(toSee.added).length
 );
 
 export const getMyList = createSelector(

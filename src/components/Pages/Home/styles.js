@@ -5,6 +5,7 @@ export default makeStyles({
     display: 'flex',
     alignItems: 'center',
     userSelect: 'none',
+    height: '100%',
   },
   changesViewer: {},
 });

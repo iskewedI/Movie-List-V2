@@ -63,7 +63,6 @@ const ExpandCard = ({
     },
     background: {
       background: getBackgroundGradient(),
-      // backgroundSize: 'cover',
       height: '400px',
       width: getWidth(active),
     },

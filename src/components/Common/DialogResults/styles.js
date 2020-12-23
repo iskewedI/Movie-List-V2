@@ -1,5 +1,7 @@
 import { makeStyles } from '@material-ui/styles';
 
+const hidingCollection = {};
+
 export default makeStyles({
   paper: {
     maxWidth: 900,
@@ -13,19 +15,35 @@ export default makeStyles({
   navButtons: {
     float: 'right',
     display: 'block',
+    alignSelf: 'center',
   },
   content: {
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  arrowLeft: {
-    float: 'left',
+  animatedElement: {
+    height: '100%',
+    transition: 'transform 1s',
   },
-  arrowRight: {
-    float: 'right',
+  hidingLeft: {
+    ...hidingCollection,
+    transform: 'translateX(-120%)',
   },
-  backButton: {
-    left: '38%',
+  hidingRight: {
+    ...hidingCollection,
+    transform: 'translateX(120%)',
+  },
+  showingLeft: {
+    ...hidingCollection,
+    position: 'absolute',
+    left: '-80%',
+    transform: 'translateX(120%)',
+  },
+  showingRight: {
+    ...hidingCollection,
+    position: 'absolute',
+    right: '-80%',
+    transform: 'translateX(-130%)',
   },
 });

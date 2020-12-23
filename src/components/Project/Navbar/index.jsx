@@ -20,45 +20,45 @@ const Navbar = () => {
   const loading = useSelector(getListsLoading);
 
   return (
-    <div className={classes.nav}>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link to={'/'} className="navbar-brand" href="/#">
+    <div>
+      <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+        <Link to={'/'} className='navbar-brand' href='/#'>
           Movies
         </Link>
         <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          className='navbar-toggler'
+          type='button'
+          data-toggle='collapse'
+          data-target='#navbarNavAltMarkup'
+          aria-controls='navbarNavAltMarkup'
+          aria-expanded='false'
+          aria-label='Toggle navigation'
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className='navbar-toggler-icon'></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav">
-            <Link to={'/'} className="nav-link active" href="/#">
-              Home <span className="sr-only">(current)</span>
+        <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
+          <div className='navbar-nav'>
+            <Link to={'/'} className='nav-link active' href='/#'>
+              Home <span className='sr-only'>(current)</span>
             </Link>
             <ToSeeSummary />
           </div>
 
-          <div className="nav navbar-nav ml-auto">
+          <div className='nav navbar-nav ml-auto'>
             {!userData.token && (
-              <div className="navbar-nav">
+              <div className='navbar-nav'>
                 <Link
-                  to="/login"
-                  className="nav-link navbar-right btn btn-outline-light"
-                  href="/#"
+                  to='/login'
+                  className='nav-link navbar-right btn btn-outline-light'
+                  href='/#'
                 >
                   Log-In
                 </Link>
-                <Tooltip title="Register for free!">
+                <Tooltip title='Register for free!'>
                   <Link
-                    to="/register"
-                    className="nav-link navbar-right btn btn-outline-light text-primary"
-                    href="/#"
+                    to='/register'
+                    className='nav-link navbar-right btn btn-outline-light text-primary'
+                    href='/#'
                   >
                     Sign Up!
                   </Link>
@@ -66,25 +66,22 @@ const Navbar = () => {
               </div>
             )}
             {loading && (
-              <CircularProgress
-                className={classes.circularProgress}
-                size={40}
-              />
+              <CircularProgress className={classes.circularProgress} size={40} />
             )}
 
             {userData.token && (
-              <div className="navbar-nav">
+              <div className='navbar-nav'>
                 <Link
-                  to="/me"
-                  className="nav-link navbar-right btn btn-outline-light text-primary"
-                  href="/#"
+                  to='/me'
+                  className='nav-link navbar-right btn btn-outline-light text-primary'
+                  href='/#'
                 >
                   {userData.userName}
                 </Link>
                 <Link
-                  to="/logout"
-                  className="nav-link navbar-right btn btn-outline-light text-primary"
-                  href="/#"
+                  to='/logout'
+                  className='nav-link navbar-right btn btn-outline-light text-primary'
+                  href='/#'
                 >
                   Log Out
                 </Link>
