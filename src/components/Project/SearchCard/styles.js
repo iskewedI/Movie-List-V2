@@ -12,28 +12,36 @@ export default makeStyles({
     flexDirection: 'column',
     ...centeredStyledObj,
   },
-  cardContainer: {
-    backgroundColor: '#dcdcdc4a',
-    flexDirection: 'column',
-    width: '100%',
-    height: '100%',
-    padding: '2rem',
-    ...centeredStyledObj,
-  },
   title: {
     fontSize: '5.5vw',
+    marginBottom: "3vh",
+    color: "#ffffff80"
   },
   textField: {
-    width: '90%',
+    width: '100%',
+    '& .MuiOutlinedInput-root': {
+      '&.Mui-focused fieldset': {
+        border: "none"
+      },
+    },
+    "& .MuiInputBase-root": {
+      borderRadius: "10px"
+    },
+    "& fieldset": {
+      backgroundColor: "#efefefd6"
+    }
   },
   inputPlaceHolder: {
     fontSize: '1.8vw',
+    // border: "none",
+    color: "black"
   },
   searchButton: {
     width: '15vw',
     height: '5vh',
     fontSize: '1.2vw',
     marginTop: '.8rem',
+    background: "#efefeff7"
   },
   movieIcon: {
     fontSize: '4rem',

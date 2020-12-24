@@ -11,7 +11,6 @@ const SearchCard = ({ onSearch }) => {
 
   return (
     <Container className={classes.container}>
-      <Card className={classes.cardContainer}>
         <Typography className={classes.title}>Movies&Series</Typography>
         <form
           onSubmit={e => {
@@ -23,9 +22,10 @@ const SearchCard = ({ onSearch }) => {
           <TextField
             className={classes.textField}
             value={searchText}
-            placeholder='Serie or movie title here...'
             onChange={handleTextChange}
-            InputProps={{ classes: { input: classes.inputPlaceHolder } }}
+            variant="outlined"
+            InputProps={{ classes: { input: classes.inputPlaceHolder } } }
+            FormHelperTextProps={ { style: { background: "red"} }}
           />
         </form>
         <Button
@@ -36,7 +36,6 @@ const SearchCard = ({ onSearch }) => {
         >
           Search
         </Button>
-      </Card>
     </Container>
   );
 };
