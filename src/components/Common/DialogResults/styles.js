@@ -8,6 +8,7 @@ export default makeStyles({
     width: '300vw',
     maxHeight: 650,
     height: '80vh',
+    background: '#e0e0e0',
   },
   title: {
     textAlign: 'center',

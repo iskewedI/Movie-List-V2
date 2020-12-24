@@ -9,33 +9,35 @@ const SearchCard = ({ onSearch }) => {
     setSearchText(event.target.value);
   };
 
+  const formatText = text => text.split(' ').join('-');
+
   return (
     <Container className={classes.container}>
-        <Typography className={classes.title}>Movies&Series</Typography>
-        <form
-          onSubmit={e => {
-            e.preventDefault();
-            onSearch(searchText);
-          }}
+      <Typography className={classes.title}>Movies&Series</Typography>
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          onSearch(formatText(searchText));
+        }}
+        className={classes.textField}
+      >
+        <TextField
           className={classes.textField}
-        >
-          <TextField
-            className={classes.textField}
-            value={searchText}
-            onChange={handleTextChange}
-            variant="outlined"
-            InputProps={{ classes: { input: classes.inputPlaceHolder } } }
-            FormHelperTextProps={ { style: { background: "red"} }}
-          />
-        </form>
-        <Button
-          className={classes.searchButton}
-          style={{ backgroundColor: searchText !== '' ? '#96c0e040' : null }}
-          variant='outlined'
-          onClick={() => onSearch(searchText)}
-        >
-          Search
-        </Button>
+          value={searchText}
+          onChange={handleTextChange}
+          variant='filled'
+          InputProps={{ classes: { input: classes.inputPlaceHolder } }}
+          FormHelperTextProps={{ style: { background: 'red' } }}
+        />
+      </form>
+      <Button
+        className={classes.searchButton}
+        style={{ backgroundColor: searchText === '' ? '#96c0e040' : '#ffffff80' }}
+        variant='contained'
+        onClick={() => onSearch(formatText(searchText))}
+      >
+        Search
+      </Button>
     </Container>
   );
 };

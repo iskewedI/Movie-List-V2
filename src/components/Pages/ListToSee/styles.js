@@ -18,6 +18,7 @@ export default makeStyles({
   },
   listName: {
     textAlign: 'center',
+    margin: '5px',
   },
   saveButton: {
     marginLeft: '5px',

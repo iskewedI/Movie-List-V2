@@ -24,6 +24,7 @@ const Home = () => {
   const handleSearch = movieTitle => {
     dispatch(setSearchTitle(movieTitle));
     dispatch(searchMovies());
+
     setDialogOpen(true);
   };
 

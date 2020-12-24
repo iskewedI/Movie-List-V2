@@ -13,16 +13,20 @@ h1,
 h2,
 h3,
 h4,
-h5 {
-  color: black;
+h5,
+li {
+  color: rgb(218, 218, 218);
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 #root {
   height: 100%;
-  background-color: #000;
+  background-color: #222;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 .circularProgress {

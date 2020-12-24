@@ -14,34 +14,37 @@ export default makeStyles({
   },
   title: {
     fontSize: '5.5vw',
-    marginBottom: "3vh",
-    color: "#ffffff80"
+    marginBottom: '3vh',
+    color: '#ffffff80',
   },
   textField: {
     width: '100%',
-    '& .MuiOutlinedInput-root': {
+    '& .MuiFilledInput-root': {
+      background: '#efefefe8',
       '&.Mui-focused fieldset': {
-        border: "none"
+        border: 'none',
       },
     },
-    "& .MuiInputBase-root": {
-      borderRadius: "10px"
+    '& .MuiInputBase-root': {
+      borderRadius: '10px',
     },
-    "& fieldset": {
-      backgroundColor: "#efefefd6"
-    }
+    '& fieldset': {
+      backgroundColor: '#efefefd6',
+    },
+    '& .MuiInputBase-input:focus': {
+      backgroundColor: '#ffffff73',
+    },
   },
   inputPlaceHolder: {
-    fontSize: '1.8vw',
-    // border: "none",
-    color: "black"
+    fontSize: '2vw',
+    borderRadius: 'inherit',
   },
   searchButton: {
     width: '15vw',
     height: '5vh',
     fontSize: '1.2vw',
     marginTop: '.8rem',
-    background: "#efefeff7"
+    background: '#efefeff7',
   },
   movieIcon: {
     fontSize: '4rem',
