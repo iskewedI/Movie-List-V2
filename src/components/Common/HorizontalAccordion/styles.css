@@ -22,23 +22,22 @@ a:hover > * {
 }
 
 .customAccordion--menu-container {
-  /* overflow: hidden; */
+  overflow: hidden;
   background-color: #222 !important;
-  position: relative;
   height: 100%;
   height: calc(100vh - 150px);
-  width: 100%;
 }
 
 ul.customAccordion {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  align-self: center;
+  transition: transform 1s;
+  width: 100%;
+  text-align: center;
+  text-align: -webkit-center;
+  margin-top: 20px;
 }
 
 .expandCard {
-  position: relative;
   background-color: #222;
 }
 
@@ -276,4 +275,23 @@ li.expandCard.isActive {
 .nullMessage {
   color: white;
   margin-left: 5px;
+}
+
+.directionArrow {
+  color: white;
+}
+
+.leftSideArrow {
+  align-self: flex-start;
+}
+
+.rightSideArrow {
+  align-self: flex-end;
+  /* position: absolute !important; */
+  /* right: 50px; */
+}
+
+.movementArrows {
+  text-align: center;
+  margin: 15px;
 }

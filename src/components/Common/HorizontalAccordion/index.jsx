@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import * as classNames from 'classnames';
 import ExpandCard from '../ExpandCard/index';
+import Button from '@material-ui/core/Button';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import * as Helper from './Helper';
+
 import './styles.css';
+
 const HorizontalAccordion = ({ elements, type }) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [open, setOpen] = useState(false);
+  const [movement, setMovement] = useState(0);
 
   const handleClick = index => {
     setActiveIndex(index);
@@ -33,28 +39,44 @@ const HorizontalAccordion = ({ elements, type }) => {
   };
   const getTransformDefault = i => {
     let transform = '';
-    let distanceToMiddle = Helper.getDistanceToMiddle(elements, i);
-    if (distanceToMiddle !== 0) {
-      let direction = Helper.getDefaultDirectionToMove(elements, i);
-      let distanceToMiddle = Helper.getDistanceToMiddle(elements, i);
-      let count = 30 * distanceToMiddle;
-      transform = `translate3d(${direction}${count}%, 0, 0)`;
-    }
+    // let distanceToMiddle = Helper.getDistanceToMiddle(elements, i);
+    // if (distanceToMiddle !== 0) {
+    //   let direction = Helper.getDefaultDirectionToMove(elements, i);
+    //   let distanceToMiddle = Helper.getDistanceToMiddle(elements, i);
+    //   let count = 30 * distanceToMiddle;
+    //   transform = `translate3d(${direction}${count}%, 0, 0)`;
+    // }
     return transform;
   };
   const getZIndex = i => {
     return Helper.getInvertedDistanceToMiddle(elements, i);
   };
+
+  const getMovement = () => {
+    if (movement === 0) return '';
+
+    return `translateX(${movement}vw)`;
+  };
+
   const classes = classNames({
     focused: open,
   });
 
+  if (elements.length <= 0)
+    return <div className='nullMessage'>There's no {type.toLowerCase()} in the list</div>;
+
   return (
     <div className={'customAccordion--menu-container ' + classes} onClick={lossFocus}>
-      {elements.length <= 0 && (
-        <div className='nullMessage'>There's no {type.toLowerCase()} in the list</div>
-      )}
-      <ul className='customAccordion menu'>
+      <div className='movementArrows'>
+        <Button className='leftSideArrow' onClick={() => setMovement(movement + 25)}>
+          <ArrowBackIcon className='directionArrow' />
+        </Button>
+        <Button className='rightSideArrow' onClick={() => setMovement(movement - 25)}>
+          <ArrowForwardIcon className='directionArrow' />
+        </Button>
+      </div>
+
+      <ul className='customAccordion menu' style={{ transform: getMovement() }}>
         {elements.map((m, i) => (
           <ExpandCard
             key={i}

@@ -3,8 +3,10 @@ import { makeStyles } from '@material-ui/core';
 export default makeStyles({
   accordionsContainer: {
     backgroundColor: '#222',
-    display: 'grid',
-    gridTemplateRows: 'repeat(2, 1fr)',
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '0 auto',
+    overflow: 'hidden',
   },
   titles: {
     color: 'white',
@@ -24,5 +26,8 @@ export default makeStyles({
   saveButton: {
     marginLeft: '5px',
     height: '50%',
+  },
+  accordionRow: {
+    alignSelf: 'center',
   },
 });
