@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Container, Typography, Card, TextField, Button } from '@material-ui/core';
+import { Container, Typography, TextField, Button } from '@material-ui/core';
 import styles from './styles';
+
 const SearchCard = ({ onSearch }) => {
   const classes = styles();
   const [searchText, setSearchText] = useState('');
@@ -13,7 +14,9 @@ const SearchCard = ({ onSearch }) => {
 
   return (
     <Container className={classes.container}>
-      <Typography className={classes.title}>Movies&Series</Typography>
+      <Typography variant='h2' className={classes.title}>
+        Movies&Series
+      </Typography>
       <form
         onSubmit={e => {
           e.preventDefault();

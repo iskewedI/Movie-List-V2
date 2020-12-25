@@ -13,7 +13,6 @@ export default makeStyles({
     ...centeredStyledObj,
   },
   title: {
-    fontSize: '5.5vw',
     marginBottom: '3vh',
     color: '#ffffff80',
   },
@@ -42,7 +41,7 @@ export default makeStyles({
   searchButton: {
     width: '15vw',
     height: '5vh',
-    fontSize: '1.2vw',
+    fontSize: '1rem',
     marginTop: '.8rem',
     background: '#efefeff7',
   },
