@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from '../Common/form';
+import Form from '../Common/Form';
 import Joi from 'joi-browser';
 
 class RegisterForm extends Form {
@@ -18,7 +18,7 @@ class RegisterForm extends Form {
   render() {
     return (
       <React.Fragment>
-        <h1>Sign Up</h1>
+        <h1 className='formTitle'>Sign Up</h1>
         <form onSubmit={this.handleSubmit}>
           {this.renderInput('username', 'User Name')}
           {this.renderInput('email', 'Email', 'email')}

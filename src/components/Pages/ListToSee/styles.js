@@ -10,6 +10,7 @@ export default makeStyles({
     color: 'white',
     margin: 10,
     userSelect: 'none',
+    textAlign: 'center',
   },
   listInfo: {
     display: 'inline-flex',

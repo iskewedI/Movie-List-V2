@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from '../Common/form';
+import Form from '../Common/Form/';
 import Joi from 'joi-browser';
 
 class LoginForm extends Form {
@@ -7,6 +7,7 @@ class LoginForm extends Form {
     data: { email: '', password: '' },
     errors: {},
   };
+
   schema = {
     email: Joi.string().email().required().label('Email'),
     password: Joi.string().required().label('Password'),
@@ -17,7 +18,7 @@ class LoginForm extends Form {
   render() {
     return (
       <React.Fragment>
-        <h1>Login</h1>
+        <h1 className='formTitle'>Login</h1>
         <form onSubmit={this.handleSubmit}>
           {this.renderInput('email', 'Email', 'email')}
           {this.renderInput('password', 'Password', 'password')}
