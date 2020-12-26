@@ -1,0 +1,14 @@
+.chatbotHeader {
+  display: flex;
+  margin-left: 10px;
+  justify-content: center;
+  align-content: center;
+  border-bottom: #d8d8d8 solid 1px;
+  overflow-x: hidden;
+}
+
+.compressChatBtn {
+  text-align: right;
+  margin-right: 20px;
+  flex: 50%;
+}

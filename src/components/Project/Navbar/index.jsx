@@ -48,14 +48,16 @@ const Navbar = () => {
             {!userData.token && (
               <div className='navbar-nav'>
                 <Link
+                  id='LogInButton'
                   to='/login'
-                  className='nav-link navbar-right btn btn-outline-light'
+                  className='nav-link navbar-right btn btn-outline-light instructionFocusable'
                   href='/#'
                 >
                   Log-In
                 </Link>
                 <Tooltip title='Register for free!'>
                   <Link
+                    id='SignUpButton'
                     to='/register'
                     className='nav-link navbar-right btn btn-outline-light text-primary'
                     href='/#'
@@ -72,6 +74,7 @@ const Navbar = () => {
             {userData.token && (
               <div className='navbar-nav'>
                 <Link
+                  id='meButton'
                   to='/me'
                   className='nav-link navbar-right btn btn-outline-light text-primary'
                   href='/#'

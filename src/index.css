@@ -33,13 +33,9 @@ h2,
 h3,
 h4,
 h5,
-li {
+nav > li {
   color: rgb(218, 218, 218);
   font-family: 'Kiota' !important;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 #root {
@@ -51,4 +47,38 @@ code {
 
 .circularProgress {
   margin: 5px;
+}
+
+.instructionFocusable {
+  transition: border, color, background-color 0.5s;
+}
+
+.linkButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+.linkButton:hover {
+  opacity: 80%;
+}
+.linkButton:focus {
+  opacity: 60%;
+}
+
+.linkButton:hover,
+.linkButton:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+button,
+button:focus,
+span:focus,
+input {
+  text-decoration: none;
+  outline: none !important;
 }

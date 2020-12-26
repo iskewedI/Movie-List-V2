@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import configureStore from './store/configureStore';
 import Navbar from './components/Project/Navbar/';
+import ChatBot from './ChatBot/';
 import Home from './components/Pages/Home/';
 import NotFound from './components/Pages/NotFound/';
 import ListToSee from './components/Pages/ListToSee/';
@@ -27,6 +28,7 @@ function App() {
         <Route path='/not-found' component={NotFound} />
         <Redirect to='/not-found' />
       </Switch>
+      <ChatBot />
     </Provider>
   );
 }
