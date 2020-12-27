@@ -25,6 +25,7 @@ const SearchCard = ({ onSearch }) => {
         className={classes.textField}
       >
         <TextField
+          id='searchField'
           className={classes.textField}
           value={searchText}
           onChange={handleTextChange}
@@ -34,6 +35,7 @@ const SearchCard = ({ onSearch }) => {
         />
       </form>
       <Button
+        id='searchButton'
         className={classes.searchButton}
         style={{ backgroundColor: searchText === '' ? '#96c0e040' : '#ffffff80' }}
         variant='contained'

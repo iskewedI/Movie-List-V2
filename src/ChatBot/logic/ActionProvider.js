@@ -15,6 +15,103 @@ class ActionProvider {
     }));
   }
 
+  userQuestions = (() => {
+    const handleUser = () => {
+      const botMessage = this.createChatBotMessage(
+        'Okey, what do you need to know about the users in this page?',
+        {
+          widget: 'userQuestions',
+        }
+      );
+
+      this.updateChatbotState(botMessage, Stages.USER_QUESTIONS);
+    };
+
+    const handleSignUp = () => {
+      const botMessage = this.createChatBotMessage(
+        'Follow this instructions to Sign-Up: ',
+        {
+          widget: 'signUpQuestions',
+        }
+      );
+
+      this.updateChatbotState(botMessage, Stages.USER_QUESTIONS);
+    };
+
+    const handleLogIn = () => {
+      const botMessage = this.createChatBotMessage(
+        'Follow this instructions to Log-In: ',
+        {
+          widget: 'logInQuestions',
+        }
+      );
+
+      this.updateChatbotState(botMessage, Stages.USER_QUESTIONS);
+    };
+
+    const handleMyInfo = () => {
+      const botMessage = this.createChatBotMessage('About your info in this page: ', {
+        widget: 'myInfoQuestions',
+      });
+
+      this.updateChatbotState(botMessage, Stages.USER_QUESTIONS);
+    };
+
+    return {
+      handleUser,
+      handleSignUp,
+      handleLogIn,
+      handleMyInfo,
+    };
+  })();
+
+  searchingQuestions = (() => {
+    const handleSearch = () => {
+      const botMessage = this.createChatBotMessage(
+        'Okey, what do you need to know about the searching in this page?',
+        {
+          widget: 'searchingQuestions',
+        }
+      );
+
+      this.updateChatbotState(botMessage, Stages.SEARCHING_QUESTIONS);
+    };
+
+    const handleHowToSearch = () => {
+      const botMessage = this.createChatBotMessage(
+        'Follow this instructions to search movies/series: ',
+        {
+          widget: 'howToSearch',
+        }
+      );
+
+      this.updateChatbotState(botMessage, Stages.USER_QUESTIONS);
+    };
+
+    const handleResultTypes = () => {
+      const botMessage = this.createChatBotMessage(
+        'About the types of results you will receive: ',
+        {
+          widget: 'resultTypes',
+        }
+      );
+
+      this.updateChatbotState(botMessage, Stages.USER_QUESTIONS);
+    };
+    const handleMovieDatabase = () => {
+      const botMessage = this.createChatBotMessage(
+        'About the storage of the movies/series in a database ',
+        {
+          widget: 'movieDatabase',
+        }
+      );
+
+      this.updateChatbotState(botMessage, Stages.USER_QUESTIONS);
+    };
+
+    return { handleSearch, handleHowToSearch, handleResultTypes, handleMovieDatabase };
+  })();
+
   handleReturnMainStage = helpMessage => {
     const botMessage = this.createChatBotMessage(
       `${helpMessage || ''} Can I help you in anything more?`
@@ -23,53 +120,7 @@ class ActionProvider {
     this.updateChatbotState(botMessage, Stages.ASK_HELP);
   };
 
-  handleMyInfoQuestions = () => {
-    const botMessage = this.createChatBotMessage('About your info in this page: ', {
-      widget: 'myInfoQuestions',
-    });
-
-    this.updateChatbotState(botMessage, Stages.USER_QUESTIONS);
-  };
-
-  handleLogInQuestions = () => {
-    const botMessage = this.createChatBotMessage('Follow this instructions to Log-In: ', {
-      widget: 'logInQuestions',
-    });
-
-    this.updateChatbotState(botMessage, Stages.USER_QUESTIONS);
-  };
-
-  handleSignUpQuestions = () => {
-    const botMessage = this.createChatBotMessage(
-      'Follow this instructions to Sign-Up: ',
-      {
-        widget: 'signUpQuestions',
-      }
-    );
-
-    this.updateChatbotState(botMessage, Stages.USER_QUESTIONS);
-  };
-
-  handleUserQuestions = () => {
-    const botMessage = this.createChatBotMessage(
-      'Okey, what do you need to know about the users in this page?',
-      {
-        widget: 'userQuestions',
-      }
-    );
-
-    this.updateChatbotState(botMessage, Stages.USER_QUESTIONS);
-  };
-
-  handleBackFromWaiting = () => {
-    const botMessage = this.createChatBotMessage(
-      'Hello again! How was your adventure? Can I help you in something??'
-    );
-
-    this.updateChatbotState(botMessage, Stages.ASK_HELP);
-  };
-
-  handleUserHelp = asksHelp => {
+  handleMainHelp = asksHelp => {
     if (asksHelp === true) {
       const botMessage = this.createChatBotMessage(
         'Great! Take a look at this tutorial options: ',
@@ -87,6 +138,14 @@ class ActionProvider {
     }
   };
 
+  handleBackFromWaiting = () => {
+    const botMessage = this.createChatBotMessage(
+      'Hello again! How was your adventure? Can I help you in something??'
+    );
+
+    this.updateChatbotState(botMessage, Stages.ASK_HELP);
+  };
+
   handleRollingBack = () => {
     const userMessage = this.createClientMessage(
       "I understand, I'm so sorry and I don't want to offend you, majesty. I'll try again."
@@ -95,7 +154,7 @@ class ActionProvider {
     this.updateChatbotState(userMessage);
 
     const botMessage = this.createChatBotMessage(
-      "I hope so. That's what I was talking about. It's feels soo great... Okey, go on. Do you need something?"
+      "I hope so. That's what I was talking about. It's feels soo great... Okey, go on. Do you need something else?"
     );
 
     this.updateChatbotState(botMessage, Stages.ASK_HELP);
