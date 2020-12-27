@@ -11,9 +11,21 @@ import './styles.css';
 
 const ChatBot = () => {
   const classes = styles();
+
   const [open, setOpen] = useState(false);
 
   const config = getConfig(setOpen);
+
+  const storageKey = 'HAL_chatbot_messages';
+
+  const saveMessages = messages => {
+    localStorage.setItem(storageKey, JSON.stringify(messages));
+  };
+
+  const loadMessages = () => {
+    const messages = JSON.parse(localStorage.getItem(storageKey));
+    return messages;
+  };
 
   return (
     <div className={classes.chatBot}>
@@ -35,6 +47,8 @@ const ChatBot = () => {
               config={config}
               actionProvider={ActionProvider}
               messageParser={MessageParser}
+              messageHistory={loadMessages()}
+              saveMessages={saveMessages}
               headerText='HAL-9001'
             />
           </div>

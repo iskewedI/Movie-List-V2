@@ -26,12 +26,12 @@ export const getConfig = handleOpen => ({
   customComponents: {
     botAvatar: () => <img src={HalIcon} alt='HAL-9001 Icon' width='32px' />,
     header: () => (
-      <div className='chatbotHeader'>
+      <button className='chatbotHeader' onClick={() => handleOpen(false)}>
         HAL-9001
-        <button onClick={() => handleOpen(false)} className='compressChatBtn'>
+        <button className='compressChatBtn'>
           <ExpandMoreIcon />
         </button>
-      </div>
+      </button>
     ),
   },
   widgets: [
