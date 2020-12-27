@@ -24,10 +24,10 @@ export const getConfig = handleOpen => ({
     stage: Stages.USER_STATUS,
   },
   customComponents: {
-    botAvatar: () => <img src={HalIcon} alt='HAL Icon' width='32px' />,
+    botAvatar: () => <img src={HalIcon} alt='HAL-9001 Icon' width='32px' />,
     header: () => (
       <div className='chatbotHeader'>
-        HAL-900
+        HAL-9001
         <button onClick={() => handleOpen(false)} className='compressChatBtn'>
           <ExpandMoreIcon />
         </button>
