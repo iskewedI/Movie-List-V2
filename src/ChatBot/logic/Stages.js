@@ -111,6 +111,12 @@ export const stageManager = actionProvider => {
     if (message.includes('user')) {
       return actionProvider.userQuestions.handleUser();
     }
+    if (message.includes('search')) {
+      return actionProvider.searchingQuestions.handleSearch();
+    }
+    if (message.includes('list')) {
+      return actionProvider.listsQuestions.handleLists();
+    }
 
     return actionProvider.handleDontUnderstood(message);
   });
@@ -136,6 +142,18 @@ export const stageManager = actionProvider => {
     }
     if (message.includes('database')) {
       return actionProvider.searchingQuestions.handleMovieDatabase();
+    }
+  });
+
+  stageMap.set(Stages.LISTS_QUESTIONS, message => {
+    if (message.includes('create')) {
+      return actionProvider.listsQuestions.handleCreatingLists();
+    }
+    if (message.includes('types')) {
+      return actionProvider.listsQuestions.handleResultTypes();
+    }
+    if (message.includes('database')) {
+      return actionProvider.listsQuestions.handleMovieDatabase();
     }
   });
 

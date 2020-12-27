@@ -53,14 +53,14 @@ const slice = createSlice({
       const { collection } = toSee;
       const { content, name } = action.payload;
 
-      collection.ids = content;
+      collection.ids = content ? content.split(';') : [];
 
       toSee.name = name || toSee.name;
 
       Object.values(toSee.removed).forEach(r => delete collection.byId[r.imdbID]);
 
       collection.list.push(...Object.values(toSee.added));
-      collection.list = collection.list.filter(m => content.includes(m.imdbID));
+      collection.list = collection.list.filter(m => collection.ids.includes(m.imdbID));
 
       toSee.added = {};
       toSee.removed = {};
@@ -111,8 +111,6 @@ const slice = createSlice({
 
       toSee.name = dbData.name;
 
-      toSee.collection.ids = [...dbData.content];
-
       toSee.loading = false;
       toSee.hasError = false;
     },
@@ -131,8 +129,12 @@ const slice = createSlice({
       const lists = action.payload;
 
       if (lists.length > 0) {
-        toSee.name = lists[0].name;
-        toSee.collection.ids.push(...lists[0].content);
+        const list = lists[0];
+        toSee.name = list.name;
+        if (list.content) {
+          const arrayList = list.content.split(';');
+          toSee.collection.ids.push(...arrayList);
+        }
       }
 
       toSee.loading = false;

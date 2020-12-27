@@ -112,6 +112,32 @@ class ActionProvider {
     return { handleSearch, handleHowToSearch, handleResultTypes, handleMovieDatabase };
   })();
 
+  listsQuestions = (() => {
+    const handleLists = () => {
+      const botMessage = this.createChatBotMessage(
+        'Okey, what do you need to know about the lists in this page?',
+        {
+          widget: 'listsQuestions',
+        }
+      );
+
+      this.updateChatbotState(botMessage, Stages.LISTS_QUESTIONS);
+    };
+
+    const handleCreatingLists = () => {
+      const botMessage = this.createChatBotMessage(
+        'Follow this instructions to create a list ',
+        {
+          widget: 'creatingListsQuestions',
+        }
+      );
+
+      this.updateChatbotState(botMessage, Stages.USER_QUESTIONS);
+    };
+
+    return { handleLists, handleCreatingLists };
+  })();
+
   handleReturnMainStage = helpMessage => {
     const botMessage = this.createChatBotMessage(
       `${helpMessage || ''} Can I help you in anything more?`
@@ -192,6 +218,12 @@ class ActionProvider {
     );
 
     this.updateChatbotState(botMessage, Stages.ASK_HELP);
+  };
+
+  handleMessageToUser = message => {
+    const botMessage = this.createChatBotMessage(message);
+
+    this.updateChatbotState(botMessage);
   };
 }
 

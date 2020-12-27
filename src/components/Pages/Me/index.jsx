@@ -6,7 +6,7 @@ const Home = () => {
   const userData = useSelector(getUserData);
 
   return (
-    <div style={{ margin: '20px' }}>
+    <div style={{ margin: '20px', color: 'white' }}>
       <ul>
         <li>Name: {userData.userName}</li>
         <li>Email: {userData.email}</li>

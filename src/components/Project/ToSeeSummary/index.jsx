@@ -92,13 +92,22 @@ const ToSeeSummary = () => {
       )) ||
         (userData.token &&
           ((!creatingList && !loading && (
-            <Button style={{ color: 'green' }} onClick={() => setCreatingList(true)}>
+            <Button
+              id='createList'
+              style={{ color: 'green' }}
+              onClick={() => setCreatingList(true)}
+            >
               Create your list
             </Button>
           )) ||
             (!loading && (
               <form className={classes.newListForm} onSubmit={e => handleSubmitList(e)}>
-                <TextField label='List name' onChange={e => handleListNameChange(e)} />
+                <TextField
+                  id='newListForm'
+                  className={classes.textField}
+                  label='List name'
+                  onChange={e => handleListNameChange(e)}
+                />
                 {error.hasError && (
                   <Tooltip placement='top' title={error.message}>
                     <ErrorOutlineIcon />

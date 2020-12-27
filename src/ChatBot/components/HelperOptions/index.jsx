@@ -13,7 +13,11 @@ const HelperOptions = props => {
       text: 'Searching movies',
       handler: props.actionProvider.searchingQuestions.handleSearch,
     },
-    { id: 3, text: 'Lists to see', handler: () => {} },
+    {
+      id: 3,
+      text: 'Lists to see',
+      handler: props.actionProvider.listsQuestions.handleLists,
+    },
   ];
 
   return <Options options={options} />;

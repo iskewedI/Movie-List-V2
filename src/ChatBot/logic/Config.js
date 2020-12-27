@@ -13,6 +13,9 @@ import HowToSearchInstructions from '../components/categories/SearchingQuestions
 import TypesOfResults from '../components/categories/SearchingQuestions/TypesOfResults/';
 import MovieDatabase from '../components/categories/SearchingQuestions/MovieDatabase/';
 
+import ListsQuestions from '../components/categories/ListsQuestions/';
+import CreatingListsInstructions from '../components/categories/ListsQuestions/CreatingListsInstructions/';
+
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import HalIcon from '../images/HAL_9000.svg';
@@ -70,6 +73,14 @@ export const getConfig = handleOpen => ({
     {
       widgetName: 'movieDatabase',
       widgetFunc: props => <MovieDatabase {...props} />,
+    },
+    {
+      widgetName: 'listsQuestions',
+      widgetFunc: props => <ListsQuestions {...props} />,
+    },
+    {
+      widgetName: 'creatingListsQuestions',
+      widgetFunc: props => <CreatingListsInstructions {...props} />,
     },
   ],
   customStyles: {
