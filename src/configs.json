@@ -4,6 +4,6 @@
     "apiKey": "?apikey=5c6d9a6c"
   },
     "backend": {
-      "baseURL": "http://localhost/api"
+      "baseURL": "https://backend-movieslistv2.herokuapp.com/api"
     }
 }
