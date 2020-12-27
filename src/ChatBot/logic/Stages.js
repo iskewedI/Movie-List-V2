@@ -149,6 +149,12 @@ export const stageManager = actionProvider => {
     if (message.includes('create')) {
       return actionProvider.listsQuestions.handleCreatingLists();
     }
+    if (message.includes('add')) {
+      return actionProvider.listsQuestions.handleAddingContent();
+    }
+    if (message.includes('remov')) {
+      return actionProvider.listsQuestions.handleRemovingContent();
+    }
     if (message.includes('types')) {
       return actionProvider.listsQuestions.handleResultTypes();
     }

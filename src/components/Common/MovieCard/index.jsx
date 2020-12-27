@@ -72,7 +72,7 @@ const MovieCard = props => {
                 <PlaylistAddIcon />
               </Tooltip>
             ) : (
-              <Tooltip title='Remove' placement='top'>
+              <Tooltip className='removeFromListBtn' title='Remove' placement='top'>
                 <BackspaceIcon />
               </Tooltip>
             )}

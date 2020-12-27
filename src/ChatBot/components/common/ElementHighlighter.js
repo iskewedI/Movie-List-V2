@@ -1,5 +1,6 @@
 export default class {
   constructor() {
+    this.lastId = 0;
     this.elements = {};
   }
 
@@ -15,7 +16,7 @@ export default class {
     element,
     properties = { color: '#ffc107', background: '#8d8d9e' }
   ) => {
-    const id = element.id;
+    const id = `${element.id}-${this.lastId++}`;
 
     let defaultElement = this.elements[id];
 

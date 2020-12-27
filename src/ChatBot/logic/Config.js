@@ -15,6 +15,8 @@ import MovieDatabase from '../components/categories/SearchingQuestions/MovieData
 
 import ListsQuestions from '../components/categories/ListsQuestions/';
 import CreatingListsInstructions from '../components/categories/ListsQuestions/CreatingListsInstructions/';
+import AddingContentInstructions from '../components/categories/ListsQuestions/AddingContentInstructions/';
+import RemovingContentInstructions from '../components/categories/ListsQuestions/RemovingContentInstructions/';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -81,6 +83,14 @@ export const getConfig = handleOpen => ({
     {
       widgetName: 'creatingListsQuestions',
       widgetFunc: props => <CreatingListsInstructions {...props} />,
+    },
+    {
+      widgetName: 'addingContentQuestions',
+      widgetFunc: props => <AddingContentInstructions {...props} />,
+    },
+    {
+      widgetName: 'removingContentQuestions',
+      widgetFunc: props => <RemovingContentInstructions {...props} />,
     },
   ],
   customStyles: {

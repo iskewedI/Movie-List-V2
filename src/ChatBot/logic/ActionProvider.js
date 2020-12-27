@@ -135,7 +135,34 @@ class ActionProvider {
       this.updateChatbotState(botMessage, Stages.USER_QUESTIONS);
     };
 
-    return { handleLists, handleCreatingLists };
+    const handleAddingContent = () => {
+      const botMessage = this.createChatBotMessage(
+        'Follow this instructions to add content to lists',
+        {
+          widget: 'addingContentQuestions',
+        }
+      );
+
+      this.updateChatbotState(botMessage, Stages.USER_QUESTIONS);
+    };
+
+    const handleRemovingContent = () => {
+      const botMessage = this.createChatBotMessage(
+        'Follow this instructions to remove content from lists',
+        {
+          widget: 'removingContentQuestions',
+        }
+      );
+
+      this.updateChatbotState(botMessage, Stages.USER_QUESTIONS);
+    };
+
+    return {
+      handleLists,
+      handleCreatingLists,
+      handleAddingContent,
+      handleRemovingContent,
+    };
   })();
 
   handleReturnMainStage = helpMessage => {

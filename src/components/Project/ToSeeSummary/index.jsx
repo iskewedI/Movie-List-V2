@@ -81,7 +81,7 @@ const ToSeeSummary = () => {
   };
 
   return (
-    <div className={classes.summary}>
+    <div id='toSeeSummary' className={classes.summary}>
       {(listName && (
         <Link to='/listToSee' className='nav-link' href='/#'>
           To see:

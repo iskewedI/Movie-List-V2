@@ -67,6 +67,7 @@ const ListToSee = () => {
         <h2 className={classes.listName}>{listName}</h2>
         {hasChanges && (
           <Button
+            id='saveChanges'
             variant='contained'
             color='primary'
             onClick={onSaveChanges}

@@ -28,7 +28,7 @@ const ChatBot = () => {
 
   return (
     <div className={classes.chatBot}>
-      <header className='ChatBot-header'>
+      <header>
         {!open && (
           <Tooltip
             title='Open HAL-9001 to take some guidance about how to use this page!'
