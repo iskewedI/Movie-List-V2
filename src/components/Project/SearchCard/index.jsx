@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Container, Typography, TextField, Button } from '@material-ui/core';
 import styles from './styles';
 
 const SearchCard = ({ onSearch }) => {
+  const { t } = useTranslation();
+
   const classes = styles();
+
   const [searchText, setSearchText] = useState('');
 
   const handleTextChange = event => {
@@ -15,7 +19,7 @@ const SearchCard = ({ onSearch }) => {
   return (
     <Container className={classes.container}>
       <Typography variant='h2' className={classes.title}>
-        Movies&Series
+        {t('home.search_title')}
       </Typography>
       <form
         onSubmit={e => {
@@ -41,7 +45,7 @@ const SearchCard = ({ onSearch }) => {
         variant='contained'
         onClick={() => onSearch(formatText(searchText))}
       >
-        Search
+        {t('home.search_button')}
       </Button>
     </Container>
   );

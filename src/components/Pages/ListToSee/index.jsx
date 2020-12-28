@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import {
   getMyList,
   getListName,
@@ -19,6 +20,8 @@ import HorizontalAccordion from '../../Common/HorizontalAccordion/';
 import styles from './styles';
 
 const ListToSee = () => {
+  const { t } = useTranslation();
+
   const classes = styles();
 
   const dispatch = useDispatch();
@@ -59,7 +62,8 @@ const ListToSee = () => {
     dispatch(saveList());
   };
 
-  const types = ['Movies', 'Series'];
+  // const types = [t('lists.types.movies'), t('lists.types.series')];
+  const types = ['movies', 'series'];
 
   return (
     <React.Fragment>
@@ -73,20 +77,23 @@ const ListToSee = () => {
             onClick={onSaveChanges}
             className={classes.saveButton}
           >
-            Save
+            {t('buttons.save')}
           </Button>
         )}
       </div>
 
       <div className={classes.accordionsContainer}>
-        {types.map((t, i) => (
+        {types.map((type, i) => (
           <div key={`Accordion ${i}`} className={classes.accordionRow}>
-            <h1 className={classes.titles}>{t}</h1>
+            <h1 className={classes.titles}>{t(`lists.types.${type}`)}</h1>
             <HorizontalAccordion
               elements={listToSee.filter(e =>
-                t.toUpperCase().includes(e.Type.toUpperCase())
+                type.toUpperCase().includes(e.Type.toUpperCase())
               )}
-              type={t}
+              noContentMessage={t('lists.messages.no_content').replace(
+                '{type}',
+                t(`lists.types.${type}`)
+              )}
             />
           </div>
         ))}

@@ -13,6 +13,9 @@ export default makeStyles({
   title: {
     textAlign: 'center',
   },
+  titleText: {
+    color: 'black',
+  },
   navButtons: {
     float: 'right',
     display: 'block',

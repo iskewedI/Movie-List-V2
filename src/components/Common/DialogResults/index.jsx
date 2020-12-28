@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -13,6 +14,8 @@ import { getListName } from '../../../store/toSee';
 import styles from './styles';
 
 const DialogResults = ({ title, onClose }) => {
+  const { t } = useTranslation();
+
   const classes = styles();
 
   const movies = useSelector(getSearchedMovies);
@@ -28,22 +31,23 @@ const DialogResults = ({ title, onClose }) => {
         PaperProps={{ className: classes.paper }}
       >
         {!listName && (
-          <Tooltip
-            title='You need to create a list to keep selected movies in touch!'
-            placement='top'
-          >
+          <Tooltip title={t('tooltips.errors.no_list_created')} placement='top'>
             <ErrorOutlineIcon />
           </Tooltip>
         )}
-        <DialogTitle id='responsive-dialog-title' className={classes.title}>
-          {title}
-        </DialogTitle>
+        <DialogTitle
+          id='responsive-dialog-title'
+          className={classes.title}
+          children={<h2 className={classes.titleText}>{title}</h2>}
+          disableTypography={true}
+        />
+
         <DialogContent className={classes.content}>
           <CardCollection cards={movies} />
         </DialogContent>
         <DialogActions className={classes.navButtons}>
           <Button onClick={onClose} color='primary'>
-            Back
+            {t('buttons.back')}
           </Button>
         </DialogActions>
       </Dialog>

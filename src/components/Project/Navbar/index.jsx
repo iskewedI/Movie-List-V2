@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -13,6 +14,8 @@ import ToSeeSummary from '../ToSeeSummary';
 import styles from './styles';
 
 const Navbar = () => {
+  const { t } = useTranslation();
+
   const classes = styles();
 
   const userData = useSelector(getUserData);
@@ -23,7 +26,7 @@ const Navbar = () => {
     <div>
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
         <Link to={'/'} className='navbar-brand' href='/#'>
-          Movies
+          {t('navbar.page_title')}
         </Link>
         <button
           className='navbar-toggler'
@@ -39,7 +42,7 @@ const Navbar = () => {
         <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
           <div className='navbar-nav'>
             <Link to={'/'} className='nav-link active' href='/#'>
-              Home <span className='sr-only'>(current)</span>
+              {t('navbar.home')} <span className='sr-only'>(current)</span>
             </Link>
             <ToSeeSummary />
           </div>
@@ -53,7 +56,7 @@ const Navbar = () => {
                   className='nav-link navbar-right btn btn-outline-light instructionFocusable'
                   href='/#'
                 >
-                  Log-In
+                  {t('navbar.user.log_in')}
                 </Link>
                 <Tooltip title='Register for free!'>
                   <Link
@@ -62,7 +65,7 @@ const Navbar = () => {
                     className='nav-link navbar-right btn btn-outline-light text-primary'
                     href='/#'
                   >
-                    Sign Up!
+                    {t('navbar.user.sign_up')}
                   </Link>
                 </Tooltip>
               </div>
@@ -86,7 +89,7 @@ const Navbar = () => {
                   className='nav-link navbar-right btn btn-outline-light text-primary'
                   href='/#'
                 >
-                  Log Out
+                  {t('navbar.user.log_out')}
                 </Link>
               </div>
             )}

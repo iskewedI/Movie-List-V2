@@ -7,5 +7,4 @@ export default makeStyles({
     userSelect: 'none',
     height: '100%',
   },
-  changesViewer: {},
 });

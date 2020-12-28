@@ -1,0 +1,80 @@
+{
+    "navbar": {
+        "page_title": "Movies",
+        "home": "Home",
+        "lists": {
+            "label": "List"
+        },
+        "user": {
+            "log_in": "Log-In",
+            "log_out": "Log-Out",
+            "sign_up": "Sign-Up"
+        }
+    },
+    "home": {
+        "search_title": "Movies&Series",
+        "search_button": "SEARCH",
+        "dialog": {
+            "title": "Search results",
+            "more_info": "MORE INFO",
+            "messages": {
+                "no_content": "No results found!",
+                "bad_search": "Oops! It seems that your search was too short or incorrect :("
+            }
+        },
+        "language_selector": {
+            "label": "Language"
+        }
+    },
+    "lists": {
+        "types": {
+            "movies": "movies",
+            "series": "series"
+        },
+        "messages": {
+            "no_content": "There's no {type} in the list"
+        }
+    },
+    "user_info": {
+        "name": "Name",
+        "email": "Email"
+    },
+    "forms": {
+        "titles": {
+            "log_in": "LOGIN",
+            "sign_up": "NEW ACCOUNT"
+        },
+        "fields": {
+            "user_name": "User Name",
+            "email": "Email",
+            "password": "Password"
+        },
+        "buttons": {
+            "log_in": "Login",
+            "sign_up": "Sign Up"
+        }
+    },
+    "chatbot": {},
+    "buttons": {
+        "back": "BACK",
+        "save": "SAVE",
+        "remove": "REMOVE"
+    },
+    "tooltips": {
+        "errors": {
+            "no_list_created": "You need to create a list to keep favorite content in touch!"
+        },
+        "buttons": {
+            "add": "Add",
+            "remove": "Remove",
+            "restore": "Restore",
+            "open_chatbot": "Open HAL-9001 to take some guidance about how to use this page!"
+        }
+    },
+    "languages": {
+        "en": "English",
+        "es": "Spanish",
+        "jp": "Japanese",
+        "ch": "Chinese"
+    }
+}

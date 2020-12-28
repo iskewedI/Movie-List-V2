@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { CircularProgress, Grid } from '@material-ui/core';
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -11,6 +12,7 @@ import { getMoviesLoading, getMoviesHasError } from '../../../store/movies';
 import styles from './styles';
 
 const CardCollection = ({ cards }) => {
+  const { t } = useTranslation();
   const classes = styles();
 
   const [rangeToShow, setRangeToShow] = useState({ start: 0, end: 3 });
@@ -45,15 +47,14 @@ const CardCollection = ({ cards }) => {
     return (
       <React.Fragment>
         <ErrorOutlineIcon className={classes.errorIcon} />
-        <h3 className={classes.errorMessage}>
-          Oops! It seems that your search was too short or incorrect :(
-        </h3>
+        <h3 className={classes.errorMessage}>{t('home.dialog.messages.bad_search')}</h3>
       </React.Fragment>
     );
 
   const cardsToRender = cards.slice(rangeToShow.start, rangeToShow.end);
 
-  if (cardsToRender.length === 0) return <div>No movies found!</div>;
+  if (cardsToRender.length === 0)
+    return <div>{t('home.dialog.messages.no_content')}</div>;
 
   return (
     <React.Fragment>

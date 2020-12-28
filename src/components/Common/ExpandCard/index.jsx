@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import * as classNames from 'classnames';
 import BackspaceIcon from '@material-ui/icons/Backspace';
 import RestoreIcon from '@material-ui/icons/Restore';
@@ -18,6 +19,8 @@ const ExpandCard = ({
   getTransformDefault,
   getZIndex,
 }) => {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
 
   const changeInList = () => {
@@ -86,12 +89,12 @@ const ExpandCard = ({
     <li className={classes} style={styles.item}>
       <button className='expandCard--deleteBtn' onClick={changeInList}>
         {(!movieChange || movieChange === 'added') && (
-          <Tooltip title='Remove' placement='top'>
+          <Tooltip title={t('tooltips.buttons.remove')} placement='top'>
             <BackspaceIcon />
           </Tooltip>
         )}
         {movieChange && movieChange === 'removed' && (
-          <Tooltip title='Restore' placement='top'>
+          <Tooltip title={t('tooltips.buttons.restore')} placement='top'>
             <RestoreIcon />
           </Tooltip>
         )}
@@ -108,7 +111,7 @@ const ExpandCard = ({
         <h6>{clipTitle(data.Title)}</h6>
       </div>
       <div className='expandCard--closeButton'>
-        <a href='/#'>Back</a>
+        <a href='/#'>{t('buttons.back')} </a>
       </div>
     </li>
   );

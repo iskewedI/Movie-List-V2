@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import ReactCardFlip from 'react-card-flip';
 import Button from '@material-ui/core/Button';
@@ -16,7 +17,10 @@ import { switchInList, getMovieInList, getListName } from '../../../store/toSee'
 import styles from './styles';
 
 const MovieCard = props => {
+  const { t } = useTranslation();
+
   const classes = styles();
+
   const { Title, Year, Type, imdbID, Poster } = props;
 
   const [isFlipped, flipCard] = useState(false);
@@ -63,7 +67,7 @@ const MovieCard = props => {
       </CardActionArea>
       <CardActions>
         <Button size='small' color='primary' onClick={handleMoreInfo}>
-          {!isFlipped ? 'More info' : 'Less Info'}
+          {!isFlipped ? t('home.dialog.more_info') : 'Less Info'}
         </Button>
         {listName && (
           <Button size='small' color='primary' onClick={addOrRemove}>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import * as classNames from 'classnames';
 import ExpandCard from '../ExpandCard/index';
 import Button from '@material-ui/core/Button';
@@ -8,7 +9,9 @@ import * as Helper from './Helper';
 
 import './styles.css';
 
-const HorizontalAccordion = ({ elements, type }) => {
+const HorizontalAccordion = ({ elements, noContentMessage }) => {
+  const { t } = useTranslation();
+
   const [activeIndex, setActiveIndex] = useState(null);
   const [open, setOpen] = useState(false);
   const [movement, setMovement] = useState(0);
@@ -62,8 +65,7 @@ const HorizontalAccordion = ({ elements, type }) => {
     focused: open,
   });
 
-  if (elements.length <= 0)
-    return <div className='nullMessage'>There's no {type.toLowerCase()} in the list</div>;
+  if (elements.length <= 0) return <div className='nullMessage'>{noContentMessage}</div>;
 
   return (
     <div className={'customAccordion--menu-container ' + classes} onClick={lossFocus}>

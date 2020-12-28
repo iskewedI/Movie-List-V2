@@ -1,0 +1,79 @@
+{
+    "navbar": {
+        "page_title": "Películas",
+        "home": "Inicio",
+        "lists": {
+            "label": "Lista"
+        },
+        "user": {
+            "log_in": "Iniciar sesión",
+            "log_out": "Cerrar sesión",
+            "sign_up": "Registrarse"
+        }
+    },
+    "home": {
+        "search_title": "Películas&Series",
+        "search_button": "BUSCAR",
+        "dialog": {
+            "title": "Resultados de su búsqueda",
+            "more_info": "MÁS INFO",
+            "messages": {
+                "no_content": "No se han encontrado resultados!",
+                "bad_search": "Ups! Tu texto de búsqueda fue muy corto o incorrecto :("
+            }
+        },
+        "language_selector": {
+            "label": "Idioma"
+        }
+    },
+    "lists": {
+        "types": {
+            "movies": "películas",
+            "series": "series"
+        },
+        "messages": {
+            "no_content": "No hay {type} en la lista."
+        }
+    },
+    "user_info": {
+        "name": "Nombre",
+        "email": "Email"
+    },
+    "forms": {
+        "titles": {
+            "log_in": "INICIAR SESIÓN",
+            "sign_up": "NUEVA CUENTA"
+        },
+        "fields": {
+            "user_name": "Nombre de usuario",
+            "email": "Email",
+            "password": "Contraseña"
+        },
+        "buttons": {
+            "log_in": "Iniciar sesión",
+            "sign_up": "Registrarse"
+        }
+    },
+    "chatbot": {},
+    "buttons": {
+        "back": "ATRÁS",
+        "save": "GUARDAR"
+    },
+    "tooltips": {
+        "errors": {
+            "no_list_created": "Necesitas crear una lista para poder almacenar tu contenido favorito!"
+        },
+        "buttons": {
+            "add": "Agregar",
+            "remove": "Borrar",
+            "restore": "Restaurar",
+            "open_chatbot": "Abre HAL_9001 para que te guíe acerca de como usar esta página!"
+        }
+    },
+    "languages": {
+        "en": "Inglés",
+        "es": "Español",
+        "jp": "Japonés",
+        "ch": "Chino"
+    }
+}

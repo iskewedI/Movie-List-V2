@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -24,6 +25,8 @@ import {
 import styles from './styles';
 
 const ToSeeSummary = () => {
+  const { t } = useTranslation();
+
   const classes = styles();
 
   const dispatch = useDispatch();
@@ -84,7 +87,7 @@ const ToSeeSummary = () => {
     <div id='toSeeSummary' className={classes.summary}>
       {(listName && (
         <Link to='/listToSee' className='nav-link' href='/#'>
-          To see:
+          {`${t('navbar.lists.label')}: `}
           <span id='toSeeCounter' className={classes.counter}>
             {getListCount()}
           </span>

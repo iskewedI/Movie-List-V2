@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Chatbot from 'react-chatbot-kit';
 import ActionProvider from './logic/ActionProvider';
 import MessageParser from './logic/MessageParser.js';
@@ -9,6 +10,8 @@ import HalIcon from './images/HAL_9000.svg';
 import styles from './styles';
 
 const ChatBot = () => {
+  const { t } = useTranslation();
+
   const classes = styles();
 
   const [open, setOpen] = useState(false);
@@ -30,10 +33,7 @@ const ChatBot = () => {
     <div className={classes.chatBot}>
       <header>
         {!open && (
-          <Tooltip
-            title='Open HAL-9001 to take some guidance about how to use this page!'
-            placement='top'
-          >
+          <Tooltip title={t('tooltips.buttons.open_chatbot')} placement='top'>
             <Button className={classes.compressedChat} onClick={() => setOpen(!open)}>
               <img src={HalIcon} alt='HAL Icon' width='64px' />
             </Button>
