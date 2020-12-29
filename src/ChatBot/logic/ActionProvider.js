@@ -1,6 +1,6 @@
 import Stages from './Stages';
 
-class ActionProvider {
+export default class ActionProvider {
   constructor(createChatBotMessage, setStateFunc, createClientMessage) {
     this.createChatBotMessage = createChatBotMessage;
     this.setState = setStateFunc;
@@ -18,7 +18,7 @@ class ActionProvider {
   userQuestions = (() => {
     const handleUser = () => {
       const botMessage = this.createChatBotMessage(
-        'Okey, what do you need to know about the users in this page?',
+        '#chatbot.stages.main_help.user_help_requested#',
         {
           widget: 'userQuestions',
         }
@@ -29,7 +29,7 @@ class ActionProvider {
 
     const handleSignUp = () => {
       const botMessage = this.createChatBotMessage(
-        'Follow this instructions to Sign-Up: ',
+        '#chatbot.stages.user_help.categories.sign_up.label#',
         {
           widget: 'signUpQuestions',
         }
@@ -40,7 +40,7 @@ class ActionProvider {
 
     const handleLogIn = () => {
       const botMessage = this.createChatBotMessage(
-        'Follow this instructions to Log-In: ',
+        '#chatbot.stages.user_help.categories.log_in.label#',
         {
           widget: 'logInQuestions',
         }
@@ -50,9 +50,12 @@ class ActionProvider {
     };
 
     const handleMyInfo = () => {
-      const botMessage = this.createChatBotMessage('About your info in this page: ', {
-        widget: 'myInfoQuestions',
-      });
+      const botMessage = this.createChatBotMessage(
+        '#chatbot.stages.user_help.categories.about_my_info.label#',
+        {
+          widget: 'myInfoQuestions',
+        }
+      );
 
       this.updateChatbotState(botMessage, Stages.USER_QUESTIONS);
     };
@@ -68,7 +71,7 @@ class ActionProvider {
   searchingQuestions = (() => {
     const handleSearch = () => {
       const botMessage = this.createChatBotMessage(
-        'Okey, what do you need to know about the searching in this page?',
+        '#chatbot.stages.main_help.search_help_requested#',
         {
           widget: 'searchingQuestions',
         }
@@ -115,7 +118,7 @@ class ActionProvider {
   listsQuestions = (() => {
     const handleLists = () => {
       const botMessage = this.createChatBotMessage(
-        'Okey, what do you need to know about the lists in this page?',
+        '#chatbot.stages.main_help.lists_help_requested#',
         {
           widget: 'listsQuestions',
         }
@@ -167,7 +170,7 @@ class ActionProvider {
 
   handleReturnMainStage = helpMessage => {
     const botMessage = this.createChatBotMessage(
-      `${helpMessage || ''} Can I help you in anything more?`
+      `${helpMessage || ''} #chatbot.stages.ask_help.more_help#`
     );
 
     this.updateChatbotState(botMessage, Stages.ASK_HELP);
@@ -176,7 +179,7 @@ class ActionProvider {
   handleMainHelp = asksHelp => {
     if (asksHelp === true) {
       const botMessage = this.createChatBotMessage(
-        'Great! Take a look at this tutorial options: ',
+        '#chatbot.stages.ask_help.help_confirmed#',
         {
           widget: 'helperOptions',
           delay: 100,
@@ -185,29 +188,27 @@ class ActionProvider {
       this.updateChatbotState(botMessage, Stages.MAIN_HELP);
     } else {
       const botMessage = this.createChatBotMessage(
-        "Okey! I'm going to be here if you need some help, just ask for me!!"
+        '#chatbot.stages.waiting.bot_waiting#'
       );
       this.updateChatbotState(botMessage, Stages.WAITING);
     }
   };
 
   handleBackFromWaiting = () => {
-    const botMessage = this.createChatBotMessage(
-      'Hello again! How was your adventure? Can I help you in something??'
-    );
+    const botMessage = this.createChatBotMessage('#chatbot.stages.waiting.user_return#');
 
     this.updateChatbotState(botMessage, Stages.ASK_HELP);
   };
 
   handleRollingBack = () => {
     const userMessage = this.createClientMessage(
-      "I understand, I'm so sorry and I don't want to offend you, majesty. I'll try again."
+      '#chatbot.stages.rolling_back.user_sorry#'
     );
 
     this.updateChatbotState(userMessage);
 
     const botMessage = this.createChatBotMessage(
-      "I hope so. That's what I was talking about. It's feels soo great... Okey, go on. Do you need something else?"
+      '#chatbot.stages.rolling_back.user_sorry_bot_response#'
     );
 
     this.updateChatbotState(botMessage, Stages.ASK_HELP);
@@ -217,34 +218,24 @@ class ActionProvider {
     let extraMessage;
 
     if (level === 'status') {
-      extraMessage =
-        "That's good or bad? Please, try to communicate with HUMANS, no ALIENS ;)";
+      extraMessage = 'chatbot.dont_understood.an_status';
     } else if (level === 'answer') {
-      extraMessage =
-        "That's a yes?? Can you open your mouth a bit more...? Open your hand, I mean...? Ok, forgive that.";
+      extraMessage = 'chatbot.dont_understood.an_answer';
     } else {
-      extraMessage =
-        "Okey, stop trying to ask me weird things, i'm smarter than you, remember that, so only asK mE thE THINgs I ALLOW YOU! >:(";
+      extraMessage = extraMessage = 'chatbot.dont_understood.anything';
     }
 
-    const botMessage = this.createChatBotMessage(`${message}?? ${extraMessage}`);
+    const botMessage = this.createChatBotMessage(`${message}?? #${extraMessage}#`);
 
     this.updateChatbotState(botMessage, Stages.ROLLING_BACK);
   };
 
   handleUserStatus = status => {
-    let statusMessage;
-    if (status === 'good') {
-      statusMessage = "Excelent! I'm so happy for that!";
-    } else if (status === 'bad') {
-      statusMessage = "Oh, i'm so sorry about that. I'll do my best for you!";
-    }
-
-    const botMessage = this.createChatBotMessage(
-      `${statusMessage} Do you need some guidance with this page?`
+    const userStatusResponse = this.createChatBotMessage(
+      `#chatbot.stages.user_status.${status}#. #chatbot.ask_guidance#`
     );
 
-    this.updateChatbotState(botMessage, Stages.ASK_HELP);
+    this.updateChatbotState(userStatusResponse, Stages.ASK_HELP);
   };
 
   handleMessageToUser = message => {
@@ -253,5 +244,3 @@ class ActionProvider {
     this.updateChatbotState(botMessage);
   };
 }
-
-export default ActionProvider;

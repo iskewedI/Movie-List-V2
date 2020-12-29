@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { createChatBotMessage } from 'react-chatbot-kit';
+
 import { Stages } from './Stages';
 import HelperOptions from '../components/HelperOptions';
 
@@ -19,12 +21,13 @@ import AddingContentInstructions from '../components/categories/ListsQuestions/A
 import RemovingContentInstructions from '../components/categories/ListsQuestions/RemovingContentInstructions/';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
 import HalIcon from '../images/HAL_9000.svg';
+
+import { BotMessage, UserMessage } from '../components/CustomComponents/Message/';
 
 export const getConfig = handleOpen => ({
   botName: 'HAL-9001',
-  initialMessages: [createChatBotMessage(`Hello! How are you?`)],
+  initialMessages: [createChatBotMessage('#chatbot.greet#')],
   state: {
     stage: Stages.USER_STATUS,
   },
@@ -38,6 +41,8 @@ export const getConfig = handleOpen => ({
         </button>
       </button>
     ),
+    botChatMessage: props => <BotMessage {...props} />,
+    userChatMessage: props => <UserMessage {...props} />,
   },
   widgets: [
     {

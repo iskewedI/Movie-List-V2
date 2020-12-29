@@ -54,7 +54,53 @@
             "sign_up": "Registrarse"
         }
     },
-    "chatbot": {},
+    "chatbot": {
+        "greet": "Hola! ¿Como estás?",
+        "ask_guidance": "¿Necesitas que te ayude en algo?",
+        "stages": {
+            "waiting": {
+                "user_return": "¡Hola otra vez! ¿Cómo estuvo tu aventura? ¿Puedo ayudarte en algo?",
+                "bot_waiting": "¡Bueno! Voy a estar por acá por si necesitas algo, ¡sólo pregunta por mí!"
+            },
+            "rolling_back": {
+                "user_sorry": "Lo entiendo, lo siento mucho, no quiero ofenderte, SU MAJESTAD.",
+                "user_sorry_bot_response": "Eso espero. De eso estaba hablando. Se siente tan bien... Okey, adelante. ¿Necesitas algo mas o qué? "
+            },
+            "user_status": {
+                "good": "¡Excelente! ¡Estoy muy feliz por eso!",
+                "bad": "Qué mal, siento eso. ¡Voy a dar lo mejor de mí por usted!",
+                "positive_responses": "si,podes,dale,bien,estupendo,magnifico,especial,barbaro,mejor,correcto,excelente,feliz,sonriendo,perfecto,hermoso,lindo,ok,bendecido,impresionante",
+                "negative_responses": "no,nunca,basta,mal,estresado,peor,abismal,grave,duro,debil,falso,ansioso,odio,banal,callado,suicida,cansado,depresivo"
+            },
+            "ask_help": {
+                "help_confirmed": "¡Muy bien! Pegale una mirada a las opciones de la guía: ",
+                "more_help": "¿Puedo ayudarte en algo más?"
+            },
+            "main_help": {
+                "user_help_requested": "Bueno, ¿qué necesitas saber acerca de los usuarios en esta página?",
+                "search_help_requested": "Bueno, ¿qué necesitas saber acerca de la búsqueda en esta página?",
+                "lists_help_requested": "Bueno, ¿qué necesitas saber acerca de las listas en esta página?"
+            },
+            "user_help": {
+                "categories": {
+                    "sign_up": {
+                        "label": "Seguí estas instrucciones para registrarte: "
+                    },
+                    "log_in": {
+                        "label": "Seguí estas instrucciones para iniciar sesión: "
+                    },
+                    "about_my_info": {
+                        "label": "Acerca de tu información en esta página: "
+                    }
+                }
+            }
+        },
+        "dont_understood": {
+            "anything": "Okey, pará de preguntarme cosas raras, soy mas bocha que vos, acordate de eso, así que sóLo pregunTaME lAS COsas qUE YO te perMITO PREGUNTARME >:(",
+            "an_status": "Eso es bueno o malo? Por favor, intenta comunicarte con HUMANOS no con ALIENS pel*****.",
+            "an_answer": "Eso es un sí?? Podes abrir la boca un toque mas...? Abrir tu mano quiero decir...? Bueno, olvidate de eso."
+        }
+    },
     "buttons": {
         "back": "ATRÁS",
         "save": "GUARDAR"

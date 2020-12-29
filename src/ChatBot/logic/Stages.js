@@ -9,7 +9,7 @@ export const Stages = {
   LISTS_QUESTIONS: 7,
 };
 
-export const stageManager = actionProvider => {
+export const stageManager = (actionProvider, t) => {
   const stageMap = new Map();
 
   stageMap.set(Stages.WAITING, message => {
@@ -23,40 +23,9 @@ export const stageManager = actionProvider => {
   stageMap.set(Stages.USER_STATUS, message => {
     let wordsList = message.split(' ');
 
-    const positiveStatus = [
-      'great',
-      'good',
-      'better',
-      'fine',
-      'excelent',
-      'happy',
-      'smile',
-      'smiling',
-      'perfect',
-      'beautiful',
-      'ok',
-      'okey',
-      'blessed',
-      'awesome',
-    ];
+    const positiveStatus = t('chatbot.stages.user_status.positive_responses').split(',');
 
-    const negativeStatus = [
-      'bad',
-      'stressed',
-      'worst',
-      'abysmal',
-      'adverse',
-      'angry',
-      'annoy',
-      'anxious',
-      'evil',
-      'hard',
-      'hate',
-      'banal',
-      'callous',
-      'clumsy',
-      'suicide',
-    ];
+    const negativeStatus = t('chatbot.stages.user_status.negative_responses').split(',');
 
     for (const word of wordsList) {
       if (positiveStatus.includes(word)) {
@@ -72,29 +41,9 @@ export const stageManager = actionProvider => {
   stageMap.set(Stages.ASK_HELP, message => {
     let wordsList = message.split(' ');
 
-    const positiveAnswer = [
-      'yes',
-      'please',
-      'ok',
-      'of',
-      'course',
-      'fast',
-      'excelent',
-      'thank',
-      'you',
-      'ready',
-      'can',
-    ];
-    const negativeAnswer = [
-      'no',
-      "don't",
-      'dont',
-      'never',
-      'hate',
-      'stop',
-      'cant',
-      "can't",
-    ];
+    const positiveAnswer = t('chatbot.stages.user_status.positive_responses').split(',');
+
+    const negativeAnswer = t('chatbot.stages.user_status.negative_responses').split(',');
 
     for (const word of wordsList) {
       if (positiveAnswer.includes(word)) {

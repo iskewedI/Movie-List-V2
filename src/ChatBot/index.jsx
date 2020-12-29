@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Chatbot from 'react-chatbot-kit';
 import ActionProvider from './logic/ActionProvider';
-import MessageParser from './logic/MessageParser.js';
+import getMessageParser from './logic/MessageParser.js';
 import { getConfig } from './logic/Config';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -16,7 +16,7 @@ const ChatBot = () => {
 
   const [open, setOpen] = useState(false);
 
-  const config = getConfig(setOpen);
+  const config = getConfig(setOpen, t);
 
   const storageKey = 'HAL_chatbot_messages';
 
@@ -45,9 +45,9 @@ const ChatBot = () => {
             <Chatbot
               config={config}
               actionProvider={ActionProvider}
-              messageParser={MessageParser}
-              messageHistory={loadMessages()}
-              saveMessages={saveMessages}
+              messageParser={getMessageParser(t)}
+              // messageHistory={loadMessages()}
+              // saveMessages={saveMessages}
               headerText='HAL-9001'
             />
           </div>

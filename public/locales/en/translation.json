@@ -54,7 +54,53 @@
             "sign_up": "Sign Up"
         }
     },
-    "chatbot": {},
+    "chatbot": {
+        "greet": "Hello! How are you?",
+        "ask_guidance": "Do you need some guidance with this page?",
+        "stages": {
+            "waiting": {
+                "user_return": "Hello again! How was your adventure? Can I help you in something??",
+                "bot_waiting": "Okey! I'm going to be here if you need some help, just ask for me!!"
+            },
+            "rolling_back": {
+                "user_sorry": "I understand, I'm so sorry and I don't want to offend you, majesty. I'll try again.",
+                "user_sorry_bot_response": "I hope so. That's what I was talking about. It's feels soo great... Okey, go on. Do you need something else?"
+            },
+            "user_status": {
+                "good": "Excelent! I'm so happy for that!",
+                "bad": "Oh, i'm so sorry about that. I'll do my best for you!",
+                "positive_responses": "yes,please,now,great,good,better,fine,excelent,happy,smile,smiling,perfect,beautiful,ok,okey,blessed,awesome",
+                "negative_responses": "no,never,stop,bad,stressed,worst,abysmal,adverse,angry,annoy,anxious,evil,hard,hate,banal,callous,clumsy,suicide"
+            },
+            "ask_help": {
+                "help_confirmed": "Great! Take a look at this tutorial options: ",
+                "more_help": "Can I help you in anything more?"
+            },
+            "main_help": {
+                "user_help_requested": "Okey, what do you need to know about the users in this page?",
+                "search_help_requested": "Okey, what do you need to know about the searching in this page?",
+                "lists_help_requested": "Okey, what do you need to know about the lists in this page?"
+            },
+            "user_help": {
+                "categories": {
+                    "sign_up": {
+                        "label": "Follow this instructions to Sign-Up: "
+                    },
+                    "log_in": {
+                        "label": "Follow this instructions to Log-In: "
+                    },
+                    "about_my_info": {
+                        "label": "About your info in this page: "
+                    }
+                }
+            }
+        },
+        "dont_understood": {
+            "anything": "Okey, stop trying to ask me weird things, i'm smarter than you, remember that, so only asK mE thE THINgs I ALLOW YOU! >:(",
+            "an_status": "That's good or bad? Please, try to communicate with HUMANS, no ALIENS ;)",
+            "an_answer": "That's a yes?? Can you open your mouth a bit more...? Open your hand, I mean...? Ok, forgive that."
+        }
+    },
     "buttons": {
         "back": "BACK",
         "save": "SAVE",
