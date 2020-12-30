@@ -6,8 +6,8 @@ import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import Button from '@material-ui/core/Button';
-import MovieCard from '../MovieCard/';
-import { getMoviesLoading, getMoviesHasError } from '../../../store/movies';
+import MovieCard from '../MovieCard';
+import { getMoviesLoading, getMoviesHasError } from '../../../../../store/movies';
 
 import styles from './styles';
 

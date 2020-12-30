@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import * as classNames from 'classnames';
 import BackspaceIcon from '@material-ui/icons/Backspace';
 import RestoreIcon from '@material-ui/icons/Restore';
-import { switchInList, getMovieChange } from './../../../store/toSee';
+import { switchInList, getMovieChange } from '../../../../../store/toSee';
 import Tooltip from '@material-ui/core/Tooltip';
 
 const ExpandCard = ({

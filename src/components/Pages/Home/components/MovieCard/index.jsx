@@ -13,7 +13,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import BackspaceIcon from '@material-ui/icons/Backspace';
-import { switchInList, getMovieInList, getListName } from '../../../store/toSee';
+import { switchInList, getMovieInList, getListName } from '../../../../../store/toSee';
 import styles from './styles';
 
 const MovieCard = props => {

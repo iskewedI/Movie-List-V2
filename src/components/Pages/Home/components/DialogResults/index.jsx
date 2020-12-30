@@ -9,8 +9,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import Tooltip from '@material-ui/core/Tooltip';
 import CardCollection from '../CardCollection/';
-import { getSearchedMovies } from '../../../store/movies';
-import { getListName } from '../../../store/toSee';
+import { getSearchedMovies } from '../../../../../store/movies';
+import { getListName } from '../../../../../store/toSee';
 import styles from './styles';
 
 const DialogResults = ({ title, onClose }) => {

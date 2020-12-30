@@ -15,7 +15,7 @@ import { getUserLoaded, getUserLoading, getUser } from '../../../store/user';
 
 import Button from '@material-ui/core/Button';
 
-import HorizontalAccordion from '../../Common/HorizontalAccordion/';
+import HorizontalAccordion from './components/HorizontalAccordion/';
 
 import styles from './styles';
 

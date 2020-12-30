@@ -6,9 +6,9 @@ import { Container } from '@material-ui/core';
 import { searchMovies, setSearchTitle } from '../../../store/movies';
 import { getUser, getUserData } from '../../../store/user';
 import SearchCard from '../../Project/SearchCard/';
-import DialogResults from '../../Common/DialogResults/';
+import DialogResults from './components/DialogResults/';
 import styles from './styles';
-import { LanguageSelector } from '../../Project/LanguageSelector';
+import { LanguageSelector } from '../../Common/LanguageSelector';
 
 const Home = () => {
   const { t, i18n } = useTranslation();
@@ -38,11 +38,17 @@ const Home = () => {
     i18n.changeLanguage(lang);
   };
 
+  const languages = availableLanguages.map(lang => ({
+    label: lang,
+    value: t(`languages.${lang}`),
+  }));
+
   return (
     <React.Fragment>
       <LanguageSelector
+        label={t('home.language_selector.label')}
         selectedLanguage={i18n.language}
-        languages={availableLanguages}
+        languages={languages}
         handleChange={onChangeLanguage}
       />
       <Container className={classes.container}>
