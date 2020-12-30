@@ -3,7 +3,13 @@
         "page_title": "Movies",
         "home": "Home",
         "lists": {
-            "label": "List"
+            "label": "List",
+            "new_list_form": {
+                "label": "Create your list",
+                "form_title": "",
+                "form_intro": "Set the name of your new list:  ",
+                "form_input_placeholder": "Name..."
+            }
         },
         "user": {
             "log_in": "Log-In",
@@ -249,7 +255,9 @@
         "hint": "Hint!",
         "previous": "Previous",
         "next": "Next",
-        "done": "Done!"
+        "done": "Done!",
+        "create": "Create",
+        "cancel": "Cancel"
     },
     "tooltips": {
         "errors": {

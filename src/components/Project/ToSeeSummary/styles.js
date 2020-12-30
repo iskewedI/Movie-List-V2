@@ -11,8 +11,9 @@ export default makeStyles({
   },
   newListForm: {
     position: 'absolute',
-    top: '60px',
-    left: '15px',
+    // top: '60px',
+    // left: '15px',
+    height: '50%',
   },
   textField: {
     '& .MuiInput-formControl': {

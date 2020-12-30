@@ -16,7 +16,6 @@ const ExpandCard = ({
   shiftLeft,
   isLast,
   getTransformToMove,
-  getTransformDefault,
   getZIndex,
 }) => {
   const { t } = useTranslation();
@@ -57,10 +56,7 @@ const ExpandCard = ({
     },
     item: {
       transform: (function () {
-        let transform = focused
-          ? getTransformToMove(index, active)
-          : getTransformDefault(index);
-        return transform;
+        return focused ? getTransformToMove(index, active) : '';
       })(),
       zIndex: getZIndex(index),
     },

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import * as classNames from 'classnames';
 import ExpandCard from '../ExpandCard/index';
 import Button from '@material-ui/core/Button';
@@ -10,8 +9,6 @@ import * as Helper from './Helper';
 import './styles.css';
 
 const HorizontalAccordion = ({ elements, noContentMessage }) => {
-  const { t } = useTranslation();
-
   const [activeIndex, setActiveIndex] = useState(null);
   const [open, setOpen] = useState(false);
   const [movement, setMovement] = useState(0);
@@ -39,17 +36,6 @@ const HorizontalAccordion = ({ elements, noContentMessage }) => {
       countX = 20 * Helper.getDeactiveCountToMove(elements, i);
     }
     return `translate3d(${direction}${countX}%, 0, 0)`;
-  };
-  const getTransformDefault = i => {
-    let transform = '';
-    // let distanceToMiddle = Helper.getDistanceToMiddle(elements, i);
-    // if (distanceToMiddle !== 0) {
-    //   let direction = Helper.getDefaultDirectionToMove(elements, i);
-    //   let distanceToMiddle = Helper.getDistanceToMiddle(elements, i);
-    //   let count = 30 * distanceToMiddle;
-    //   transform = `translate3d(${direction}${count}%, 0, 0)`;
-    // }
-    return transform;
   };
   const getZIndex = i => {
     return Helper.getInvertedDistanceToMiddle(elements, i);
@@ -91,7 +77,6 @@ const HorizontalAccordion = ({ elements, noContentMessage }) => {
             isLast={i === elements.length - 1}
             isFirst={i === 0}
             getTransformToMove={getTransformToMove}
-            getTransformDefault={getTransformDefault}
             getZIndex={getZIndex}
           />
         ))}

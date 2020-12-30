@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import NewReleasesIcon from '@material-ui/icons/NewReleases';
 import Tooltip from '@material-ui/core/Tooltip';
-
+import FormDialog from '../../Common/FormDialog/';
 import { getUserData, getUserLoaded } from '../../../store/user';
 
 import {
@@ -31,9 +28,6 @@ const ToSeeSummary = () => {
 
   const dispatch = useDispatch();
 
-  const [creatingList, setCreatingList] = useState(false);
-  const [newListName, setNewListName] = useState('');
-
   const userData = useSelector(getUserData);
   const userLoaded = useSelector(getUserLoaded);
 
@@ -50,7 +44,7 @@ const ToSeeSummary = () => {
   const hasChanges = useSelector(getListHasChanges);
 
   const loading = useSelector(getListsLoading);
-  const error = useSelector(getRequestHasError);
+  // const error = useSelector(getRequestHasError); TODO
 
   const getListCount = function () {
     const countElement = document.getElementById('toSeeCounter');
@@ -74,13 +68,8 @@ const ToSeeSummary = () => {
     return listCount;
   };
 
-  const handleListNameChange = ({ currentTarget }) => {
-    setNewListName(currentTarget.value);
-  };
-  const handleSubmitList = e => {
-    e.preventDefault();
-
-    dispatch(createList(newListName));
+  const handleSubmitList = name => {
+    dispatch(createList(name));
   };
 
   return (
@@ -93,31 +82,19 @@ const ToSeeSummary = () => {
           </span>
         </Link>
       )) ||
-        (userData.token &&
-          ((!creatingList && !loading && (
-            <Button
-              id='createList'
-              style={{ color: 'green' }}
-              onClick={() => setCreatingList(true)}
-            >
-              Create your list
-            </Button>
-          )) ||
-            (!loading && (
-              <form className={classes.newListForm} onSubmit={e => handleSubmitList(e)}>
-                <TextField
-                  id='newListForm'
-                  className={classes.textField}
-                  label='List name'
-                  onChange={e => handleListNameChange(e)}
-                />
-                {error.hasError && (
-                  <Tooltip placement='top' title={error.message}>
-                    <ErrorOutlineIcon />
-                  </Tooltip>
-                )}
-              </form>
-            ))))}
+        (userData.token && !loading && (
+          <div>
+            <FormDialog
+              onSubmit={handleSubmitList}
+              buttonOpen={t('navbar.lists.new_list_form.label')}
+              title={t('navbar.lists.new_list_form.form_title')}
+              intro={t('navbar.lists.new_list_form.form_intro')}
+              placeholder={t('navbar.lists.new_list_form.form_input_placeholder')}
+              buttonCancel={t('buttons.cancel')}
+              buttonOk={t('buttons.create')}
+            />
+          </div>
+        ))}
 
       {listName && hasChanges && (
         <Tooltip placement='top' title='Unsaved changes'>
