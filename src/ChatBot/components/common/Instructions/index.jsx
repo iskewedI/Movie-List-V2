@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import styles from './styles';
 
 const Instructions = ({ instructions, customButtons, handleDone }) => {
+  const { t } = useTranslation();
+
   const classes = styles();
 
   const [step, setStep] = useState(0);
@@ -14,7 +17,7 @@ const Instructions = ({ instructions, customButtons, handleDone }) => {
           className={`${classes.orientation} linkButton`}
           onClick={instruction.hint}
         >
-          Give me a hint!
+          {t('buttons.hint')}
         </button>
       )}
     </li>
@@ -28,7 +31,7 @@ const Instructions = ({ instructions, customButtons, handleDone }) => {
           className={`${classes.stepController} linkButton`}
           onClick={() => setStep(step - 1)}
         >
-          Previous
+          {t('buttons.previous')}
         </button>
       )}
       {instructionsMarkup[step + 1] && (
@@ -36,7 +39,7 @@ const Instructions = ({ instructions, customButtons, handleDone }) => {
           className={`${classes.stepController} linkButton`}
           onClick={() => setStep(step + 1)}
         >
-          Next
+          {t('buttons.next')}
         </button>
       )}
       {customButtons && (
@@ -50,7 +53,7 @@ const Instructions = ({ instructions, customButtons, handleDone }) => {
       )}
       {step === instructionsMarkup.length - 1 && (
         <button className={`${classes.finalize} linkButton`} onClick={handleDone}>
-          Done!
+          {t('buttons.done')}
         </button>
       )}
     </div>

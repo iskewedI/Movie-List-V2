@@ -1,18 +1,22 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Instructions from '../../../common/Instructions/index';
 
 const MovieStorage = ({ actionProvider }) => {
+  const { t } = useTranslation();
+
   const instructions = [
     {
       id: 1,
-      text:
-        "The results of movies that you receive by your search is taken from OMDB, an API to get data about IMDB database. They're not mine. I've implemented it, nothing more!",
+      text: t(
+        'chatbot.stages.searching_questions.categories.movies_database.instructions.first.text'
+      ),
     },
   ];
 
   const onFinalize = () => {
     actionProvider.handleReturnMainStage(
-      "I hope I've answered all your questions about the movies database :D"
+      t('chatbot.stages.searching_questions.categories.movies_database.on_done')
     );
   };
 

@@ -1,14 +1,17 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Instructions from './../../../common/Instructions/index';
 import ElementHighlighter from '../../../common/ElementHighlighter';
 
 const SignUpInstructions = props => {
+  const { t } = useTranslation();
+
   const elementHighlighter = new ElementHighlighter();
 
   const instructions = [
     {
       id: 1,
-      text: "First, click on the 'Sign Up' button in the upper right corner.",
+      text: t('chatbot.stages.user_help.categories.sign_up.instructions.first.text'),
       hint: () => {
         const signUpElement = document.getElementById('SignUpButton');
 
@@ -18,7 +21,9 @@ const SignUpInstructions = props => {
           elementHighlighter.highlightElement(meElement);
 
           return props.actionProvider.handleReturnMainStage(
-            `${meElement.innerHTML}, you've already logged in!`
+            `${meElement.innerHTML}, ${t(
+              'chatbot.stages.user_help.categories.sign_up.instructions.first.hint_error'
+            )}`
           );
         }
 
@@ -27,14 +32,13 @@ const SignUpInstructions = props => {
     },
     {
       id: 2,
-      text:
-        'Okay! Here you need to set your favorite user name, email and a very very strong password. Then, press the Sign Up button.',
+      text: t('chatbot.stages.user_help.categories.sign_up.instructions.second.text'),
     },
   ];
 
   const onFinalize = () => {
     props.actionProvider.handleReturnMainStage(
-      `Excelent! Now you should've registered with your account! 'One small step for man, one giant leap for mankind' `
+      t('chatbot.stages.user_help.categories.sign_up.on_done')
     );
   };
 

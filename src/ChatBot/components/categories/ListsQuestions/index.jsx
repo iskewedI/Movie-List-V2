@@ -1,27 +1,25 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Options from '../../common/Options';
 
 const ListsQuestions = props => {
+  const { t } = useTranslation();
+
   const options = [
     {
       id: 1,
-      text: 'Creating a list',
+      text: t('chatbot.stages.lists_questions.categories.creating_lists.label'),
       handler: props.actionProvider.listsQuestions.handleCreatingLists,
     },
     {
       id: 2,
-      text: 'Adding content to my list',
+      text: t('chatbot.stages.lists_questions.categories.adding_content.label'),
       handler: props.actionProvider.listsQuestions.handleAddingContent,
     },
     {
       id: 3,
-      text: 'Removing content from my list',
+      text: t('chatbot.stages.lists_questions.categories.removing_content.label'),
       handler: props.actionProvider.listsQuestions.handleRemovingContent,
-    },
-    {
-      id: 3,
-      text: 'Where are this data stored on?',
-      handler: props.actionProvider.listsQuestions.handleDataStorage,
     },
   ];
 

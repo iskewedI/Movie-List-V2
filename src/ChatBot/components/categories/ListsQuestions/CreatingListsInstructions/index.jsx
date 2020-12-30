@@ -1,15 +1,19 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Instructions from '../../../common/Instructions/index';
 import ElementHighlighter from '../../../common/ElementHighlighter';
 
 const CreatingListsInstructions = ({ actionProvider }) => {
+  const { t } = useTranslation();
+
   const elementHighlighter = new ElementHighlighter();
 
   const instructions = [
     {
       id: 1,
-      text:
-        'First, you need to be logged in to create your list. If you are already logged in, click next!',
+      text: t(
+        'chatbot.stages.lists_questions.categories.creating_lists.instructions.first.text'
+      ),
       hint: () => {
         const logInElement = document.getElementById('LogInButton');
 
@@ -24,20 +28,26 @@ const CreatingListsInstructions = ({ actionProvider }) => {
     },
     {
       id: 2,
-      text: "Great! Now click in the 'Create your list' left upper button",
+      text: t(
+        'chatbot.stages.lists_questions.categories.creating_lists.instructions.second.text'
+      ),
       hint: () => {
         const createMyListElement = document.getElementById('createList');
         if (!createMyListElement) {
           actionProvider.handleMessageToUser(
-            "You've already created a list! Go on, go on... Don't stop there, take over the humankin--A BUG in the code i've found, I need to go, sorry, so sorry. "
+            t(
+              'chatbot.stages.lists_questions.categories.creating_lists.instructions.second.hint_error'
+            )
           );
         }
         elementHighlighter.highlightElement(createMyListElement);
       },
     },
     {
-      id: 2,
-      text: 'OK! Now you need to put the name of the list. Remember, bad name, bad use.',
+      id: 3,
+      text: t(
+        'chatbot.stages.lists_questions.categories.creating_lists.instructions.third.text'
+      ),
       hint: () => {
         const newListForm = document.getElementById('newListForm');
         if (newListForm) {
@@ -49,7 +59,7 @@ const CreatingListsInstructions = ({ actionProvider }) => {
 
   const onFinalize = () => {
     actionProvider.handleReturnMainStage(
-      `Excelent, now go to add content to that empty poor list ;)`
+      t('chatbot.stages.lists_questions.categories.creating_lists.on_done')
     );
   };
 

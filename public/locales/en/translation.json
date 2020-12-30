@@ -77,6 +77,16 @@
                 "more_help": "Can I help you in anything more?"
             },
             "main_help": {
+                "possible_sections_requested": {
+                    "user_section": "user",
+                    "search_section": "search",
+                    "lists_section": "lists"
+                },
+                "sections": {
+                    "user_questions": "User questions",
+                    "search": "Search",
+                    "lists": "Lists"
+                },
                 "user_help_requested": "Okey, what do you need to know about the users in this page?",
                 "search_help_requested": "Okey, what do you need to know about the searching in this page?",
                 "lists_help_requested": "Okey, what do you need to know about the lists in this page?"
@@ -84,13 +94,144 @@
             "user_help": {
                 "categories": {
                     "sign_up": {
-                        "label": "Follow this instructions to Sign-Up: "
+                        "intro": "Follow this instructions to Sign-Up: ",
+                        "label": "Signing Up",
+                        "instructions": {
+                            "first": {
+                                "text": "First, click on the 'Sign Up' button in the upper right corner.",
+                                "hint_error": "you've already logged in!"
+                            },
+                            "second": {
+                                "text": "Okay! Here you need to set your favorite user name, email and a very very strong password. Then, press the Sign Up button."
+                            }
+                        },
+                        "on_done": "Excelent! Now you should've registered with your account! 'One small step for man, one giant leap for mankind'"
                     },
                     "log_in": {
-                        "label": "Follow this instructions to Log-In: "
+                        "intro": "Follow this instructions to Log-In: ",
+                        "label": "Logging In",
+                        "instructions": {
+                            "first": {
+                                "text": "First, click on the 'Log In' button in the upper right corner.",
+                                "hint_error": "you've already logged in!"
+                            },
+                            "second": {
+                                "text": "Good! Here you need to set your user email and your secret password, and then press the Login button."
+                            }
+                        },
+                        "on_done": "Great! Now you should've logged in!"
                     },
                     "about_my_info": {
-                        "label": "About your info in this page: "
+                        "intro": "About your info in this page: ",
+                        "label": "Where is my info stored in?",
+                        "instructions": {
+                            "first": {
+                                "text": "Your info is stored in a secured on-line database, with the data you've putted on. I don't share this information with any external part nor company."
+                            }
+                        },
+                        "on_done": "I hope I've answered all your questions about your info :)"
+                    }
+                }
+            },
+            "searching_questions": {
+                "categories": {
+                    "how_to_search": {
+                        "intro": "Follow this instructions to search content: ",
+                        "label": "How to search",
+                        "instructions": {
+                            "first": {
+                                "text": "First, click on the white area in the center of the page and write the name of the movie/serie you are looking for."
+                            },
+                            "second": {
+                                "text": "Perfect! Now, click in the Search button and see the magic!"
+                            }
+                        },
+                        "on_done": "Great! Now you should've seen the results of your search!"
+                    },
+                    "result_types": {
+                        "intro": "About the types of results you will receive: ",
+                        "label": "Types of results",
+                        "instructions": {
+                            "first": {
+                                "text": "The results can be both movies and series. Just type what you want, and you'll able to find what you are looking for!"
+                            }
+                        },
+                        "on_done": "I hope I've answered all your questions about the types of results :D"
+                    },
+                    "movies_database": {
+                        "intro": "About the storage of the movies/series in a database: ",
+                        "label": "Where are the movies stored?",
+                        "instructions": {
+                            "first": {
+                                "text": "The results of movies that you receive by your search is taken from OMDB, an API to get data about IMDB database. They're not mine. I've implemented it, nothing more!"
+                            }
+                        },
+                        "on_done": "I hope I've answered all your questions about the movies database :D"
+                    }
+                }
+            },
+            "lists_questions": {
+                "categories": {
+                    "creating_lists": {
+                        "intro": "Follow this instructions to create a list: ",
+                        "label": "Creating a lists",
+                        "instructions": {
+                            "first": {
+                                "text": "First, you need to be logged in to create your list. If you are already logged in, click next!"
+                            },
+                            "second": {
+                                "text": "Great! Now click in the 'Create your list' left upper button",
+                                "hint_error": "You've already created a list! Go on, go on... Don't stop there, take over the humankin--A BUG in the code i've found, I need to go, sorry, so sorry."
+                            },
+                            "third": {
+                                "text": "OK! Now you need to put the name of the list. Remember, bad name, bad use."
+                            }
+                        },
+                        "on_done": "Excelent, now go to add content to that empty poor list ;)"
+                    },
+                    "adding_content": {
+                        "intro": "Follow this instructions to add content to lists: ",
+                        "label": "Adding content to lists",
+                        "instructions": {
+                            "first": {
+                                "text": "Logged into your account, and having a list created, you can now add the content to it!! First, search the movie you want, and return to this chat."
+                            },
+                            "second": {
+                                "text": "Very good! Now you should've the movie/serie in the aim. Check below the movie image, do you see an PLUS icon that says 'Add' no? Press it"
+                            },
+                            "third": {
+                                "text": "Did you note that, when you press that button before, the number in the 'To See' left upper section has been increased? Magic"
+                            },
+                            "fourth": {
+                                "text": "Click in the 'To See' section to check your new changes! The 'added' movies will be displayed in green"
+                            },
+                            "fifth": {
+                                "text": "When you are ready, click the 'save' button to store the changes you made to the database!"
+                            }
+                        },
+                        "on_done": "Excelent! And remember, don't FORGET TO SAVE ;)"
+                    },
+                    "removing_content": {
+                        "intro": "Follow this instructions to remove content from lists: ",
+                        "label": "Removing content from lists",
+                        "instructions": {
+                            "first": {
+                                "text": "Logged into your account, and having a list created, you can remove series/movies from the list. You can do it from the lists to see page, or from the search!"
+                            },
+                            "second": {
+                                "text": "Find the content you want to destroy and then return to this chat."
+                            },
+                            "third": {
+                                "text": "If you are in the lists to see page, click the content. You'll see a remove icon in the right upper corner. Else, in the search section, check the right bottom button that says 'Remove'"
+                            },
+                            "fourth": {
+                                "text": "Once you clicked the remove button, the lists to see content count should've been decreased and the content in the list shoul've turned RED. The content is waiting to be murdered."
+                            },
+                            "fifth": {
+                                "text": "When you are ready to make it dissapear, click the SAVE button. If you are feeling bad, just PRESS THE BUTTON and feel the pleasure... Or you can undo the action clickin the RESTORE upper right icon."
+                            }
+                        },
+                        "on_done": "Okey, very good. Remember: Save the changes please, save them, they're in danger, they need your HELP. SAVE THEM."
                     }
                 }
             }
@@ -104,7 +245,11 @@
     "buttons": {
         "back": "BACK",
         "save": "SAVE",
-        "remove": "REMOVE"
+        "remove": "REMOVE",
+        "hint": "Hint!",
+        "previous": "Previous",
+        "next": "Next",
+        "done": "Done!"
     },
     "tooltips": {
         "errors": {

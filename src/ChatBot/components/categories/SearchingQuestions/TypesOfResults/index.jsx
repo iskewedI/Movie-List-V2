@@ -1,18 +1,22 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Instructions from '../../../common/Instructions/index';
 
 const TypesOfResults = ({ actionProvider }) => {
+  const { t } = useTranslation();
+
   const instructions = [
     {
       id: 1,
-      text:
-        "The results can be both movies and series. Just type what you want, and you'll able to find what you are looking for!",
+      text: t(
+        'chatbot.stages.searching_questions.categories.result_types.instructions.first.text'
+      ),
     },
   ];
 
   const onFinalize = () => {
     actionProvider.handleReturnMainStage(
-      "I hope I've answered all your questions about the types of results :D"
+      t('chatbot.stages.searching_questions.categories.result_types.on_done')
     );
   };
 

@@ -1,15 +1,19 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Instructions from '../../../common/Instructions/index';
 import ElementHighlighter from '../../../common/ElementHighlighter';
 
 const AddingContentInstructions = ({ actionProvider }) => {
+  const { t } = useTranslation();
+
   const elementHighlighter = new ElementHighlighter();
 
   const instructions = [
     {
       id: 1,
-      text:
-        'Logged into your account, and having a list created, you can now add the content to it!! First, search the movie you want, and return to this chat.',
+      text: t(
+        'chatbot.stages.lists_questions.categories.adding_content.instructions.first.text'
+      ),
       hint: () => {
         const searchField = document.getElementById('searchField');
 
@@ -18,13 +22,15 @@ const AddingContentInstructions = ({ actionProvider }) => {
     },
     {
       id: 2,
-      text:
-        "Very good! Now you should've the movie/serie in the aim. Check below the movie image, do you see an PLUS icon that says 'Add' no? Press it",
+      text: t(
+        'chatbot.stages.lists_questions.categories.adding_content.instructions.second.text'
+      ),
     },
     {
       id: 3,
-      text:
-        'Did you note that, when you press that button before, the number in the "To See" left upper section has been increased? Magic',
+      text: t(
+        'chatbot.stages.lists_questions.categories.adding_content.instructions.third.text'
+      ),
       hint: () => {
         const toSeeSummary = document.getElementById('toSeeSummary');
         if (toSeeSummary) {
@@ -34,8 +40,9 @@ const AddingContentInstructions = ({ actionProvider }) => {
     },
     {
       id: 4,
-      text:
-        'Click in the "To See" section to check your new changes! The "added" movies will be displayed in green',
+      text: t(
+        'chatbot.stages.lists_questions.categories.adding_content.instructions.fourth.text'
+      ),
       hint: () => {
         const toSeeSummary = document.getElementById('toSeeSummary');
         if (toSeeSummary) {
@@ -45,8 +52,9 @@ const AddingContentInstructions = ({ actionProvider }) => {
     },
     {
       id: 5,
-      text:
-        'When you are ready, click the "save" button to store the changes you made to the database!',
+      text: t(
+        'chatbot.stages.lists_questions.categories.adding_content.instructions.fifth.text'
+      ),
       hint: () => {
         const saveButton = document.getElementById('saveChanges');
         if (saveButton) {
@@ -58,7 +66,7 @@ const AddingContentInstructions = ({ actionProvider }) => {
 
   const onFinalize = () => {
     actionProvider.handleReturnMainStage(
-      `Excelent! And remember, don't FORGET TO SAVE ;)`
+      t('chatbot.stages.lists_questions.categories.adding_content.on_done')
     );
   };
 

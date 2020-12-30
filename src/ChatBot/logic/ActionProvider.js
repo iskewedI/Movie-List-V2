@@ -29,7 +29,7 @@ export default class ActionProvider {
 
     const handleSignUp = () => {
       const botMessage = this.createChatBotMessage(
-        '#chatbot.stages.user_help.categories.sign_up.label#',
+        '#chatbot.stages.user_help.categories.sign_up.intro#',
         {
           widget: 'signUpQuestions',
         }
@@ -40,7 +40,7 @@ export default class ActionProvider {
 
     const handleLogIn = () => {
       const botMessage = this.createChatBotMessage(
-        '#chatbot.stages.user_help.categories.log_in.label#',
+        '#chatbot.stages.user_help.categories.log_in.intro#',
         {
           widget: 'logInQuestions',
         }
@@ -51,7 +51,7 @@ export default class ActionProvider {
 
     const handleMyInfo = () => {
       const botMessage = this.createChatBotMessage(
-        '#chatbot.stages.user_help.categories.about_my_info.label#',
+        '#chatbot.stages.user_help.categories.about_my_info.intro#',
         {
           widget: 'myInfoQuestions',
         }
@@ -82,7 +82,7 @@ export default class ActionProvider {
 
     const handleHowToSearch = () => {
       const botMessage = this.createChatBotMessage(
-        'Follow this instructions to search movies/series: ',
+        '#chatbot.stages.searching_questions.categories.how_to_search.intro#',
         {
           widget: 'howToSearch',
         }
@@ -93,7 +93,7 @@ export default class ActionProvider {
 
     const handleResultTypes = () => {
       const botMessage = this.createChatBotMessage(
-        'About the types of results you will receive: ',
+        '#chatbot.stages.searching_questions.categories.result_types.intro#',
         {
           widget: 'resultTypes',
         }
@@ -103,7 +103,7 @@ export default class ActionProvider {
     };
     const handleMovieDatabase = () => {
       const botMessage = this.createChatBotMessage(
-        'About the storage of the movies/series in a database ',
+        '#chatbot.stages.searching_questions.categories.movies_database.intro#',
         {
           widget: 'movieDatabase',
         }
@@ -129,7 +129,7 @@ export default class ActionProvider {
 
     const handleCreatingLists = () => {
       const botMessage = this.createChatBotMessage(
-        'Follow this instructions to create a list ',
+        '#chatbot.stages.lists_questions.categories.creating_lists.intro#',
         {
           widget: 'creatingListsQuestions',
         }
@@ -140,7 +140,7 @@ export default class ActionProvider {
 
     const handleAddingContent = () => {
       const botMessage = this.createChatBotMessage(
-        'Follow this instructions to add content to lists',
+        '#chatbot.stages.lists_questions.categories.adding_content.intro#',
         {
           widget: 'addingContentQuestions',
         }
@@ -151,7 +151,7 @@ export default class ActionProvider {
 
     const handleRemovingContent = () => {
       const botMessage = this.createChatBotMessage(
-        'Follow this instructions to remove content from lists',
+        '#chatbot.stages.lists_questions.categories.removing_content.intro#',
         {
           widget: 'removingContentQuestions',
         }

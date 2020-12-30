@@ -1,15 +1,19 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Instructions from '../../../common/Instructions/index';
 import ElementHighlighter from '../../../common/ElementHighlighter';
 
 const HowToSearchInstructions = ({ actionProvider }) => {
+  const { t } = useTranslation();
+
   const elementHighlighter = new ElementHighlighter();
 
   const instructions = [
     {
       id: 1,
-      text:
-        'First, click on the white area in the center of the page and write the name of the movie/serie you are looking for.',
+      text: t(
+        'chatbot.stages.searching_questions.categories.how_to_search.instructions.first.text'
+      ),
       hint: () => {
         const searchField = document.getElementById('searchField');
 
@@ -18,7 +22,9 @@ const HowToSearchInstructions = ({ actionProvider }) => {
     },
     {
       id: 2,
-      text: 'Perfect! Now, click in the Search button and see the magic!',
+      text: t(
+        'chatbot.stages.searching_questions.categories.how_to_search.instructions.second.text'
+      ),
       hint: () => {
         const searchButton = document.getElementById('searchButton');
 
@@ -29,7 +35,7 @@ const HowToSearchInstructions = ({ actionProvider }) => {
 
   const onFinalize = () => {
     actionProvider.handleReturnMainStage(
-      `Great! Now you should've seen the results of your search!`
+      t('chatbot.stages.searching_questions.categories.how_to_search.on_done')
     );
   };
 

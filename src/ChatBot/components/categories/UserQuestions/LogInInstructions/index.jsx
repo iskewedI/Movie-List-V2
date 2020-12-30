@@ -1,14 +1,17 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Instructions from '../../../common/Instructions/index';
 import ElementHighlighter from '../../../common/ElementHighlighter';
 
 const LogInInstructions = ({ actionProvider }) => {
+  const { t } = useTranslation();
+
   const elementHighlighter = new ElementHighlighter();
 
   const instructions = [
     {
       id: 1,
-      text: "First, click on the 'Log-In' button in the upper right corner.",
+      text: t('chatbot.stages.user_help.categories.log_in.instructions.first.text'),
       hint: () => {
         const logInElement = document.getElementById('LogInButton');
 
@@ -18,7 +21,9 @@ const LogInInstructions = ({ actionProvider }) => {
           elementHighlighter.highlightElement(meElement);
 
           return actionProvider.handleReturnMainStage(
-            `${meElement.innerHTML}, you've already logged in!`
+            `${meElement.innerHTML}, ${t(
+              'chatbot.stages.user_help.categories.log_in.instructions.first.hint_error'
+            )}`
           );
         }
 
@@ -27,13 +32,14 @@ const LogInInstructions = ({ actionProvider }) => {
     },
     {
       id: 2,
-      text:
-        'Good! Here you need to set your user email and your secret password, and then press the Login button.',
+      text: t('chatbot.stages.user_help.categories.log_in.instructions.second.text'),
     },
   ];
 
   const onFinalize = () => {
-    actionProvider.handleReturnMainStage(`Great! Now you should've logged in!`);
+    actionProvider.handleReturnMainStage(
+      t('chatbot.stages.user_help.categories.log_in.on_done')
+    );
   };
 
   return <Instructions instructions={instructions} handleDone={onFinalize} />;

@@ -1,18 +1,22 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Instructions from '../../../common/Instructions/index';
 
 const AboutMyInfo = ({ actionProvider }) => {
+  const { t } = useTranslation();
+
   const instructions = [
     {
       id: 1,
-      text:
-        "Your info is stored in a secured on-line database, with the data you've putted on. I don't share this information with any external part nor company.",
+      text: t(
+        'chatbot.stages.user_help.categories.about_my_info.instructions.first.text'
+      ),
     },
   ];
 
   const onFinalize = () => {
     actionProvider.handleReturnMainStage(
-      "I hope I've answered all your questions about your info :)"
+      t('chatbot.stages.user_help.categories.about_my_info.on_done')
     );
   };
 

@@ -57,13 +57,29 @@ export const stageManager = (actionProvider, t) => {
   });
 
   stageMap.set(Stages.MAIN_HELP, message => {
-    if (message.includes('user')) {
+    if (
+      message.includes(
+        'chatbot.stages.main_help.possible_sections_requested.user_section'
+      )
+    ) {
       return actionProvider.userQuestions.handleUser();
     }
-    if (message.includes('search')) {
-      return actionProvider.searchingQuestions.handleSearch();
+
+    const searchSectionWords = t(
+      'chatbot.stages.main_help.possible_sections_requested.search_section'
+    ).split(',');
+
+    for (const word of searchSectionWords) {
+      if (message.includes(word)) {
+        return actionProvider.searchingQuestions.handleSearch();
+      }
     }
-    if (message.includes('list')) {
+
+    if (
+      message.includes(
+        '"chatbot.stages.main_help.possible_sections_requested.lists_section"'
+      )
+    ) {
       return actionProvider.listsQuestions.handleLists();
     }
 

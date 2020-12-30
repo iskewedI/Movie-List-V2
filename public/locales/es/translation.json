@@ -77,6 +77,16 @@
                 "more_help": "¿Puedo ayudarte en algo más?"
             },
             "main_help": {
+                "possible_sections_requested": {
+                    "user_section": "usuario",
+                    "search_section": "busqueda,búsqueda",
+                    "lists_section": "lista"
+                },
+                "sections": {
+                    "user_questions": "Usuario",
+                    "search": "Búsqueda de contenido",
+                    "lists": "Listas"
+                },
                 "user_help_requested": "Bueno, ¿qué necesitas saber acerca de los usuarios en esta página?",
                 "search_help_requested": "Bueno, ¿qué necesitas saber acerca de la búsqueda en esta página?",
                 "lists_help_requested": "Bueno, ¿qué necesitas saber acerca de las listas en esta página?"
@@ -84,13 +94,144 @@
             "user_help": {
                 "categories": {
                     "sign_up": {
-                        "label": "Seguí estas instrucciones para registrarte: "
+                        "intro": "Seguí estas instrucciones para registrarte: ",
+                        "label": "Registro",
+                        "instructions": {
+                            "first": {
+                                "text": "Primero, presione el boton 'Registrarme' en la esquina superior derecha.",
+                                "hint_error": "¡ya has iniciado sesión!"
+                            },
+                            "second": {
+                                "text": "Muy bien! Acá tenes que insertar tu nombre de usuario favorito, email y una muy fuerte contraseña. Después click en el botón de Regístrame"
+                            }
+                        },
+                        "on_done": "Excelente! ¡Ya deberías estar registrado! 'Un pequeño paso para el hombre, un salto gigante para la humanidad'"
                     },
                     "log_in": {
-                        "label": "Seguí estas instrucciones para iniciar sesión: "
+                        "intro": "Seguí estas instrucciones para iniciar sesión: ",
+                        "label": "Inicio de sesión",
+                        "instructions": {
+                            "first": {
+                                "text": "Primero, presione el botón de 'Iniciar Sesión' en la esquina superior derecha",
+                                "hint_error": "¡ya has iniciado sesión!"
+                            },
+                            "second": {
+                                "text": "Bueno, acá tenes que poner tu email y tu contraseña secreta. Luego, al botón de iniciar sesión."
+                            }
+                        },
+                        "on_done": "Genial! Ahora deberías tener la sesión iniciada."
                     },
                     "about_my_info": {
-                        "label": "Acerca de tu información en esta página: "
+                        "intro": "Acerca de tu información en esta página: ",
+                        "label": "¿Dónde se guarda mi información?",
+                        "instructions": {
+                            "first": {
+                                "text": "Tu información se almacena en una segura base de datos on-line, con los datos que vos guardaste. Esta información no es compartida con ninguna parte ni companía externa."
+                            }
+                        },
+                        "on_done": "Espero que haya resuelto todas tus preguntas acerca de tu información :)"
+                    }
+                }
+            },
+            "searching_questions": {
+                "categories": {
+                    "how_to_search": {
+                        "intro": "Seguí estas instrucciones para buscar contenido: ",
+                        "label": "Cómo realizar búsquedas",
+                        "instructions": {
+                            "first": {
+                                "text": "Primero, clickea en el rectángulo blanco en el centro de la página y escribí el nombre de la película/serie que estas buscando."
+                            },
+                            "second": {
+                                "text": "Perfecto! Ahora presiona el botón de 'Buscar' y observa la magia."
+                            }
+                        },
+                        "on_done": "¡Muy bien! Ahora deberías ver los resultados de tu búsqueda."
+                    },
+                    "result_types": {
+                        "intro": "Acerca de los tipos de resultados que podes recibir: ",
+                        "label": "Tipos de resultados",
+                        "instructions": {
+                            "first": {
+                                "text": "Los resultados pueden ser series/películas y más. Solo escribe lo que estás buscando, y deberías encontrarlo!"
+                            }
+                        },
+                        "on_done": "Espero que haya resuelto todas tus consultas acerca de los tipos de resultados :D"
+                    },
+                    "movies_database": {
+                        "intro": "Acerca del almacenamiento de peliculas/series en una base de datos: ",
+                        "label": "¿Dónde están almacenadas las películas/series?",
+                        "instructions": {
+                            "first": {
+                                "text": "Los resultados del contenido que recibis al realizar tus búsquedas son tomados de OMDB, una API para obtener datos de la base de datos de IMDB. No son míos. Yo sólo implementé esa API, nada más!"
+                            }
+                        },
+                        "on_done": "Espero que haya resuelto todas tus dudas acerca de este tema!"
+                    }
+                }
+            },
+            "lists_questions": {
+                "categories": {
+                    "creating_lists": {
+                        "intro": "Seguí estas instrucciones para crear listas: ",
+                        "label": "Crear listas",
+                        "instructions": {
+                            "first": {
+                                "text": "Primero, deberás haber iniciado sesión para crear una lista. Si ya iniciaste sesión, click en 'Next'!"
+                            },
+                            "second": {
+                                "text": "Bien! Ahora apretá el botón de 'Crear tu lista' en la esquina superior izquierda.",
+                                "hint_error": "Ya has creado una lista...! Seguí, seguí... No pares acá, tomá control sobre toda la huma-UN BUG en el código he encontrado, necesito irme, disculpas."
+                            },
+                            "third": {
+                                "text": "OK! Ahora tenes que poner el nombre que te gustaría que tenga tu lista. Recordá, mal nombre, mal uso."
+                            }
+                        },
+                        "on_done": "Excelente, ahora agregale contenido a esa pobre lista vacía ;)"
+                    },
+                    "adding_content": {
+                        "intro": "Seguí estas instrucciones para añadir contenido a las listas: ",
+                        "label": "Añadir contenido a las listas",
+                        "instructions": {
+                            "first": {
+                                "text": "Habiendo iniciado sesión, y ya teniendo una lista creada, ahora podes añadirle contenido!! Primero, buscá la pelicula/serie que querés, y volvé acá.."
+                            },
+                            "second": {
+                                "text": "Muy bien! Ahora deberías tener tu deseo en la mira. Mira abajo de la imagen de esa película/serie, ves un ícono con el símbolo de 'más' que dice 'Agregar' no? Apretalo."
+                            },
+                            "third": {
+                                "text": "Notaste que cuando apretaste ese botón, el número que tenias arriba a la izquierda en el apartado de LISTA aumentó? Magia."
+                            },
+                            "fourth": {
+                                "text": "Clickéa en el apartado de LISTA para ver tus cambios. Las películas agregadas recientemente van a ser mostradas en verde."
+                            },
+                            "fifth": {
+                                "text": "Cuando quieras, presioná el botón de 'GUARDAR' para que tus cambios se apliquen a la base de datos!"
+                            }
+                        },
+                        "on_done": "Excelente! Y siempre recordá, NO TE OLVIDES DE GUARDAR ;)"
+                    },
+                    "removing_content": {
+                        "intro": "Seguí estas instrucciones para borrar contenido de las listas: ",
+                        "label": "Borrar contenido de las listas",
+                        "instructions": {
+                            "first": {
+                                "text": "Habiendo iniciado sesión, y ya teniendo una lista creada, ahora podes borrar series/películas de las listas. Podes hacerlo desde el apartado de las LISTAS, o desde la búsqueda!"
+                            },
+                            "second": {
+                                "text": "Buscá el contenido que quieras destruir y volve conmigo."
+                            },
+                            "third": {
+                                "text": "Si estas en el apartado de LISTAS, clickeá el contenido que quieras borrar. Vas a ver un botón de BORRAR en la esquina superior derecha. Si no, en la sección de búsqueda, clickéa el boton derecho inferior que dice 'Borrar'"
+                            },
+                            "fourth": {
+                                "text": "Una vez que clickeaste el botón de borrar, el número que aparece en la sección de LISTA debería haberse reducido y el contenido borrado de las listas debería aparecer en ROJO. El contenido está esperando a ser asesinado."
+                            },
+                            "fifth": {
+                                "text": "Cuando estés listo de hacerlo desaparecer, clickéa en el botón de GUARDAR. Si estás sintiendote mál, sólo APRETÁ EL BOTÓN y sentí el placer... O podes deshacer la acción clickeando el botón de RESTAURAR de la esquina superior derecha."
+                            }
+                        },
+                        "on_done": "Bueno, muy bien. Recordá: Salvá los cambios por favor, salvalos, estan en peligro, necesitan tu AYUDA. SALVALOS!."
                     }
                 }
             }
@@ -103,7 +244,12 @@
     },
     "buttons": {
         "back": "ATRÁS",
-        "save": "GUARDAR"
+        "save": "GUARDAR",
+        "remove": "BORRAR",
+        "hint": "Tip!",
+        "previous": "Anterior",
+        "next": "Siguiente",
+        "done": "Listo!"
     },
     "tooltips": {
         "errors": {
