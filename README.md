@@ -17,3 +17,5 @@ See the site on the WEB => https://j-movieslist-v2.netlify.app/
 - Improved CSS with **Foundation** and **Bootstrap**
 - Giving classes to the components with **classnames** library
 - Unit testing with **JEST** and **Axios-Mock-Adapter** to mock the calls to the API's
+- A CHATBOT with **react-chatbot-kit** that helps user
+- Log-in & Sign-Up & User data management with custom DATABASE 
