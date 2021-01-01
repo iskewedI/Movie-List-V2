@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core';
 export default makeStyles({
   summary: {
     display: 'inline-flex',
+    alignSelf: 'center',
   },
   counter: {
     position: 'absolute',
@@ -11,8 +12,6 @@ export default makeStyles({
   },
   newListForm: {
     position: 'absolute',
-    // top: '60px',
-    // left: '15px',
     height: '50%',
   },
   textField: {
