@@ -139,10 +139,10 @@ export default slice.reducer;
 //Action creators
 const { baseURL } = backend;
 
-export const registerUser = ({ username, email, password }) => (dispatch, getState) => {
+export const registerUser = ({ username, email, password, lang }) => dispatch => {
   const url = '/users';
 
-  const data = { username, email, password };
+  const data = { username, email, password, lang };
   return dispatch(
     apiCallBegan({
       method: 'POST',
@@ -157,7 +157,7 @@ export const registerUser = ({ username, email, password }) => (dispatch, getSta
   );
 };
 
-export const authUser = password => (dispatch, getState) => {
+export const authUser = (password, lang) => (dispatch, getState) => {
   const { userData } = getState().entities.user;
 
   const { token, email } = userData;
@@ -166,7 +166,7 @@ export const authUser = password => (dispatch, getState) => {
 
   const url = '/auth';
 
-  const data = { email, password };
+  const data = { email, password, lang };
   return dispatch(
     apiCallBegan({
       method: 'POST',

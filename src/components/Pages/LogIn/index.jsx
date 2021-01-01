@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Container } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {
@@ -13,6 +14,8 @@ import {
 import LoginForm from '../../Forms/login';
 
 const LogIn = () => {
+  const { i18n } = useTranslation();
+
   const dispatch = useDispatch();
 
   const handleSubmit = userData => {
@@ -20,7 +23,7 @@ const LogIn = () => {
 
     dispatch(setUserData(username, email));
 
-    dispatch(authUser(password));
+    dispatch(authUser(password, i18n.language));
   };
 
   const userErrors = useSelector(getUserError);

@@ -58,6 +58,17 @@
         "buttons": {
             "log_in": "Iniciar sesión",
             "sign_up": "Registrarse"
+        },
+        "validations": {
+            "any": {
+                "empty": "Campo {$name} no puede estar vacío",
+                "required": "Campo {$name} es requerido"
+            },
+            "string": {
+                "email": "Campo {$name} no es válido",
+                "min": "Campo {$name} debería ser mas largo y complejo",
+                "max": "Campo {$name} es demasiado largo"
+            }
         }
     },
     "chatbot": {

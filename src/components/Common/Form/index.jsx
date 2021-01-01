@@ -10,6 +10,8 @@ class Form extends Component {
     errors: {},
   };
 
+  getTranslatedField = field => this.props.t(`forms.fields.${field}`);
+
   validate = () => {
     const options = { abortEarly: false };
     const { error } = Joi.validate(this.state.data, this.schema, options);
@@ -17,7 +19,9 @@ class Form extends Component {
 
     const errors = {};
     for (let item of error.details) {
-      errors[item.path[0]] = item.message;
+      errors[item.path[0]] = this.props
+        .t(`forms.validations.${item.type}`)
+        .replace('{$name}', item.path[0]);
     }
     return errors;
   };
@@ -26,7 +30,12 @@ class Form extends Component {
     const schema = { [name]: this.schema[name] };
     const { error } = Joi.validate(obj, schema);
 
-    return error ? error.details[0].message : null;
+    if (error) {
+      const { path, type } = error.details[0];
+      return this.props
+        .t(`forms.validations.${type}`)
+        .replace('{$name}', this.getTranslatedField(path[0]));
+    }
   };
   handleSubmit = e => {
     e.preventDefault();
@@ -68,6 +77,7 @@ class Form extends Component {
         }
       };
     }
+
     return (
       <Input
         type={type}

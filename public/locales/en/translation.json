@@ -58,6 +58,17 @@
         "buttons": {
             "log_in": "Login",
             "sign_up": "Sign Up"
+        },
+        "validations": {
+            "any": {
+                "empty": "Field {$name} cannot be empty",
+                "required": "Field {$name} is required"
+            },
+            "string": {
+                "email": "Field {$name} should be a valid email",
+                "min": "Field {$name} is too short",
+                "max": "Field {$name} cannot be too long"
+            }
         }
     },
     "chatbot": {
