@@ -15,7 +15,7 @@ const slice = createSlice({
   initialState: {
     userData: {
       token: localStorage.getItem('authToken'),
-      userName: null,
+      username: null,
       email: null,
     },
     loaded: false,
@@ -38,7 +38,7 @@ const slice = createSlice({
       localStorage.setItem('authToken', token);
 
       userData.token = token;
-      userData.userName = username;
+      userData.username = username;
       userData.email = email;
 
       user.loaded = true;
@@ -65,7 +65,7 @@ const slice = createSlice({
       const { username, email } = action.payload;
 
       user.loaded = true;
-      userData.userName = username;
+      userData.username = username;
       userData.email = email;
     },
     userRequestFailed: (user, action) => {
@@ -114,7 +114,7 @@ const slice = createSlice({
       const { username, email } = action.payload;
       const { userData } = user;
 
-      userData.userName = username;
+      userData.username = username;
       userData.email = email;
     },
   },
@@ -142,7 +142,7 @@ const { baseURL } = backend;
 export const registerUser = ({ username, email, password, lang }) => dispatch => {
   const url = '/users';
 
-  const data = { username, email, password, lang };
+  const data = { username: username, email, password, lang };
   return dispatch(
     apiCallBegan({
       method: 'POST',
@@ -182,9 +182,9 @@ export const authUser = (password, lang) => (dispatch, getState) => {
 };
 
 export const getUser = () => (dispatch, getState) => {
-  const { token, userName, email } = getState().entities.user.userData;
+  const { token, username, email } = getState().entities.user.userData;
 
-  if (userName && email) return;
+  if (username && email) return;
 
   if (!token) return;
 

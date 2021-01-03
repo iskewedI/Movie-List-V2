@@ -12,7 +12,7 @@ const Home = () => {
     <div style={{ margin: '20px', color: 'white' }}>
       <ul>
         <li>
-          {t('user_info.name')}: {userData.userName}
+          {t('user_info.name')}: {userData.username}
         </li>
         <li>
           {t('user_info.email')}: {userData.email}

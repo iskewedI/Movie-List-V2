@@ -82,7 +82,7 @@ const Navbar = () => {
                   className='nav-link navbar-right btn btn-outline-light text-primary'
                   href='/#'
                 >
-                  {userData.userName}
+                  {userData.username}
                 </Link>
                 <Link
                   to='/logout'

@@ -51,7 +51,7 @@
             "sign_up": "NEW ACCOUNT"
         },
         "fields": {
-            "user_name": "User Name",
+            "username": "User Name",
             "email": "Email",
             "password": "Password"
         },

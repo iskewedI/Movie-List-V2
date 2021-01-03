@@ -5,11 +5,11 @@ import Joi from 'joi-browser';
 
 class RegisterForm extends Form {
   state = {
-    data: { user_name: '', email: '', password: '' },
+    data: { username: '', email: '', password: '' },
     errors: {},
   };
   schema = {
-    user_name: Joi.string().required().label('User Name'),
+    username: Joi.string().required().label('User Name'),
     email: Joi.string().email().required().label('Email'),
     password: Joi.string().min(5).required().label('Password'),
   };
@@ -23,7 +23,7 @@ class RegisterForm extends Form {
       <React.Fragment>
         <h1 className='formTitle'>{t('forms.titles.sign_up')}</h1>
         <form onSubmit={this.handleSubmit}>
-          {this.renderInput('user_name', t('forms.fields.user_name'))}
+          {this.renderInput('username', t('forms.fields.username'))}
           {this.renderInput('email', t('forms.fields.email'), 'email')}
           {this.renderInput('password', t('forms.fields.password'), 'password')}
           {this.renderButton(t('forms.buttons.sign_up'))}
