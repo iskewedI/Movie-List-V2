@@ -21,7 +21,10 @@ export const stageManager = (actionProvider, t) => {
   });
 
   stageMap.set(Stages.USER_STATUS, message => {
-    let wordsList = message.split(' ');
+    const notWordCharacters = /\W|\d/g;
+    const cleanedMessage = message.replace(notWordCharacters, ' ');
+
+    let wordsList = cleanedMessage.split(' ');
 
     const positiveStatus = t('chatbot.stages.user_status.positive_responses').split(',');
 
@@ -39,7 +42,10 @@ export const stageManager = (actionProvider, t) => {
   });
 
   stageMap.set(Stages.ASK_HELP, message => {
-    let wordsList = message.split(' ');
+    const notWordCharacters = /\W|\d/g;
+    const cleanedMessage = message.replace(notWordCharacters, ' ');
+
+    let wordsList = cleanedMessage.split(' ');
 
     const positiveAnswer = t('chatbot.stages.user_status.positive_responses').split(',');
 
