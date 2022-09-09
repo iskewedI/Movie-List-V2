@@ -3,6 +3,6 @@
     "baseURL": "https://www.omdbapi.com/"
   },
   "backend": {
-    "baseURL": "https://backend-movie-listv2.up.railway.app/"
+    "baseURL": "https://backend-movie-listv2.up.railway.app/api"
   }
 }
