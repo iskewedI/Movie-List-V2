@@ -34,17 +34,14 @@ const slice = createSlice({
   },
 });
 
-const {
-  searchTitleSetted,
-  moviesRequested,
-  moviesReceived,
-  moviesRequestFailed,
-} = slice.actions;
+const { searchTitleSetted, moviesRequested, moviesReceived, moviesRequestFailed } =
+  slice.actions;
 
 export default slice.reducer;
 
 //Action creators
-const { baseURL, apiKey } = omdbApi;
+const { baseURL } = omdbApi;
+const apiKey = process.env.REACT_APP_API_KEY;
 const url = '';
 
 export const searchMovies = () => (dispatch, getState) => {

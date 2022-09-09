@@ -1,9 +1,8 @@
 {
-   "omdbApi": {
-    "baseURL": "https://www.omdbapi.com/",
-    "apiKey": "?apikey=5c6d9a6c"
+  "omdbApi": {
+    "baseURL": "https://www.omdbapi.com/"
   },
-    "backend": {
-      "baseURL": "https://backend-movieslistv2.herokuapp.com/api"
-    }
+  "backend": {
+    "baseURL": "https://backend-movie-listv2.up.railway.app/"
+  }
 }

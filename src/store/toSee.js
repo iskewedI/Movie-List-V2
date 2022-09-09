@@ -254,7 +254,8 @@ export const searchMoviesInList = () => (dispatch, getState) => {
 
   if (moviesSearched || searchingMovies) return;
 
-  const { baseURL, apiKey } = omdbApi;
+  const { baseURL } = omdbApi;
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   const customData = { byPassAuth: true };
 
