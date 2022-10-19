@@ -56,10 +56,18 @@ const HorizontalAccordion = ({ elements, noContentMessage }) => {
   return (
     <div className={'customAccordion--menu-container ' + classes} onClick={lossFocus}>
       <div className='movementArrows'>
-        <Button className='leftSideArrow' onClick={() => setMovement(movement + 25)}>
+        <Button
+          className='leftSideArrow'
+          onClick={() => setMovement(movement + 25)}
+          title='Left arrow'
+        >
           <ArrowBackIcon className='directionArrow' />
         </Button>
-        <Button className='rightSideArrow' onClick={() => setMovement(movement - 25)}>
+        <Button
+          className='rightSideArrow'
+          onClick={() => setMovement(movement - 25)}
+          title='Right arrow'
+        >
           <ArrowForwardIcon className='directionArrow' />
         </Button>
       </div>

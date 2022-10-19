@@ -83,7 +83,11 @@ const ExpandCard = ({
 
   return (
     <li className={classes} style={styles.item}>
-      <button className='expandCard--deleteBtn' onClick={changeInList}>
+      <button
+        className='expandCard--deleteBtn'
+        onClick={changeInList}
+        title='Remove movie'
+      >
         {(!movieChange || movieChange === 'added') && (
           <Tooltip title={t('tooltips.buttons.remove')} placement='top'>
             <BackspaceIcon />
@@ -103,9 +107,7 @@ const ExpandCard = ({
       >
         <div className='expandCard--image' style={styles.background}></div>
       </div>
-      <div className='expandCard--name'>
-        <h6>{clipTitle(data.Title)}</h6>
-      </div>
+      <div className='expandCard--name'>{clipTitle(data.Title)}</div>
       <div className='expandCard--closeButton'>
         <a href='/#'>{t('buttons.back')} </a>
       </div>

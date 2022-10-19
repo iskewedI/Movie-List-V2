@@ -85,7 +85,7 @@ ul.customAccordion {
   margin-top: 15px;
   margin-right: 5px;
   border-top: 1px solid #666;
-  color: #666;
+  color: #d3d3d3;
 }
 
 .expandCard--name h6 {
@@ -193,7 +193,7 @@ li.expandCard.isActive {
 .expandCard--deleteBtn {
   opacity: 0;
   position: absolute;
-  color: rgb(138, 138, 138);
+  color: #d0d0d0;
   transition: opacity 200ms ease;
   right: 0;
 }
@@ -226,6 +226,7 @@ li.expandCard.isActive {
 .expandCard--closeButton a {
   margin: -15px;
   padding: 15px;
+  color: #dbdbdb;
 }
 
 .customAccordion--menu-container:not(.focused) li.expandCard:hover .expandCard--name {
