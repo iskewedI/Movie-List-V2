@@ -66,7 +66,7 @@ const Navbar = () => {
                   <Link
                     id='SignUpButton'
                     to='/register'
-                    className='nav-link text-white navbar-right btn btn-outline-dark text-primary lightblue-focus'
+                    className='nav-link text-white navbar-right btn btn-outline-dark lightblue-focus'
                     href='/#'
                   >
                     {t('navbar.user.sign_up')}

@@ -58,7 +58,11 @@ const CardCollection = ({ cards }) => {
 
   return (
     <React.Fragment>
-      <Button className={classes.arrowLeft} onClick={() => hangleRangeChanged('back')}>
+      <Button
+        className={classes.arrowLeft}
+        onClick={() => hangleRangeChanged('back')}
+        title='Previous page'
+      >
         {<ArrowBackIcon color={canMoveBack ? 'primary' : 'disabled'} />}
       </Button>
       <Grid className={classes.grid}>
@@ -66,7 +70,11 @@ const CardCollection = ({ cards }) => {
           <MovieCard key={movie.imdbID} {...movie} />
         ))}
       </Grid>
-      <Button className={classes.arrowRight} onClick={() => hangleRangeChanged('next')}>
+      <Button
+        className={classes.arrowRight}
+        onClick={() => hangleRangeChanged('next')}
+        title='Next page'
+      >
         {<ArrowForwardIcon color={canMoveNext ? 'primary' : 'disabled'} />}
       </Button>
     </React.Fragment>

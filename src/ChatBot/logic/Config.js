@@ -36,7 +36,7 @@ export const getConfig = handleOpen => ({
     header: () => (
       <button className='chatbotHeader' onClick={() => handleOpen(false)}>
         HAL-9001
-        <button className='compressChatBtn'>
+        <button className='compressChatBtn' title='Maximize and minimize chatbot'>
           <ExpandMoreIcon />
         </button>
       </button>
