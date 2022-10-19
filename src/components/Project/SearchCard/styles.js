@@ -44,12 +44,14 @@ export default makeStyles({
     fontSize: '1rem',
     marginTop: '.8rem',
     background: '#efefeff7',
+    color: '#dfdfdf',
   },
   movieIcon: {
     fontSize: '4rem',
   },
   label: {
-    color: '#3f51b5',
-    opacity: 0.5,
+    color: 'black',
+    opacity: 0.7,
+    fontSize: '1.2rem',
   },
 });

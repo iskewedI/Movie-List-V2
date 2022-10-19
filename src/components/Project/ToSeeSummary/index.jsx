@@ -75,7 +75,7 @@ const ToSeeSummary = () => {
   return (
     <div id='toSeeSummary' className={classes.summary}>
       {(listName && (
-        <Link to='/listToSee' className='nav-link' href='/#'>
+        <Link to='/listToSee' className='nav-link text-white' href='/#'>
           {`${t('navbar.lists.label')}: `}
           <span id='toSeeCounter' className={classes.counter}>
             {getListCount()}

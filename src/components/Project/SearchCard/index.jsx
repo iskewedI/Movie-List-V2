@@ -29,24 +29,21 @@ const SearchCard = ({ onSearch }) => {
         className={classes.textField}
       >
         <TextField
-          label={
-            <label htmlFor='searchField' className={classes.label}>
-              Search
-            </label>
-          }
+          label='Search'
           id='searchField'
           className={classes.textField}
           value={searchText}
           onChange={handleTextChange}
           variant='filled'
           InputProps={{ classes: { input: classes.inputPlaceHolder } }}
+          InputLabelProps={{ className: classes.label }}
           FormHelperTextProps={{ style: { background: 'red' } }}
         />
       </form>
       <Button
         id='searchButton'
         className={classes.searchButton}
-        style={{ backgroundColor: searchText === '' ? '#96c0e040' : '#ffffff80' }}
+        style={{ backgroundColor: searchText === '' ? '#96c0e040' : '#96c0e05e' }}
         variant='contained'
         onClick={() => onSearch(formatText(searchText))}
       >

@@ -41,7 +41,11 @@ const Navbar = () => {
         </button>
         <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
           <div className='navbar-nav'>
-            <Link to={'/'} className='nav-link active brightwhite-focus' href='/#'>
+            <Link
+              to={'/'}
+              className='nav-link text-light active brightwhite-focus'
+              href='/#'
+            >
               {t('navbar.home')} <span className='sr-only'>(current)</span>
             </Link>
             <ToSeeSummary />
@@ -53,7 +57,7 @@ const Navbar = () => {
                 <Link
                   id='LogInButton'
                   to='/login'
-                  className='nav-link navbar-right btn btn-outline-dark instructionFocusable'
+                  className='nav-link text-white navbar-right btn btn-outline-dark instructionFocusable'
                   href='/#'
                 >
                   {t('navbar.user.log_in')}
@@ -62,7 +66,7 @@ const Navbar = () => {
                   <Link
                     id='SignUpButton'
                     to='/register'
-                    className='nav-link navbar-right btn btn-outline-dark text-primary lightblue-focus'
+                    className='nav-link text-white navbar-right btn btn-outline-dark text-primary lightblue-focus'
                     href='/#'
                   >
                     {t('navbar.user.sign_up')}
@@ -79,14 +83,14 @@ const Navbar = () => {
                 <Link
                   id='meButton'
                   to='/me'
-                  className='nav-link navbar-right btn btn-outline-dark'
+                  className='nav-link text-white navbar-right btn btn-outline-dark'
                   href='/#'
                 >
                   {userData.username}
                 </Link>
                 <Link
                   to='/logout'
-                  className='nav-link navbar-right btn btn-outline-dark'
+                  className='nav-link text-white navbar-right btn btn-outline-dark'
                   href='/#'
                 >
                   {t('navbar.user.log_out')}

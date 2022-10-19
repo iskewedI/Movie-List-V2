@@ -39,7 +39,7 @@ export default function FormDialog({
       <Button
         id='createList'
         onClick={handleClickOpen}
-        className={classes.createListButton}
+        className={`text-white ${classes.createListButton}`}
       >
         {buttonOpen}
       </Button>
