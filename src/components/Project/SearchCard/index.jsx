@@ -29,6 +29,11 @@ const SearchCard = ({ onSearch }) => {
         className={classes.textField}
       >
         <TextField
+          label={
+            <label htmlFor='searchField' className={classes.label}>
+              Search
+            </label>
+          }
           id='searchField'
           className={classes.textField}
           value={searchText}

@@ -48,4 +48,8 @@ export default makeStyles({
   movieIcon: {
     fontSize: '4rem',
   },
+  label: {
+    color: '#3f51b5',
+    opacity: 0.5,
+  },
 });
