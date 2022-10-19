@@ -15,9 +15,18 @@ h6 {
   color: white;
 }
 
+.lightblue-focus:focus,
+.lightblue-focus:hover {
+  color: #4aa5f5bf !important;
+}
+
+.brightwhite-focus:focus,
+.brightwhite-focus:hover {
+  color: #dddddd !important;
+}
+
 a:hover,
 a:hover > * {
-  color: grey !important;
   text-decoration: none !important;
 }
 

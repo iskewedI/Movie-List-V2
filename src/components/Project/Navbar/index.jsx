@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+      <nav className='navbar navbar-expand-lg navbar navbar-dark bg-dark brightwhite-focus'>
         <Link to={'/'} className='navbar-brand' href='/#'>
           {t('navbar.page_title')}
         </Link>
@@ -41,7 +41,7 @@ const Navbar = () => {
         </button>
         <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
           <div className='navbar-nav'>
-            <Link to={'/'} className='nav-link active' href='/#'>
+            <Link to={'/'} className='nav-link active brightwhite-focus' href='/#'>
               {t('navbar.home')} <span className='sr-only'>(current)</span>
             </Link>
             <ToSeeSummary />
@@ -53,7 +53,7 @@ const Navbar = () => {
                 <Link
                   id='LogInButton'
                   to='/login'
-                  className='nav-link navbar-right btn btn-outline-light instructionFocusable'
+                  className='nav-link navbar-right btn btn-outline-dark instructionFocusable'
                   href='/#'
                 >
                   {t('navbar.user.log_in')}
@@ -62,7 +62,7 @@ const Navbar = () => {
                   <Link
                     id='SignUpButton'
                     to='/register'
-                    className='nav-link navbar-right btn btn-outline-light text-primary'
+                    className='nav-link navbar-right btn btn-outline-dark text-primary lightblue-focus'
                     href='/#'
                   >
                     {t('navbar.user.sign_up')}
@@ -79,14 +79,14 @@ const Navbar = () => {
                 <Link
                   id='meButton'
                   to='/me'
-                  className='nav-link navbar-right btn btn-outline-light text-primary'
+                  className='nav-link navbar-right btn btn-outline-dark'
                   href='/#'
                 >
                   {userData.username}
                 </Link>
                 <Link
                   to='/logout'
-                  className='nav-link navbar-right btn btn-outline-light text-primary'
+                  className='nav-link navbar-right btn btn-outline-dark'
                   href='/#'
                 >
                   {t('navbar.user.log_out')}

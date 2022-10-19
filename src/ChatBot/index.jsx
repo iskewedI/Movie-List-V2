@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import HalIcon from './images/HAL_9000.svg';
 import styles from './styles';
+import './styles.css';
 
 const ChatBot = () => {
   const { t } = useTranslation();

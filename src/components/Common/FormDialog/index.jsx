@@ -6,6 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import useStyles from './styles';
 
 export default function FormDialog({
   onSubmit,
@@ -18,6 +19,8 @@ export default function FormDialog({
 }) {
   const [open, setOpen] = React.useState(false);
   const [text, setText] = useState('');
+
+  const classes = useStyles();
 
   const handleTextChange = ({ currentTarget }) => {
     setText(currentTarget.value);
@@ -33,28 +36,44 @@ export default function FormDialog({
 
   return (
     <div>
-      <Button id='createList' onClick={handleClickOpen}>
+      <Button
+        id='createList'
+        onClick={handleClickOpen}
+        className={classes.createListButton}
+      >
         {buttonOpen}
       </Button>
-      <Dialog open={open} onClose={handleClose} aria-labelledby='form-dialog-title'>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='form-dialog-title'
+        classes={{ paper: classes.formPaper, root: classes.dialogRoot }}
+      >
         <DialogTitle id='form-dialog-title'>{title}</DialogTitle>
         <DialogContent>
-          <DialogContentText>{intro}</DialogContentText>
+          <DialogContentText className={classes.dialogContentText}>
+            {intro}
+          </DialogContentText>
           <TextField
             autoFocus
             margin='dense'
             id='name'
             label={placeholder}
+            className='white-placeholder'
+            InputLabelProps={{ style: { color: '#ffffff57' } }}
             type='email'
             onChange={handleTextChange}
             fullWidth
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color='primary'>
+          <Button onClick={handleClose} className={classes.dialogPrimaryButton}>
             {buttonCancel}
           </Button>
-          <Button onClick={() => onSubmit(text)} color='primary'>
+          <Button
+            onClick={() => onSubmit(text)}
+            className={classes.dialogSecondaryButton}
+          >
             {buttonOk}
           </Button>
         </DialogActions>
