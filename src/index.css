@@ -1,10 +1,13 @@
 @font-face {
-  font-family: 'Kiota';
-  src: url(./fonts/Kiona-Regular.ttf);
+  font-family: 'Kiona-Itallic';
+  src: url('https://storage.googleapis.com/backend-movieslistv2.appspot.com/Static/Kiona-Itallic.ttf');
+  font-display: swap;
 }
+
 @font-face {
-  font-family: 'Kiota-Itallic';
-  src: url(./fonts/Kiona-Itallic.ttf);
+  font-family: 'Kiona';
+  src: url('https://storage.googleapis.com/backend-movieslistv2.appspot.com/Static/Kiona-Regular.ttf');
+  font-display: swap;
 }
 
 html {
@@ -21,7 +24,7 @@ body {
 }
 
 a {
-  font-family: 'Kiota' !important;
+  font-family: 'Kiona' !important;
 }
 
 label {
@@ -35,7 +38,7 @@ h4,
 h5,
 nav > li {
   color: rgb(218, 218, 218);
-  font-family: 'Kiota' !important;
+  font-family: 'Kiona' !important;
 }
 
 #root {
@@ -97,4 +100,19 @@ input {
 .compressChatBtn {
   flex: 50%;
   text-align: right;
+}
+
+/* Chatbot */
+.react-chatbot-kit-chat-inner-container {
+  background-color: #191919 !important;
+  border: 2px solid rgb(58, 58, 58);
+}
+
+.react-chatbot-kit-chat-input {
+  background-color: #222;
+  color: rgb(218, 218, 218);
+}
+
+.react-chatbot-kit-chat-input::placeholder {
+  color: #d8d8d89e;
 }
