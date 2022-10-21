@@ -39,10 +39,12 @@ function App() {
       </Suspense>
 
       <div className={classes.chatBotContainer}>
-        {!chatbotOpen && <MinimizedChatbot onClick={() => setChatbotOpen(true)} />}
-        <div className={classes.chatBot}>
-          {chatbotOpen && <ChatBot onClose={() => setChatbotOpen(false)} />}
-        </div>
+        <Suspense fallback={<CircularProgress />}>
+          {!chatbotOpen && <MinimizedChatbot onClick={() => setChatbotOpen(true)} />}
+          <div className={classes.chatBot}>
+            {chatbotOpen && <ChatBot onClose={() => setChatbotOpen(false)} />}
+          </div>
+        </Suspense>
       </div>
     </Provider>
   );

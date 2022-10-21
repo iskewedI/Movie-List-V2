@@ -6,6 +6,7 @@ export default makeStyles({
     right: '25px',
     bottom: '25px',
     width: '23vw',
+    textAlign: 'center',
   },
   chatBot: {
     display: 'flex',
