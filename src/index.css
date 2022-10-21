@@ -1,12 +1,12 @@
 @font-face {
   font-family: 'Kiona-Itallic';
-  src: url('https://storage.googleapis.com/backend-movieslistv2.appspot.com/Static/Kiona-Itallic.ttf');
+  src: url('https://firebasestorage.googleapis.com/v0/b/backend-movieslistv2.appspot.com/o/Static%2FKiona-Itallic.ttf?alt=media&token=aae0ac8e-0df2-4498-9855-54259d98115a');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Kiona';
-  src: url('https://storage.googleapis.com/backend-movieslistv2.appspot.com/Static/Kiona-Regular.ttf');
+  src: url('https://firebasestorage.googleapis.com/v0/b/backend-movieslistv2.appspot.com/o/Static%2FKiona-Regular.ttf?alt=media&token=00cf06df-b650-4fa7-8d3d-865eb3776173');
   font-display: swap;
 }
 
