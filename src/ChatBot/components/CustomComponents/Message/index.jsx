@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import styles from './styles';
-
 const getDynamicMessage = (msg, t) => {
   const findDynamicValues = /#(.*?)#/g;
 

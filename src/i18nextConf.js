@@ -5,7 +5,6 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 const fallbackLng = ['en'];
 export const availableLanguages = ['en', 'es'];
-// const availableLanguages = ['en', 'es', 'jp', 'ch']; TODO: Japanese & Chinese;
 
 i18n
   .use(Backend)

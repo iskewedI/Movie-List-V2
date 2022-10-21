@@ -21,7 +21,6 @@ import AddingContentInstructions from '../components/categories/ListsQuestions/A
 import RemovingContentInstructions from '../components/categories/ListsQuestions/RemovingContentInstructions/';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import HalIcon from '../images/HAL_9000.svg';
 
 import { BotMessage, UserMessage } from '../components/CustomComponents/Message/';
 
@@ -32,13 +31,23 @@ export const getConfig = handleOpen => ({
     stage: Stages.USER_STATUS,
   },
   customComponents: {
-    botAvatar: () => <img src={HalIcon} alt='HAL-9001 Icon' width='32px' />,
+    botAvatar: () => (
+      <img
+        src='https://storage.googleapis.com/backend-movieslistv2.appspot.com/Chatbot/HAL_9000.svg'
+        alt='HAL-9001 Icon'
+        width='32px'
+      />
+    ),
     header: () => (
       <button className='chatbotHeader' onClick={() => handleOpen(false)}>
         HAL-9001
-        <button className='compressChatBtn' title='Maximize and minimize chatbot'>
+        <div
+          href='minimize'
+          className='compressChatBtn'
+          title='Maximize and minimize chatbot'
+        >
           <ExpandMoreIcon />
-        </button>
+        </div>
       </button>
     ),
     botChatMessage: props => <BotMessage {...props} />,

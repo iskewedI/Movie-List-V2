@@ -12,7 +12,6 @@ import {
   getListLength,
   getListName,
   createList,
-  getRequestHasError,
   getListsLoading,
   getListHasChanges,
   getMyListSearched,
@@ -44,7 +43,6 @@ const ToSeeSummary = () => {
   const hasChanges = useSelector(getListHasChanges);
 
   const loading = useSelector(getListsLoading);
-  // const error = useSelector(getRequestHasError); TODO
 
   const getListCount = function () {
     const countElement = document.getElementById('toSeeCounter');
