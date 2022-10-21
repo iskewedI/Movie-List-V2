@@ -9,9 +9,7 @@ import './index.css';
 
 ReactDOM.render(
   <HashRouter>
-    <Suspense fallback='loading'>
-      <App />
-    </Suspense>
+    <App />
   </HashRouter>,
   document.getElementById('root')
 );

@@ -24,8 +24,8 @@ function App() {
 
   return (
     <Provider store={store}>
-      <Navbar />
       <Suspense fallback={<CircularProgress />}>
+        <Navbar />
         <Switch>
           <Route path='/me' component={MePage} />
           <Route path='/logout' component={LogOutPage} />
